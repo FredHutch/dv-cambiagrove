@@ -1,0 +1,4 @@
+ftpsite,path,filter,destination,flags,enabled
+ftp.ncbi.nlm.nih.gov,/gene/DATA,*.gz,s3://sttr-viz-ingestion/ncbi/gene,--no-recursion,1
+ftp.ncbi.nlm.nih.gov,/gene/DATA/GENE_INFO,*,s3://sttr-viz-ingestion/ncbi/gene,,1
+ftp.ncbi.nlm.nih.gov,/genomes/MapView,*.gz,s3://sttr-viz-ingestion/ncbi/genome/coords,,1
