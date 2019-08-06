@@ -56,18 +56,25 @@ Now, let's look at how to
 
 ### gene2ensembl
 
+The gene2ensemble data is stored at ```s3://sttr-viz-ingestion/experiment/gene/DATA/gene2accession.gz```
+
+1. Point a crawler at that folder (```s3://sttr-viz-ingestion/experiment/gene/DATA```) and it will create tables for each of the .gz files in the data catalog
+2. Go into the data catalog, find the ```gene2accession.gz``` table, and give it the proper column names. The crawler doesn't correctly read the first line of the file and figure out the column names on its own.
+3. Create a Glue job, with the ```gene2accession.gz``` table as the source. Walk through the console wizard, defining a Parquet file as the target, and tell it to write to an appropriate S3 location (e.g. ```s3://sttr-viz-ingestion/glue-experiments```). 
+   * Then run the job
+4. Check the S3 destination to make sure the Parquet file has been created. 
+
 This is just a copy, so it's possible to do in the UI without any coding at all.
-
-#tax_id  GeneID   Ensembl_gene_identifier RNA_nucleotide_accession.version Ensembl_rna_identifier  protein_accession.version  Ensembl_protein_identifier
-
-It doesn't read the column header row and parse it, so I need to do that manually.
 
 ### gene2accession
 
-#tax_id  GeneID   status   RNA_nucleotide_accession.version RNA_nucleotide_gi protein_accession.version  protein_gi  genomic_nucleotide_accession.version   genomic_nucleotide_gi   start_position_on_the_genomic_accession   end_position_on_the_genomic_accession  orientation assembly mature_peptide_accession.version mature_peptide_gi Symbol
+This works the same way as gene2ensembl, but the columns are different:
+
+```#tax_id  GeneID   status   RNA_nucleotide_accession.version RNA_nucleotide_gi protein_accession.version  protein_gi  genomic_nucleotide_accession.version   genomic_nucleotide_gi   start_position_on_the_genomic_accession   end_position_on_the_genomic_accession  orientation assembly mature_peptide_accession.version mature_peptide_gi Symbol```
 
 
 ### Querying the Results
 
-* We'll start with [AWS Athena](https://us-west-2.console.aws.amazon.com/athena/home?force&region=us-west-2#query). 
+* We'll start with [AWS Athena](https://us-west-2.console.aws.amazon.com/athena/home?force&region=us-west-2#query). It connects to the Glue data catalog automatically, so you can query the data tables you've created.
+   * For example, ```SELECT * FROM "ncbi"."output_ncbi" WHERE geneid = 31045;``` lets me find all the records with GeneID = 31045 in the gene2ensembl output (it was named 'output_ncbi' because I didn't know any better).
 
