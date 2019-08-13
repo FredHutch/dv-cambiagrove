@@ -1,36 +1,14 @@
 # Ingesting Data
 
 
-## Copying FTP data
+## Design
 
-Download from an FTP site to a VM (container) using lftp
-
-* Useful guide: [Transfer files from an FTP server to S3](https://hackncheese.com/2014/11/24/Transfer-files-from-an-FTP-server-to-S3/)
-* LFTP docs, https://lftp.yar.ru/desc.html
-* Examples:
-    * http://www.russbrooks.com/2010/11/19/lftp-cheetsheet
-    * https://linoxide.com/linux-how-to/lftp-commands/
-    * http://www.tutorialspoint.com/unix_commands/lftp.htm
-    * https://www.cyberciti.biz/faq/lftp-mirror-example/
-
-
-```
-export FTPSITE=ftp.ncbi.nlm.nih.gov
-export FTPPATH=/gene/DATA/GENE_INFO
-export FTPFILTER="*"
-export S3DESTINATION=s3://sttr-viz-ingestion/ncbi/gene
-export FLAGS=""
-
-echo $FTPSITE
-echo $FTPPATH
-echo $FTPFILTER
-echo $S3DESTINATION
-echo $FLAGS
-
-. startup-ingest.sh
-```
-
-
+1. A CSV file (s3://sttr-viz-ingestion/config/full-list.csv) has a list of FTP sources and their corresponding destinations in S3
+2. A lambda function reads the CSV file, and creates one AWS Batch job for each line. All of the values in that line of the CSV are passed to the Batch job as environment variables
+3. Each Batch job starts a container, which runs a shell (Bash) script upon startup, [```startup-ingest.sh```](s3://sttr-viz-ingestion/code/batch/startup-ingest.sh). That script uses the environment variables to:
+   * connect to the FTP site using the lftp utility
+   * Download the files that match the folder-and-file naming pattern to the container
+   * Save those files from the container to the specified S3 location
 
 
 ## AWS Batch Setup
@@ -38,13 +16,13 @@ echo $FLAGS
 
 ### Container Setup
 
-This is in the /fetch-and-run-container folder
+This is in the /fetch-and-run-container folder on GitHub
 
 
-### Make a fetch-and-run container
+### Making a fetch-and-run container
 
 
-based on https://aws.amazon.com/blogs/compute/creating-a-simple-fetch-and-run-aws-batch-job/ and https://github.com/awslabs/aws-batch-helpers
+based on [Creating a simple fetch-and-run AWS Batch job](https://aws.amazon.com/blogs/compute/creating-a-simple-fetch-and-run-aws-batch-job/) and [AWS Batch Helper](https://github.com/awslabs/aws-batch-helpers)
 
 ```
 sudo -i
@@ -87,7 +65,7 @@ ECR URL - 561666204077.dkr.ecr.us-west-2.amazonaws.com/ingestion
 
 **EBS Volume and Custom AMI Approach**
 
-* Using https://aws.amazon.com/blogs/compute/building-high-throughput-genomic-batch-workflows-on-aws-batch-layer-part-3-of-4/ directly
+* Follows https://aws.amazon.com/blogs/compute/building-high-throughput-genomic-batch-workflows-on-aws-batch-layer-part-3-of-4/
 
 * use the EC2 console to connect to the VM
 ```
@@ -104,8 +82,6 @@ sudo echo -e '/dev/sdb\t/docker_scratch\text4\tdefaults\t0\t0' | sudo tee -a /et
 sudo mount –a
 sudo systemctl stop ecs 
 sudo rm -rf /var/lib/ecs/data/ecs_agent_data.json
-
-
 ```
 
 * Then create an AMI, based on https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/creating-an-ami-ebs.html 
@@ -113,6 +89,7 @@ sudo rm -rf /var/lib/ecs/data/ecs_agent_data.json
 ```
 ami-00695c4b435ddf547
 ```
+
 * Update the compute environment to use the AMI
 * Also update the job definition to update the mounts, per https://aws.amazon.com/blogs/compute/building-high-throughput-genomic-batch-workflows-on-aws-batch-layer-part-3-of-4/ : 
 
@@ -123,9 +100,36 @@ ami-00695c4b435ddf547
 
 
 
+## Copying FTP data
+
+Download from an FTP site to a VM (container) using lftp
+
+* Useful guide: [Transfer files from an FTP server to S3](https://hackncheese.com/2014/11/24/Transfer-files-from-an-FTP-server-to-S3/)
+* LFTP docs, https://lftp.yar.ru/desc.html
+* Examples:
+    * http://www.russbrooks.com/2010/11/19/lftp-cheetsheet
+    * https://linoxide.com/linux-how-to/lftp-commands/
+    * http://www.tutorialspoint.com/unix_commands/lftp.htm
+    * https://www.cyberciti.biz/faq/lftp-mirror-example/
 
 
-### Resources
+```
+export FTPSITE=ftp.ncbi.nlm.nih.gov
+export FTPPATH=/gene/DATA/GENE_INFO
+export FTPFILTER="*"
+export S3DESTINATION=s3://sttr-viz-ingestion/ncbi/gene
+export FLAGS=""
+
+echo $FTPSITE
+echo $FTPPATH
+echo $FTPFILTER
+echo $S3DESTINATION
+echo $FLAGS
+
+. startup-ingest.sh
+```
+
+**Resources**
 
 * [Traversing an FTP Listing in Python](https://stackoverflow.com/questions/1854572/traversing-ftp-listing)
 * [FTPLib](https://docs.python.org/3/library/ftplib.html)
