@@ -1,0 +1,867 @@
+[
+  {
+    "transfer": "ftp",
+    "source": "ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2accession.gz",
+    "target": "s3://viz.fredhutch.org.public.data/gene/DATA/gene2accession/gene2accession",
+    "update": "recalculated daily",
+    "desc": " This file is a comprehensive report of the accessions that are related to a GeneID.  It includes sequences from the international sequence collaboration, Swiss-Prot, and RefSeq. The RefSeq subset of this file is also available as gene2refseq.  Because this file is updated daily, the RefSeq subset does not reflect any RefSeq release. Versions of RefSeq RNA and protein records may be more recent than those included in an annotation release (build) or those in the current RefSeq release.  To identify the annotation release/build to which the genomic RefSeqs belong, please refer to the species-specific README_CURRENT_RELEASE or README_CURRENT_BUILD file in the genomes ftp site:  ftp://ftp.ncbi.nih.gov/genomes/  For example: ftp://ftp.ncbi.nih.gov/genomes/H_sapiens/README_CURRENT_RELEASE ftp://ftp.ncbi.nih.gov/genomes/Ailuropoda_melanoleuca/README_CURRENT_BUILD  More notes about this file:  tab-delimited one line per genomic/RNA/protein set of sequence accessions Column header line is the first line in the file.  NOTE: Because this file is comprehensive, it may include some RefSeq accessions that are not current, because they are part of the annotation of the current genomic assembly. In other words, the annotation of a genome is not continuous, but depends on a data freeze. Sub-genomic RefSeqs, however, are updated continuously. Thus some RefSeqs may have been replaced or suppressed after a data freeze assocated with a genomic annotation. Until the release of a new genomic annotation, all RefSeqs that are included in the current annotation are reported in this file. ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "status",
+        "desc": "status of the RefSeq if a refseq, else '-' RefSeq values are: INFERRED, MODEL, NA, PREDICTED, PROVISIONAL, REVIEWED, SUPPRESSED, VALIDATED ",
+        "type": "string"
+      },
+      {
+        "name": "rna_nucleotide_accession_version",
+        "desc": "may be null (-) for some genomes ",
+        "type": "string"
+      },
+      {
+        "name": "rna_nucleotide_gi",
+        "desc": "the gi for an RNA nucleotide accession, '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "protein_accession_version",
+        "desc": "will be null (-) for RNA-coding genes ",
+        "type": "string"
+      },
+      {
+        "name": "protein_gi",
+        "desc": "the gi for a protein accession, '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "genomic_nucleotide_accession_version",
+        "desc": "may be null (-) ",
+        "type": "string"
+      },
+      {
+        "name": "genomic_nucleotide_gi",
+        "desc": "the gi for a genomic nucleotide accession, '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "start_position_on_the_genomic_accession",
+        "desc": "position of the gene feature on the genomic accession, '-' if not applicable position 0-based NOTE: this file does not report the position of each exon. For positions on RefSeq contigs and chromosomes, use the gff3 file in the appropriate build directory. For example, for the human genome, ftp://ftp.ncbi.nih.gov/genomes/H_sapiens/GFF/ This file has one line for each feature. WARNING: Positions in gff3 files are one-based, not 0-based NOTE: if genes are merged after an annotation is released, there may be more than one location reported on a genomic sequence per GeneID, each resulting from the annotation before the merge. ",
+        "type": "string"
+      },
+      {
+        "name": "end_position_on_the_genomic_accession",
+        "desc": "position of the gene feature on the genomic accession, '-' if not applicable position 0-based NOTE: this file does not report the position of each exon. For positions on RefSeq contigs and chromosomes, use the gff3 file in the appropriate build directory. For example, for the human genome, ftp://ftp.ncbi.nih.gov/genomes/H_sapiens/GFF/ This file has one line for each feature. WARNING: Positions in gff3 files are one-based, not 0-based NOTE: if genes are merged after an annotation is released, there may be more than one location reported on a genomic sequence per GeneID, each resulting from the annotation before the merge. ",
+        "type": "string"
+      },
+      {
+        "name": "orientation",
+        "desc": "orientation of the gene feature on the genomic accession, '?' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "assembly",
+        "desc": "the name of the assembly '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "mature_peptide_accession_version",
+        "desc": "will be null (-) if absent ",
+        "type": "string"
+      },
+      {
+        "name": "mature_peptide_gi",
+        "desc": "the gi for a mature peptide accession, '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "symbol",
+        "desc": "the default symbol for the gene ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2ensembl.gz",
+    "target": "s3://viz.fredhutch.org.public.data/gene/DATA/gene2ensembl/gene2ensembl.gz",
+    "update": "recalculated daily",
+    "desc": " This file reports matches between NCBI and Ensembl annotation based on comparison of rna and protein features.  Matches are collected as follows. For a protein to be identified as a match between RefSeq and Ensembl, there must be at least 80% overlap between the two. Furthermore, splice site matches must meet certain conditions: either 60% or more of the splice sites must match, or there may be at most one splice site mismatch.  For rna features, the best match between RefSeq and Ensembl is selected based on splice site and overlap comparisons. For coding transcripts, there is no minimum threshold for reporting other than the protein comparison criteria above. For non-coding transcripts, the splice site criteria are the same as for protein matching, but the overlap threshold is reduced to 50%.  Furthermore, both the rna and the protein features must meet these minimum matching criteria to be considered a good match.  In addition, only the best matches will be reported in this file. Other matches that satisified the matching criteria but were not the best matches will not be reported in this file.  A summary report of species that have been compared is contained in another FTP file, README_ensembl (see next item).  More notes about this file:  tab-delimited one line per match between RefSeq and Ensembl rna/protein Column header line is the first line in the file.   ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "ensembl_gene_identifier",
+        "desc": "the matching Ensembl identifier for the gene ",
+        "type": "string"
+      },
+      {
+        "name": "rna_nucleotide_accession_version",
+        "desc": "the identifier for the matching RefSeq rna will be null (-) if only the protein matched ",
+        "type": "string"
+      },
+      {
+        "name": "ensembl_rna_identifier",
+        "desc": "the identifier for the matching Ensembl rna may include a version number will be null (-) if only the protein matched ",
+        "type": "string"
+      },
+      {
+        "name": "protein_accession_version",
+        "desc": "the identifier for the matching RefSeq protein will be null (-) if only the mRNA matched ",
+        "type": "string"
+      },
+      {
+        "name": "ensembl_protein_identifier",
+        "desc": "the identifier for the matching Ensembl protein may include a version number will be null (-) if only the mRNA matched ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "ftp://ftp.ncbi.nlm.nih.gov/gene/DATA/gene2vega",
+    "target": "",
+    "update": "archived",
+    "desc": " This file is no longer being updated.  The last update was on December 3, 2018.  This file reports matches between NCBI and Vega annotation.  Matches are derived from the comparisons between NCBI and Ensembl annotation (which are reported in the gene2ensembl FTP file).  That is, where there is a match between NCBI and Ensembl annotation, and there is a correspondence between that Ensembl annotation and Vega annotation, then the inferred relationship between the NCBI and Vega annotations are reported here.  More notes about this file:  tab-delimited one line per match between RefSeq and Vega rna/protein Column header line is the first line in the file.   ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "vega_gene_identifier",
+        "desc": "the matching Vega identifier for the gene ",
+        "type": "string"
+      },
+      {
+        "name": "rna_nucleotide_accession_version",
+        "desc": "the identifier for the matching RefSeq rna will be null (-) if only the protein matched ",
+        "type": "string"
+      },
+      {
+        "name": "vega_rna_identifier",
+        "desc": "the identifier for the matching Vega rna may include a version number will be null (-) if only the protein matched ",
+        "type": "string"
+      },
+      {
+        "name": "protein_accession_version",
+        "desc": "the identifier for the matching RefSeq protein will be null (-) if only the mRNA matched ",
+        "type": "string"
+      },
+      {
+        "name": "vega_protein_identifier",
+        "desc": "the identifier for the matching Vega protein may include a version number will be null (-) if only the mRNA matched ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "README_ensembl",
+    "target": "",
+    "update": "recalculated weekly",
+    "desc": " This file reports the overall status of comparison between NCBI and Ensembl annotation.  The detailed report is contained in the gene2ensembl FTP file (see previous item).  More notes about this file:  tab-delimited one line per species Column header line is the first line in the file.  ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "ncbi_release",
+        "desc": "the NCBI release number ",
+        "type": "string"
+      },
+      {
+        "name": "ncbi_assembly",
+        "desc": "the NCBI assembly name ",
+        "type": "string"
+      },
+      {
+        "name": "ensembl_release",
+        "desc": "the Ensembl release number ",
+        "type": "string"
+      },
+      {
+        "name": "ensembl_assembly",
+        "desc": "the Ensembl assembly name ",
+        "type": "string"
+      },
+      {
+        "name": "date_compared",
+        "desc": "the date when the comparison was performed, in YYYYMMDD format ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "gene2go",
+    "target": "",
+    "update": "recalculated daily",
+    "desc": " This file reports the GO terms that have been associated with Genes in Entrez Gene. It is generated by processing the gene_association files on the GO ftp site: http://www.geneontology.org/GO.current.annotations.shtml and comparing the DB_Object_ID to annotation in Gene, as also reported in gene_info.gz  Multiple gene_associations file may be used for any genome. If so, duplicate information is not reported; but unique contributions of GO terms, evidence codes, and citations are.  The file that is used to establish the rules for the files and fields that are used for each taxon is documented in go_process.xml   MODIFIED: May 9, 2006 to include the category of the GO term.  MODIFIED: May 21, 2007 to use '-' for empty fields.  Data elements which are not applicable are shown as '-'.  tab-delimited One line per GeneID/GO term/representative GO evidence code. Column header line is the first line in the file. ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "go_id",
+        "desc": "the GO ID, formatted as GO:0000000 ",
+        "type": "string"
+      },
+      {
+        "name": "evidence",
+        "desc": "the evidence code in the gene_association file ",
+        "type": "string"
+      },
+      {
+        "name": "qualifier",
+        "desc": "a qualifier for the relationship between the gene and the GO term ",
+        "type": "string"
+      },
+      {
+        "name": "go_term",
+        "desc": "the term indicated by the GO ID ",
+        "type": "string"
+      },
+      {
+        "name": "pubmed",
+        "desc": "pipe-delimited set of PubMed uids reported as evidence for the association ",
+        "type": "string"
+      },
+      {
+        "name": "category",
+        "desc": "the GO category (Function, Process, or Component) ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "gene2pubmed",
+    "target": "",
+    "update": "recalculated daily",
+    "desc": " This file can be considered as the logical equivalent of what is reported as Gene/PubMed Links visible in Gene's and PubMed's Links menus. Although gene2pubmed is re-calculated daily, some of the source documents (GeneRIFs, for example) are not updated that frequently, so timing depends on the update frequency of the data source.  Documentation about how these links are maintained is provided here:  https://www.ncbi.nlm.nih.gov/entrez/query/static/entrezlinks.html#gene  tab-delimited one line per set of tax_id/GeneID/PMID Column header line is the first line in the file. ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "pubmed_id_(pmid)",
+        "desc": "the unique identifier in PubMed for a citation ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "gene2refseq",
+    "target": "",
+    "update": "recalculated daily",
+    "desc": " tab-delimited one line per genomic/RNA/protein set of RefSeqs Column header line is the first line in the file.  Because this file is updated daily, the RefSeq subset does not reflect any RefSeq release. Versions of RefSeq RNA and protein records may be more recent than those included in an annotation release (build) or those in the current RefSeq release.  To identify the annotation release/build to which the genomic RefSeqs belong, please refer to the species-specific README_CURRENT_RELEASE or README_CURRENT_BUILD file in the genomes ftp site:  ftp://ftp.ncbi.nih.gov/genomes/  For example: ftp://ftp.ncbi.nih.gov/genomes/H_sapiens/README_CURRENT_RELEASE ftp://ftp.ncbi.nih.gov/genomes/Ailuropoda_melanoleuca/README_CURRENT_BUILD    NOTE: Because this file is comprehensive, it may include some RefSeq accessions that are not current, because they are part of the annotation of the current genomic assembly. In other words, the annotation of a genome is not continuous, but depends on a data freeze. Sub-genomic RefSeqs, however, are updated continuously. Thus some RefSeqs may have been replaced or suppressed after a data freeze associated with a genomic annotation. Until the release of a new genomic annotation, all RefSeqs included in the current annotation are reported in this file.   NOTE: This file is the RefSeq subset of gene2accession. ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "status",
+        "desc": "status of the RefSeq values are: INFERRED, MODEL, NA, PREDICTED, PROVISIONAL, REVIEWED, SUPPRESSED, VALIDATED ",
+        "type": "string"
+      },
+      {
+        "name": "rna_nucleotide_accession_version",
+        "desc": "may be null (-) for some genomes ",
+        "type": "string"
+      },
+      {
+        "name": "rna_nucleotide_gi",
+        "desc": "the gi for an RNA nucleotide accession, '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "protein_accession_version",
+        "desc": "will be null (-) for RNA-coding genes ",
+        "type": "string"
+      },
+      {
+        "name": "protein_gi",
+        "desc": "the gi for a protein accession, '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "genomic_nucleotide_accession_version",
+        "desc": "may be null (-) if a RefSeq was provided after the genomic accession was submitted ",
+        "type": "string"
+      },
+      {
+        "name": "genomic_nucleotide_gi",
+        "desc": "the gi for a genomic nucleotide accession, '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "start_position_on_the_genomic_accession",
+        "desc": "position of the gene feature on the genomic accession, '-' if not applicable position 0-based NOTE: this file does not report the position of each exon for positions on RefSeq contigs and chromosomes, use the gff format files in the desired build directory at ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/ For example, for human at the time this was written: ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/all_assembly_versions/GCF_000001405.31_GRCh38.p5/GCF_000001405.31_GRCh38.p5_genomic.gff.gz WARNING: positions in these files are one-based, not 0-based NOTE: if genes are merged after an annotation is released, there may be more than one location reported on a genomic sequence per GeneID, each resulting from the annotation before the merge. ",
+        "type": "string"
+      },
+      {
+        "name": "end_position_on_the_genomic_accession",
+        "desc": "position of the gene feature on the genomic accession, '-' if not applicable position 0-based NOTE: this file does not report the position of each exon for positions on RefSeq contigs and chromosomes, use the gff format files in the desired build directory at ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/ For example, for human at the time this was written: ftp://ftp.ncbi.nlm.nih.gov/genomes/refseq/vertebrate_mammalian/Homo_sapiens/all_assembly_versions/GCF_000001405.31_GRCh38.p5/GCF_000001405.31_GRCh38.p5_genomic.gff.gz WARNING: positions in these files are one-based, not 0-based NOTE: if genes are merged after an annotation is released, there may be more than one location reported on a genomic sequence per GeneID, each resulting from the annotation before the merge. ",
+        "type": "string"
+      },
+      {
+        "name": "orientation",
+        "desc": "orientation of the gene feature on the genomic accession, '?' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "assembly",
+        "desc": "the name of the assembly '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "mature_peptide_accession_version",
+        "desc": "will be null (-) if absent ",
+        "type": "string"
+      },
+      {
+        "name": "mature_peptide_gi",
+        "desc": "the gi for a mature peptide accession, '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "symbol",
+        "desc": "the default symbol for the gene ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "gene2sts",
+    "target": "",
+    "update": "archived",
+    "desc": " This file is no longer being updated.  The last update was on July 26, 2017.  tab-delimited one line per GeneID, UniSTS ID pair Column header line is the first line in the file. ",
+    "fields": [
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "unists_id",
+        "desc": "the unique identifier given to a primer pair by UniSTS ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "gene2unigene",
+    "target": "",
+    "update": "archived",
+    "desc": " This file is no longer being updated.  The last update was on June 19, 2019.  This file can be considered as the logical equivalent of what is reported as Gene/UniGene Links visible in Gene's and UniGene's Links menus.  Documentation about how these links are maintained is provided here:  https://www.ncbi.nlm.nih.gov/entrez/query/static/entrezlinks.html  tab-delimited Column header line is the first line in the file. Note: tax_id is not provided in a separate column.  The prefix of the UniGene cluster can be used to determine the species ",
+    "fields": [
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      { "name": "unigene_cluster", "desc": " ", "type": "string" }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "gene_group",
+    "target": "",
+    "update": "recalculated daily",
+    "desc": " report of genes and their relationships to other genes  tab-delimited one line per pair of GeneIDs Column header line is the first line in the file.  NOTE: This file is not comprehensive, and contains a subset of information summarizing gene-gene relationships.  Relationships are reported symmetrically, where appropriate, and currently include:  Ortholog* Potential readthrough sibling Readthrough child Readthrough parent Readthrough sibling Region member Region parent Related functional gene Related pseudogene  *Note that Ortholog records appear in the gene_orthologs file, and are excluded from the gene_group file. Note also that the gene_group and gene_orthologs files use the same column format.  ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the current unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "relationship",
+        "desc": "the type of relationship between the two genes, e.g. GeneID has a 'relationship' to Other GeneID ",
+        "type": "string"
+      },
+      {
+        "name": "other_tax_id",
+        "desc": "the related gene's tax_id ",
+        "type": "string"
+      },
+      {
+        "name": "other_geneid",
+        "desc": "the related gene's GeneID ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "gene_history",
+    "target": "",
+    "update": "recalculated daily",
+    "desc": " comprehensive information about GeneIDs that are no longer current  tab-delimited one line per GeneID Column header line is the first line in the file. ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the current unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "discontinued_geneid",
+        "desc": "the GeneID that is no longer current ",
+        "type": "string"
+      },
+      {
+        "name": "discontinued_symbol",
+        "desc": "the symbol that was assigned to the discontinued GeneID, if the discontinued record was not replaced with another ",
+        "type": "string"
+      },
+      {
+        "name": "discontinue_date",
+        "desc": "the date the gene record was discontinued or replaced, in YYYYMMDD format ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "gene_info",
+    "target": "",
+    "update": "recalculated daily",
+    "desc": " tab-delimited one line per GeneID Column header line is the first line in the file. Note: subsets of gene_info are available in the DATA/GENE_INFO directory (described later) ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ASN1:  geneid ",
+        "type": "string"
+      },
+      {
+        "name": "symbol",
+        "desc": "the default symbol for the gene ASN1:  gene->locus ",
+        "type": "string"
+      },
+      {
+        "name": "locustag",
+        "desc": "the LocusTag value ASN1:  gene->locus-tag ",
+        "type": "string"
+      },
+      {
+        "name": "synonyms",
+        "desc": "bar-delimited set of unofficial symbols for the gene ",
+        "type": "string"
+      },
+      {
+        "name": "dbxrefs",
+        "desc": "bar-delimited set of identifiers in other databases for this gene.  The unit of the set is database:value. Note that HGNC and MGI include 'HGNC' and 'MGI', respectively, in the value part of their identifier.  Consequently, dbXrefs for these databases will appear like: HGNC:HGNC:1100 This would be interpreted as database='HGNC', value='HGNC:1100' Example for MGI: MGI:MGI:104537 This would be interpreted as database='MGI', value='MGI:104537' ",
+        "type": "string"
+      },
+      {
+        "name": "chromosome",
+        "desc": "the chromosome on which this gene is placed. for mitochondrial genomes, the value 'MT' is used. ",
+        "type": "string"
+      },
+      {
+        "name": "map_location",
+        "desc": "the map location for this gene ",
+        "type": "string"
+      },
+      {
+        "name": "description",
+        "desc": "a descriptive name for this gene ",
+        "type": "string"
+      },
+      {
+        "name": "type_of_gene",
+        "desc": "the type assigned to the gene according to the list of options provided in https://www.ncbi.nlm.nih.gov/IEB/ToolBox/CPP_DOC/lxr/source/src/objects/entrezgene/entrezgene.asn ",
+        "type": "string"
+      },
+      {
+        "name": "symbol_from_nomenclature_authority",
+        "desc": "when not '-', indicates that this symbol is from a a nomenclature authority ",
+        "type": "string"
+      },
+      {
+        "name": "full_name_from_nomenclature_authority",
+        "desc": "when not '-', indicates that this full name is from a a nomenclature authority ",
+        "type": "string"
+      },
+      {
+        "name": "nomenclature_status",
+        "desc": "when not '-', indicates the status of the name from the nomenclature authority (O for official, I for interim) ",
+        "type": "string"
+      },
+      {
+        "name": "other_designations",
+        "desc": "pipe-delimited set of some alternate descriptions that have been assigned to a GeneID '-' indicates none is being reported. ",
+        "type": "string"
+      },
+      {
+        "name": "modification_date",
+        "desc": "the last date a gene record was updated, in YYYYMMDD format ",
+        "type": "string"
+      },
+      {
+        "name": "feature_type",
+        "desc": "pipe-delimited set of annotated features and their classes or controlled vocabularies, displayed as feature_type:feature_class or feature_type:controlled_vocabulary, when appropriate; derived from select feature annotations on RefSeq(s) associated with the GeneID ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "gene_neighbors",
+    "target": "",
+    "update": "recalculated daily",
+    "desc": " This file reports neighboring genes for all genes placed on a given genomic sequence.  More notes about this file:  tab-delimited one line per GeneID and genomic placement Column header line is the first line in the file. genomic sequences in scope for reporting include all top-level sequences and curated genomic (NG_ accessions)  ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      { "name": "genomic_accession_version", "desc": "", "type": "string" },
+      {
+        "name": "genomic_gi",
+        "desc": "the gi for a genomic nucleotide accession ",
+        "type": "string"
+      },
+      {
+        "name": "start_position",
+        "desc": "start position of the gene feature on the genomic accession position value is 0-based ",
+        "type": "string"
+      },
+      {
+        "name": "end_position",
+        "desc": "end position of the gene feature on the genomic accession position value is 0-based ",
+        "type": "string"
+      },
+      {
+        "name": "orientation",
+        "desc": "orientation of the gene feature on the genomic accession ",
+        "type": "string"
+      },
+      {
+        "name": "chromosome",
+        "desc": "the chromosome on which this gene is placed. for mitochondrial genomes, the value 'MT' is used. '-' if not applicable ",
+        "type": "string"
+      },
+      {
+        "name": "geneids_on_left",
+        "desc": "bar-delimited set of GeneIDs for the nearest two non-overlapping genes on the left, or '-' if there are none additional GeneIDs may be included if the neighboring genes overlap each other ",
+        "type": "string"
+      },
+      {
+        "name": "distance_to_left",
+        "desc": "distance to the nearest gene on the left, or '-' if there is none ",
+        "type": "string"
+      },
+      {
+        "name": "geneids_on_right",
+        "desc": "bar-delimited set of GeneIDs for the nearest two non-overlapping genes on the right, or '-' if there are none additional GeneIDs may be included if the neighboring genes overlap each other ",
+        "type": "string"
+      },
+      {
+        "name": "distance_to_right",
+        "desc": "distance to the nearest gene on the right, or '-' if there is none ",
+        "type": "string"
+      },
+      {
+        "name": "overlapping_geneids",
+        "desc": "bar-delimited set of GeneIDs for all overlapping genes, or '-' if there are none ",
+        "type": "string"
+      },
+      {
+        "name": "assembly",
+        "desc": "the name of the assembly '-' if not applicable ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "mim2gene_medgen",
+    "target": "",
+    "update": "daily",
+    "desc": " report of the relationship between MIM numbers (OMIM), GeneIDs, and Records in MedGen  tab-delimited one line per MIM number Column header line is the first line in the file. Tax_id is not included because this file is relevant only for human, tax_id 9606. see also: http://omim.org/help/faq In June, 2015, this file was modified to add a Comment column, to qualify the relationship between a gene and a disorder as reported by OMIM.  ",
+    "fields": [
+      {
+        "name": "mim_number",
+        "desc": "a MIM number associated with a GeneID ",
+        "type": "string"
+      },
+      {
+        "name": "geneid",
+        "desc": "the current unique identifier for a gene the lack of a GeneID, for whatever reason, is represented as a '-' ",
+        "type": "string"
+      },
+      {
+        "name": "type",
+        "desc": "type of relationship between the MIM number and the GeneID current values are 'gene'      the MIM number associated with a Gene, or a GeneID that is assigned to a record where the molecular basis of the disease is not known 'phenotype' the MIM number associated with a disease that is associated with a gene If NCBI has no record of this MIM number in its databases yet, there is a '-' provided in the type column ",
+        "type": "string"
+      },
+      {
+        "name": "source",
+        "desc": "This value is provided only when there is a report of a relationship between a MIM number that is a phenotype, and a GeneID. The current expected values are GeneMap (from OMIM), GeneReviews, and NCBI. ",
+        "type": "string"
+      },
+      {
+        "name": "medgencui",
+        "desc": "The accession assigned by MedGen to this phenotype.  If the accession starts with a C followed by integers, the identifier is a concept ID (CUI) from UMLS. https://www.nlm.nih.gov/research/umls/  If it starts with a CN, no CUI in UMLS was identified, and NCBI created a placeholder. ",
+        "type": "string"
+      },
+      {
+        "name": "comment",
+        "desc": "optional value reporting the qualifiers OMIM provides when reporting a gene/phenotype relationship The values are based on the explanation of the symbols provided by OMIM: http://omim.org/help/faq nondisease: Brackets, \"[ ]\", indicate \"nondiseases,\" mainly genetic variations that lead to apparently abnormal laboratory test values (e.g., dysalbuminemic euthyroidal hyperthyroxinemia). susceptibility: {} indicate mutations that contribute to susceptibility to multifactorial disorders QTL 1: {} and qtl QTL 2: [] and qtl somatic: somatic in the disease name question: A question mark, \"?\", before the disease name indicates an unconfirmed or possibly spurious mapping. ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "generifs_basic.gz",
+    "target": "",
+    "desc": " GeneRIFs describing a single Gene each (rather than interactions between two genes' products)  Tab-delimited Sorted by Tax ID, Gene ID, and the first PubMed ID in the list  For more information, please review: https://www.ncbi.nlm.nih.gov/gene/about-generif ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "gene_id",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "pubmed_id_(pmid)_list",
+        "desc": "unique citation identifier(s) in PubMed; multiple values are comma-separated NOTE: if you process this by Excel, please be certain to treat this column as a string. Otherwise comma-delimited PubMed uids may be converted to a single integer  ",
+        "type": "string"
+      },
+      {
+        "name": "last_update_timestamp",
+        "desc": "the last time this GeneRIF was modified, in ISO 8601 format \"yyyy-mm-dd hh:mm\" ",
+        "type": "string"
+      },
+      {
+        "name": "generif_text",
+        "desc": "GeneRIF text string, length <= 425 characters ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "hiv_interactions.gz",
+    "target": "",
+    "desc": " Descriptions of interactions between two genes' products -- specifically, one from Human and one from Human Immunodeficiency Virus type 1 (HIV-1) -- from a collaboration with NIAID  For more information, please see: https://www.ncbi.nlm.nih.gov/genome/viruses/retroviruses/hiv-1/interactions/  This file contains a subset of the interaction data reported in interactions.gz, described below.  Tab-delimited Sorted by:  human Gene ID, human accession.version, virus Gene ID, virus accession.version, first PubMed ID in the list ",
+    "fields": [
+      {
+        "name": "first_gene_of_interacting_pair_(virus_interactant)",
+        "desc": "Tax ID 1 the unique identifier provided by NCBI Taxonomy for the species or strain/isolate Gene ID 1 the unique identifier for a gene product accession.version 1 product name 1 ",
+        "type": "string"
+      },
+      {
+        "name": "interaction_short_phrase",
+        "desc": "text string ",
+        "type": "string"
+      },
+      {
+        "name": "second_gene_of_interacting_pair_(human_interactant)",
+        "desc": "Tax ID 2 the unique identifier provided by NCBI Taxonomy for the species or strain/isolate Gene ID 2 the unique identifier for a gene product accession.version 2 product name 2 ",
+        "type": "string"
+      },
+      {
+        "name": "pubmed_id_(pmid)_list",
+        "desc": "unique citation identifier(s) in PubMed; multiple values are comma-separated NOTE: if you process this by Excel, please be certain to treat this column as a string. Otherwise comma-delimited PubMed uids may be converted to a single integer ",
+        "type": "string"
+      },
+      {
+        "name": "last_update_timestamp",
+        "desc": "the last time this GeneRIF was modified, in ISO 8601 format \"yyyy-mm-dd hh:mm\" ",
+        "type": "string"
+      },
+      {
+        "name": "generif_text",
+        "desc": "text string, length <= 425 characters ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "hiv_siRNA_interactions.gz",
+    "target": "",
+    "desc": " Descriptions of HIV-1 virus and human protein interactions that regulate HIV-1 replication and infectivity.  All interactions are with Human immunodeficiency virus 1 (NC_001802.1, Tax ID 11676).  Tab-delimited ",
+    "fields": [
+      {
+        "name": "tax_id",
+        "desc": "the unique identifier provided by NCBI Taxonomy for the species or strain/isolate ",
+        "type": "string"
+      },
+      {
+        "name": "gene_id",
+        "desc": "the unique identifier for a gene ",
+        "type": "string"
+      },
+      {
+        "name": "interaction_short_phrase",
+        "desc": "text string ",
+        "type": "string"
+      },
+      { "name": "product_accession_version", "desc": "", "type": "string" },
+      { "name": "product_name", "desc": "", "type": "string" },
+      {
+        "name": "pubmed_id_(pmid)_list",
+        "desc": "unique citation identifier(s) in PubMed; multiple values are comma-separated NOTE: if you process this by Excel, please be certain to treat this column as a string. Otherwise comma-delimited PubMed uids may be converted to a single integer ",
+        "type": "string"
+      },
+      {
+        "name": "last_update_timestamp",
+        "desc": "the last time this GeneRIF was modified, in ISO 8601 format \"yyyy-mm-dd hh:mm\" ",
+        "type": "string"
+      },
+      {
+        "name": "generif_text",
+        "desc": "text string, length <= 425 characters ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": "interactions.gz",
+    "target": "",
+    "desc": " Descriptions of interactions involving up to two interactants and a resulting complex, at least one of which is a gene product.  If both interactants are associated with Gene IDs, the interacting pair is reported once, using the convention that the interactant with the smaller Gene ID is listed as the \"first interactant\", as defined below.  This file includes the interaction data reported in hiv_interactions.gz and hiv_siRNA_interactions.gz, described above.  Data elements which are not applicable are shown as \"-\".  Tab-delimited Sorted by:  1st Tax ID, 1st Gene ID, 1st accession.version, 2nd Tax ID,              2nd accession.version, first PubMed ID in the list ",
+    "fields": [
+      {
+        "name": "first_interactant",
+        "desc": "Tax ID 1 the unique identifier provided by NCBI Taxonomy for the species or strain/isolate Gene ID 2 the unique identifier for a gene interactant accession.version 1 interactant name 1 ",
+        "type": "string"
+      },
+      {
+        "name": "interaction_short_phrase",
+        "desc": "text string ",
+        "type": "string"
+      },
+      {
+        "name": "second_interactant",
+        "desc": "Tax ID 2 the unique identifier provided by NCBI Taxonomy for the species or strain/isolate interactant ID 2 an identifier for this interactant, within the database specified by \"interactant ID type\" below --  note:  depending on the database, this ID may be either a numeric value or a character string interactant ID type the database within which the interactant ID may be found; if this interactant is a gene product, its interactant ID type is \"GeneID\", and the interactant ID is its numeric Gene ID. interactant accession.version 2 interactant name 2 ",
+        "type": "string"
+      },
+      {
+        "name": "resulting_complex",
+        "desc": "complex ID an identifier for this complex, within the database specified by \"complex ID type\" below --  note:  depending on the database, this ID may be either a numeric value or a character string complex ID type the database within which the complex ID may be found complex name ",
+        "type": "string"
+      },
+      {
+        "name": "pubmed_id_(pmid)_list",
+        "desc": "unique citation identifier(s) in PubMed; multiple values are comma-separated NOTE: if you process this by Excel, please be certain to treat this column as a string. Otherwise comma-delimited PubMed uids may be converted to a single integer ",
+        "type": "string"
+      },
+      {
+        "name": "last_update_timestamp",
+        "desc": "the last time this GeneRIF was modified, in ISO 8601 format \"yyyy-mm-dd hh:mm\" ",
+        "type": "string"
+      },
+      {
+        "name": "generif_text",
+        "desc": "text string, length <= 425 characters ",
+        "type": "string"
+      },
+      {
+        "name": "interaction_source",
+        "desc": "interaction ID an identifier for this interaction, within the database specified by \"interaction ID type\" below --  note:  depending on the database, this ID may be either a numeric value or a character string interaction ID type the database within which the interaction ID may be found; if there is no interaction ID, no interaction ID type is reported  additional information on interaction source databases is in the file interaction_sources, described below. ",
+        "type": "string"
+      }
+    ]
+  },
+  {
+    "transfer": "ftp",
+    "source": " interaction_sources",
+    "target": "",
+    "desc": " Additional information on sources of interactions listed in interactions.gz, described above.  Tag/value pairs, one per line, delimited by colon and whitespace Sources delimited by blank lines Sorted by symbol ",
+    "fields": [
+      {
+        "name": "symbol",
+        "desc": "the symbol used to represent this source in interactions.gz ",
+        "type": "string"
+      },
+      {
+        "name": "webpage_url",
+        "desc": "the primary or general Web page for this source ",
+        "type": "string"
+      },
+      {
+        "name": "template_url",
+        "desc": "a prefix which, when combined with the interaction ID from a specific interaction record in interactions.gz, produces a full URL which accesses further information on that interaction from the source's Web site ",
+        "type": "string"
+      }
+    ]
+  }
+]

@@ -1,57 +1,251 @@
-{
-  "transfer": "ftp",
-  "source": "ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/json/hgnc_complete_set.json",
-  "target": "s3://viz.fredhutch.org.public.data/hgnc/hgnc",
-  "update": "As needed",
-  "desc": " Complete HUGO Gene Nomenclature Committee (HGNC) dataset. The HGNC is responsible for approving unique symbols and names for human loci, including protein coding genes, ncRNA genes and pseudogenes, to allow unambiguous scientific communication. For each known human gene we approve a gene name and symbol (short-form abbreviation). All approved symbols are stored in the HGNC database, www.genenames.org, a curated online repository of HGNC-approved gene nomenclature, gene groups and associated resources including links to genomic, proteomic and phenotypic information. Each symbol is unique and we ensure that each gene is only given one approved gene symbol. It is necessary to provide a unique symbol for each gene so that we and others can talk about them, and this also facilitates electronic data retrieval from publications and databases. In preference each symbol maintains parallel construction in different members of a gene family and can also be used in other species, especially the mouse.",
-  "fields": {
-    "hgnc_id": "A unique ID created by the HGNC for every approved symbol.",
-    "symbol": "The HGNC approved gene symbol. Equates to the 'Approved symbol' field within the gene symbol report.",
-    "name": "HGNC approved name for the gene. Equates to the 'Approved name' field within the gene symbol report.",
-    "locus_group": "A group name for a set of related locus types as defined by the HGNC (e.g. non-coding RNA).",
-    "locus_type": "The locus type as set by the HGNC.",
-    "status": "Status of the symbol report, which can be either 'Approved' or 'Entry Withdrawn'.",
-    "location": "Cytogenetic location of the gene (e.g. 2q34).",
-    "location_sortable": "Same as 'location' but single digit chromosomes are prefixed with a 0 enabling them to be sorted in correct numerical order (e.g. 02q34).",
-    "alias_symbol": "Other symbols used to refer to this gene as seen in the 'Alias symbols' field in the gene symbol report..",
-    "alias_name": "Other names used to refer to this gene as seen in the 'Alias names' field in the gene symbol report.",
-    "prev_symbol": "Gene symbols previously approved by the HGNC for this gene. Equates to the 'Previous symbols' field within the gene symbol report.",
-    "prev_name": "Gene names previously approved by the HGNC for this gene. Equates to the 'Previous names' field within the gene symbol report.",
-    "gene_group": "The gene group name as set by the HGNC and seen at the top of the gene group reports.",
-    "gene_group_id": "ID used to designate a gene group the gene has been assigned to.",
-    "date_approved_reserved": "The date the entry was first approved.",
-    "date_symbol_changed": "The date the approved symbol was last changed.",
-    "date_name_changed": "The date the approved name was last changed.",
-    "date_modified": "Date the entry was last modified.",
-    "entrez_id": "NCBI gene ID. Found within the 'Gene resources' section of the gene symbol report.",
-    "ensembl_gene_id": "Ensembl gene ID. Found within the 'Gene resources' section of the gene symbol report.",
-    "vega_id": "Vega gene ID. Found within the 'Gene resources' section of the gene symbol report.",
-    "ucsc_id": "UCSC gene ID. Found within the 'Gene resources' section of the gene symbol report.",
-    "ena": "International Nucleotide Sequence Database Collaboration (GenBank, ENA and DDBJ) accession number(s). Found within the 'Nucleotide resources' section of the gene symbol report.",
-    "refseq_accession": "RefSeq nucleotide accession(s). Found within the 'Nucleotide resources' section of the gene symbol report.",
-    "ccds_id": "Consensus CDS ID. Found within the 'Nucleotide resources' section of the gene symbol report.",
-    "uniprot_ids": "UniProt protein accession. Found within the 'Protein resource' section of the gene symbol report.",
-    "pubmed_id": "Pubmed and Europe Pubmed Central PMID(s).",
-    "mgd_id": "Mouse genome informatics database ID. Found within the 'Homologs' section of the gene symbol report.",
-    "rgd_id": "Rat genome database gene ID. Found within the 'Homologs' section of the gene symbol report.",
-    "lsdb": "The name of the Locus Specific Mutation Database and URL for the gene separated by a | character, e.g. Mutations of the ATP-binding Cassette Transporter Retina|http://www.retina-international.org/files/sci-news/abcrmut.htm.",
-    "cosmic": "Symbol used within the Catalogue of somatic mutations in cancer for the gene. (No longer updated!)",
-    "omim_id": "Online Mendelian Inheritance in Man (OMIM) ID http://www.omim.org/entry/",
-    "mirbase": "miRBase ID http://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=",
-    "homeodb": "Homeobox Database ID http://homeodb.cbi.pku.edu.cn/gene_info.get?id=",
-    "snornabase": "snoRNABase ID https://www-snorna.biotoul.fr//plus.php?snoid=",
-    "bioparadigms_slc": "Symbol used to link to the SLC tables database at bioparadigms.org for the gene http://slc.bioparadigms.org/protein?GeneName=",
-    "orphanet": "Orphanet ID http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=GB&Expert=",
-    "pseudogene.org": "Pseudogene.org ID http://tables.pseudogene.org/",
-    "horde_id": "Symbol used within HORDE for the gene http://genome.weizmann.ac.il/horde/card/index/symbol:",
-    "merops": "ID used to link to the MEROPS peptidase database http://merops.sanger.ac.uk/cgi-bin/pepsum?mid=",
-    "imgt": "Symbol used within international ImMunoGeneTics information system http://www.imgt.org/IMGT_GENE-DB/GENElect?query=2+<SYMBOL>&species=Homo+sapiens.",
-    "iuphar": "The objectId used to link to the IUPHAR/BPS Guide to PHARMACOLOGY database. To link to IUPHAR/BPS Guide to PHARMACOLOGY database only use the number (only use 1 from the result objectId:1) in the example URL http://www.guidetopharmacology.org/GRAC/ObjectDisplayForward?objectId=",
-    "kznf_gene_catalog": "ID used to link to the Human KZNF Gene Catalog http://znf.igb.uiuc.edu/human/action/exploreView?type=locus&id=",
-    "mamit-trnadb": "ID to link to the Mamit-tRNA database http://mamit-trna.u-strasbg.fr/mutations.asp?idAA=",
-    "cd": "Symbol used within the Human Cell Differentiation Molecule database for the gene http://www.hcdm.org/index.php?option=com_molecule&cdnumber=",
-    "lncrnadb": "lncRNA Database ID http://www.lncrnadb.org/",
-    "enzyme_id": "ENZYME EC accession number. http://enzyme.expasy.org/EC/<EC ACCESSION NUMBER>",
-    "intermediate_filament_db": "ID used to link to the Human Intermediate Filament Database http://www.interfil.org/details.php?id="
+[
+  {
+    "transfer": "ftp",
+    "source": "ftp://ftp.ebi.ac.uk/pub/databases/genenames/new/json/hgnc_complete_set.json",
+    "target": "s3://viz.fredhutch.org.public.data/hgnc/hgnc",
+    "update": "As needed",
+    "desc": " Complete HUGO Gene Nomenclature Committee (HGNC) dataset. The HGNC is responsible for approving unique symbols and names for human loci, including protein coding genes, ncRNA genes and pseudogenes, to allow unambiguous scientific communication. For each known human gene we approve a gene name and symbol (short-form abbreviation). All approved symbols are stored in the HGNC database, www.genenames.org, a curated online repository of HGNC-approved gene nomenclature, gene groups and associated resources including links to genomic, proteomic and phenotypic information. Each symbol is unique and we ensure that each gene is only given one approved gene symbol. It is necessary to provide a unique symbol for each gene so that we and others can talk about them, and this also facilitates electronic data retrieval from publications and databases. In preference each symbol maintains parallel construction in different members of a gene family and can also be used in other species, especially the mouse.",
+    "fields": [
+      {
+        "name": "hgnc_id",
+        "desc": "A unique ID created by the HGNC for every approved symbol.",
+        "type": "string"
+      },
+      {
+        "name": "symbol",
+        "desc": "The HGNC approved gene symbol. Equates to the 'Approved symbol' field within the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "name",
+        "desc": "HGNC approved name for the gene. Equates to the 'Approved name' field within the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "locus_group",
+        "desc": "A group name for a set of related locus types as defined by the HGNC (e.g. non-coding RNA).",
+        "type": "string"
+      },
+      {
+        "name": "locus_type",
+        "desc": "The locus type as set by the HGNC.",
+        "type": "string"
+      },
+      {
+        "name": "status",
+        "desc": "Status of the symbol report, which can be either 'Approved' or 'Entry Withdrawn'.",
+        "type": "string"
+      },
+      {
+        "name": "location",
+        "desc": "Cytogenetic location of the gene (e.g. 2q34).",
+        "type": "string"
+      },
+      {
+        "name": "location_sortable",
+        "desc": "Same as 'location' but single digit chromosomes are prefixed with a 0 enabling them to be sorted in correct numerical order (e.g. 02q34).",
+        "type": "string"
+      },
+      {
+        "name": "alias_symbol",
+        "desc": "Other symbols used to refer to this gene as seen in the 'Alias symbols' field in the gene symbol report..",
+        "type": "string"
+      },
+      {
+        "name": "alias_name",
+        "desc": "Other names used to refer to this gene as seen in the 'Alias names' field in the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "prev_symbol",
+        "desc": "Gene symbols previously approved by the HGNC for this gene. Equates to the 'Previous symbols' field within the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "prev_name",
+        "desc": "Gene names previously approved by the HGNC for this gene. Equates to the 'Previous names' field within the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "gene_group",
+        "desc": "The gene group name as set by the HGNC and seen at the top of the gene group reports.",
+        "type": "string"
+      },
+      {
+        "name": "gene_group_id",
+        "desc": "ID used to designate a gene group the gene has been assigned to.",
+        "type": "string"
+      },
+      {
+        "name": "date_approved_reserved",
+        "desc": "The date the entry was first approved.",
+        "type": "string"
+      },
+      {
+        "name": "date_symbol_changed",
+        "desc": "The date the approved symbol was last changed.",
+        "type": "string"
+      },
+      {
+        "name": "date_name_changed",
+        "desc": "The date the approved name was last changed.",
+        "type": "string"
+      },
+      {
+        "name": "date_modified",
+        "desc": "Date the entry was last modified.",
+        "type": "string"
+      },
+      {
+        "name": "entrez_id",
+        "desc": "NCBI gene ID. Found within the 'Gene resources' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "ensembl_gene_id",
+        "desc": "Ensembl gene ID. Found within the 'Gene resources' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "vega_id",
+        "desc": "Vega gene ID. Found within the 'Gene resources' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "ucsc_id",
+        "desc": "UCSC gene ID. Found within the 'Gene resources' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "ena",
+        "desc": "International Nucleotide Sequence Database Collaboration (GenBank, ENA and DDBJ) accession number(s). Found within the 'Nucleotide resources' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "refseq_accession",
+        "desc": "RefSeq nucleotide accession(s). Found within the 'Nucleotide resources' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "ccds_id",
+        "desc": "Consensus CDS ID. Found within the 'Nucleotide resources' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "uniprot_ids",
+        "desc": "UniProt protein accession. Found within the 'Protein resource' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "pubmed_id",
+        "desc": "Pubmed and Europe Pubmed Central PMID(s).",
+        "type": "string"
+      },
+      {
+        "name": "mgd_id",
+        "desc": "Mouse genome informatics database ID. Found within the 'Homologs' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "rgd_id",
+        "desc": "Rat genome database gene ID. Found within the 'Homologs' section of the gene symbol report.",
+        "type": "string"
+      },
+      {
+        "name": "lsdb",
+        "desc": "The name of the Locus Specific Mutation Database and URL for the gene separated by a | character, e.g. Mutations of the ATP-binding Cassette Transporter Retina|http://www.retina-international.org/files/sci-news/abcrmut.htm.",
+        "type": "string"
+      },
+      {
+        "name": "cosmic",
+        "desc": "Symbol used within the Catalogue of somatic mutations in cancer for the gene. (No longer updated!)",
+        "type": "string"
+      },
+      {
+        "name": "omim_id",
+        "desc": "Online Mendelian Inheritance in Man (OMIM) ID http://www.omim.org/entry/",
+        "type": "string"
+      },
+      {
+        "name": "mirbase",
+        "desc": "miRBase ID http://www.mirbase.org/cgi-bin/mirna_entry.pl?acc=",
+        "type": "string"
+      },
+      {
+        "name": "homeodb",
+        "desc": "Homeobox Database ID http://homeodb.cbi.pku.edu.cn/gene_info.get?id=",
+        "type": "string"
+      },
+      {
+        "name": "snornabase",
+        "desc": "snoRNABase ID https://www-snorna.biotoul.fr//plus.php?snoid=",
+        "type": "string"
+      },
+      {
+        "name": "bioparadigms_slc",
+        "desc": "Symbol used to link to the SLC tables database at bioparadigms.org for the gene http://slc.bioparadigms.org/protein?GeneName=",
+        "type": "string"
+      },
+      {
+        "name": "orphanet",
+        "desc": "Orphanet ID http://www.orpha.net/consor/cgi-bin/OC_Exp.php?Lng=GB&Expert=",
+        "type": "string"
+      },
+      {
+        "name": "pseudogene.org",
+        "desc": "Pseudogene.org ID http://tables.pseudogene.org/",
+        "type": "string"
+      },
+      {
+        "name": "horde_id",
+        "desc": "Symbol used within HORDE for the gene http://genome.weizmann.ac.il/horde/card/index/symbol:",
+        "type": "string"
+      },
+      {
+        "name": "merops",
+        "desc": "ID used to link to the MEROPS peptidase database http://merops.sanger.ac.uk/cgi-bin/pepsum?mid=",
+        "type": "string"
+      },
+      {
+        "name": "imgt",
+        "desc": "Symbol used within international ImMunoGeneTics information system http://www.imgt.org/IMGT_GENE-DB/GENElect?query=2+<SYMBOL>&species=Homo+sapiens.",
+        "type": "string"
+      },
+      {
+        "name": "iuphar",
+        "desc": "The objectId used to link to the IUPHAR/BPS Guide to PHARMACOLOGY database. To link to IUPHAR/BPS Guide to PHARMACOLOGY database only use the number (only use 1 from the result objectId:1) in the example URL http://www.guidetopharmacology.org/GRAC/ObjectDisplayForward?objectId=",
+        "type": "string"
+      },
+      {
+        "name": "kznf_gene_catalog",
+        "desc": "ID used to link to the Human KZNF Gene Catalog http://znf.igb.uiuc.edu/human/action/exploreView?type=locus&id=",
+        "type": "string"
+      },
+      {
+        "name": "mamit-trnadb",
+        "desc": "ID to link to the Mamit-tRNA database http://mamit-trna.u-strasbg.fr/mutations.asp?idAA=",
+        "type": "string"
+      },
+      {
+        "name": "cd",
+        "desc": "Symbol used within the Human Cell Differentiation Molecule database for the gene http://www.hcdm.org/index.php?option=com_molecule&cdnumber=",
+        "type": "string"
+      },
+      {
+        "name": "lncrnadb",
+        "desc": "lncRNA Database ID http://www.lncrnadb.org/",
+        "type": "string"
+      },
+      {
+        "name": "enzyme_id",
+        "desc": "ENZYME EC accession number. http://enzyme.expasy.org/EC/<EC ACCESSION NUMBER>",
+        "type": "string"
+      },
+      {
+        "name": "intermediate_filament_db",
+        "desc": "ID used to link to the Human Intermediate Filament Database http://www.interfil.org/details.php?id=",
+        "type": "string"
+      }
+    ]
   }
-}
+]

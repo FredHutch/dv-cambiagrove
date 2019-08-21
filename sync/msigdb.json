@@ -1,34 +1,128 @@
-{
-  "transfer": "http",
-  "source": "http://software.broadinstitute.org/gsea/msigdb/download_file.jsp?filePath=/resources/msigdb/7.0/msigdb.v7.0.symbols.gmt",
-  "target": "s3://viz.fredhutch.org.public.data/msigdb/msigdb",
-  "update": "As needed",
-  "desc": "The Molecular Signatures Database (MSigDB) is a collection of annotated gene sets for use with GSEA software.",
-  "fields": {
-    "STANDARD": "Gene set name",
-    "SYSTEMATIC_NAME": "Gene set name for internal indexing purposes",
-    "HISTORICAL_NAMES": "Comma-separated list of older gene set names, starting from VERSION=V.2.5 of MSigDB",
-    "ORGANISM": "Organism name",
-    "PMID": "PubMed ID for the source publication",
-    "AUTHORS": "Authors of the gene set source publication, according to PubMed ID",
-    "GEOID": "A GEO or ArrayExpress ID for the raw microarray data in GEO or ArrayExpress repository",
-    "EXACT_SOURCE": "Description of the exact source of the set - usually a specific figure or table in the source publication.",
-    "GENESET_LISTING_URL": "URL of the original source that listed the gene set members",
-    "EXTERNAL_DETAILS_URL": "URL of the original source page of the gene set",
-    "CHIP": "Indicates the type of the original gene set members, equivalent to the CHIP file, e.g., HG-U133A",
-    "CATEGORY_CODE": "Gene set collection code, e.g., C2",
-    "SUB_CATEGORY_CODE": "Gene set subcategory code, e.g., CGP",
-    "CONTRIBUTOR": "Name of the person or institution that contributed the gene set to MSigDB",
-    "CONTRIBUTOR_ORG": "Name of the organization associated with the gene set contributor",
-    "DESCRIPTION_BRIEF": "Brief description of the gene set",
-    "DESCRIPTION_FULL": "Full description of the gene set or abstract of the source publication",
-    "TAGS": "Optional tags to enhance gene set annotations; currently not in use",
-    "MEMBERS": "Comma-separated list of gene set members as they originally appeared in the source",
-    "MEMBERS_SYMBOLIZED": "Comma-separated list of gene set members in the form of human gene symbols",
-    "MEMBERS_EZID": "Comma-separated list of gene set members in the form of human Entrez Gene IDs",
-    "MEMBERS_MAPPING": "Pipe-separated list of mappings between gene set members in the form of: MEMBERS, MEMBERS_SYMBOLIZED, MEMBERS_EZID",
-    "FOUNDER_NAMES": "Pipe-separated list of v4.0 MSigDB founder gene sets for the hallmark signatures",
-    "REFINEMENT_DATASETS": "Pipe-separated list of GEO or ArrayExpress identifiers of microarray data used to refine hallmark signatures GEO or ArrayExpress ID, comparison details",
-    "VALIDATION_DATASETS": "Pipe-separated list of GEO or ArrayExpress identifiers of microarray data used to validate hallmark signatures GEO or ArrayExpress ID, comparison details"
+[
+  {
+    "transfer": "http",
+    "source": "http://software.broadinstitute.org/gsea/msigdb/download_file.jsp?filePath=/resources/msigdb/7.0/msigdb.v7.0.symbols.gmt",
+    "target": "s3://viz.fredhutch.org.public.data/msigdb/msigdb",
+    "update": "As needed",
+    "desc": "The Molecular Signatures Database (MSigDB) is a collection of annotated gene sets for use with GSEA software.",
+    "fields": [
+      { "name": "standard", "desc": "Gene set name", "type": "string" },
+      {
+        "name": "systematic_name",
+        "desc": "Gene set name for internal indexing purposes",
+        "type": "string"
+      },
+      {
+        "name": "historical_names",
+        "desc": "Comma-separated list of older gene set names, starting from VERSION=V.2.5 of MSigDB",
+        "type": "string"
+      },
+      { "name": "organism", "desc": "Organism name", "type": "string" },
+      {
+        "name": "pmid",
+        "desc": "PubMed ID for the source publication",
+        "type": "string"
+      },
+      {
+        "name": "authors",
+        "desc": "Authors of the gene set source publication, according to PubMed ID",
+        "type": "string"
+      },
+      {
+        "name": "geoid",
+        "desc": "A GEO or ArrayExpress ID for the raw microarray data in GEO or ArrayExpress repository",
+        "type": "string"
+      },
+      {
+        "name": "exact_source",
+        "desc": "Description of the exact source of the set - usually a specific figure or table in the source publication.",
+        "type": "string"
+      },
+      {
+        "name": "geneset_listing_url",
+        "desc": "URL of the original source that listed the gene set members",
+        "type": "string"
+      },
+      {
+        "name": "external_details_url",
+        "desc": "URL of the original source page of the gene set",
+        "type": "string"
+      },
+      {
+        "name": "chip",
+        "desc": "Indicates the type of the original gene set members, equivalent to the CHIP file, e.g., HG-U133A",
+        "type": "string"
+      },
+      {
+        "name": "category_code",
+        "desc": "Gene set collection code, e.g., C2",
+        "type": "string"
+      },
+      {
+        "name": "sub_category_code",
+        "desc": "Gene set subcategory code, e.g., CGP",
+        "type": "string"
+      },
+      {
+        "name": "contributor",
+        "desc": "Name of the person or institution that contributed the gene set to MSigDB",
+        "type": "string"
+      },
+      {
+        "name": "contributor_org",
+        "desc": "Name of the organization associated with the gene set contributor",
+        "type": "string"
+      },
+      {
+        "name": "description_brief",
+        "desc": "Brief description of the gene set",
+        "type": "string"
+      },
+      {
+        "name": "description_full",
+        "desc": "Full description of the gene set or abstract of the source publication",
+        "type": "string"
+      },
+      {
+        "name": "tags",
+        "desc": "Optional tags to enhance gene set annotations; currently not in use",
+        "type": "string"
+      },
+      {
+        "name": "members",
+        "desc": "Comma-separated list of gene set members as they originally appeared in the source",
+        "type": "string"
+      },
+      {
+        "name": "members_symbolized",
+        "desc": "Comma-separated list of gene set members in the form of human gene symbols",
+        "type": "string"
+      },
+      {
+        "name": "members_ezid",
+        "desc": "Comma-separated list of gene set members in the form of human Entrez Gene IDs",
+        "type": "string"
+      },
+      {
+        "name": "members_mapping",
+        "desc": "Pipe-separated list of mappings between gene set members in the form of: MEMBERS, MEMBERS_SYMBOLIZED, MEMBERS_EZID",
+        "type": "string"
+      },
+      {
+        "name": "founder_names",
+        "desc": "Pipe-separated list of v4.0 MSigDB founder gene sets for the hallmark signatures",
+        "type": "string"
+      },
+      {
+        "name": "refinement_datasets",
+        "desc": "Pipe-separated list of GEO or ArrayExpress identifiers of microarray data used to refine hallmark signatures GEO or ArrayExpress ID, comparison details",
+        "type": "string"
+      },
+      {
+        "name": "validation_datasets",
+        "desc": "Pipe-separated list of GEO or ArrayExpress identifiers of microarray data used to validate hallmark signatures GEO or ArrayExpress ID, comparison details",
+        "type": "string"
+      }
+    ]
   }
-}
+]
