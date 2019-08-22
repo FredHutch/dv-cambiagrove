@@ -1,0 +1,262 @@
+{"transfer": "ftp",
+    "source": "ftp://ftp.ncbi.nih.gov/pubmed/baseline/",
+    "target": "s3://viz.fredhutch.org.public.data/pubmed/baselinefiles/baselinefiles",
+    "update": "daily",
+    "desc": "NLM produces a baseline set of MEDLINE/PubMed citation records in XML format for download on an annual basis. The annual baseline is released in December of each year. The complete baseline consists of files pubmed19n0001 through pubmed18n0972. These files are the updates to be added to the baseline.",
+    "fields": {
+        "MedlineCitation": {
+            "Article": {
+                "Abstract": {
+                    "AbstractText": "The abstract or summary associated with the publication. May be truncated. "
+                }, 
+                "ArticleDate": "The date an electronic version of the article was published. Contains Year, Month, Day",
+                "ArticleTitle": "The title of the publication. If the publication is a book, then attributes will identify what aspects of the book the title applies to, i.e. a part or section, as well as the id of the entire book to which the identified part or section belongs.", 
+                "AuthorList": {
+                    "Author": "Identifies a contibutor associated with the publication. The contributor may be an author or an editor, depending on the type indicated in the corresponding <AuthorList> element, or an individual or a group, depending on the type of name provided. Contains LastName, ForeName, Initials, Suffix, CollectiveName, Identifier, AffiliationInfo. More info: https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/el-Author.html ", 
+                    "CompleteYN": "Indicates whether the list of values is intentionally incomplete, reflecting periods of time when NLM policy was to enter fewer than all items qualified. 'Y' indicates that the list of values is complete. 'N' indicates that the list of values is incomplete."
+                }, 
+                "DataBankList": {
+                    "CompleteYN": "Indicates whether the list of values is intentionally incomplete, reflecting periods of time when NLM policy was to enter fewer than all items qualified. 'Y' indicates that the list of values is complete. 'N' indicates that the list of values is incomplete."}, 
+                    "DataBank": {
+                        "AccessionNumberList": {
+                            "AccessionNumber":"Specifies the value of an accession number for a databank. The databank is identified in the element, <DataBankName>"
+                        }, 
+                        "DataBankName":"Indicates the name of the databank associated with the publication."
+                    },  
+                "ELocationID": "Contains electronic location information for the publication. It will always be present for publications that do not have standard page numbers.", 
+                "GrantList" : {
+                    "CompleteYN" : "Indicates whether the list of values is intentionally incomplete, reflecting periods of time when NLM policy was to enter fewer than all items qualified. 'Y' indicates that the list of values is complete. 'N' indicates that the list of values is incomplete.", 
+                    "Grant": "Contains information for a grant mentioned in the cited publication."                    }
+                }, 
+                "Journal": {
+                    "ISOAbbreviation": "Contains the NLM version of the journal title ISO Abbreviation.", 
+                    "ISSN": {
+                        "IssnType": "Identifies the type of ISSN, either electronic or print, contained by the <ISSN> element. A separate element, <ISSNLinking>, contains the linking ISSN."
+                    },
+                    "JournalIssue": {
+                        "CitedMedium": "Identifies the version of the article, either online or print, that was used by NLM to index the article during MEDLINE processing.", 
+                        "Issue": "Identifies the issue, supplement, or part in which the article was published.", 
+                        "PubDate": {
+                            "Day": "Publication date associated with the publication - Day.", 
+                            "MedlineDate": "Contains the entire date string for a <PubDate> that does not fit the available date patterns: YYYY, YYYY + MM, YYYY + MM + DD, YYYY + SEASON.", 
+                            "Month": "Publication date associated with the publication - Month", 
+                            "Season": "Publication date associated with the publication - Season", 
+                            "Year": "Publication date associated with the publication - Year"
+                        }, 
+                        "Volume": "Identifies the volume of the publication. This element is not currently used."
+                    }, 
+                    "Title": "Provides the full journal title, as recorded in the NLM cataloging data following the NLM serial title standardization." 
+                }, 
+                "Language": "Indicates the language in which the publication was published.", 
+                "Pagination": {
+                    "MedlinePgn": "Specifies the page numbers for the published journal article. The page numbers are inclusive, indicating the first through last page on which the article appeared."   
+                }, 
+                "PubModel": "Specifies the type of medium/media in which the article is published, based on the types of publication dates, i.e. print publication date and electronic publication date, provided by the publisher.", 
+                "PublicationTypeList": {
+                    "PublicationType": "States the publication type values that best describe the publication, using one of the values from NLM's controlled list. More info: https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/el-PublicationType.html"
+                }, 
+                "VernacularTitle": "Includes non-English titles for the publication." 
+              },
+            "ChemicalList": {
+                "Chemical": "Includes a chemical substance mentioned in the publication. The name of the substance and registry number will be provided. More info: https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/el-Chemical.html "
+            }, 
+            "CitationSubset": "States the subset(s) for which the MEDLINE record was created. Most citations are from journals indexed for MEDLINE as part of 'Index Medicus', indicated by the citation subset value 'IM'. But some MEDLINE citations are created as part of specialized topic or historical collections. A current list of non-IM journals and their CitationSubset values is available here.", 
+            "CoiStatement":"The Conflict of Interest statement for the publication.",
+            "CommentsCorrectionsList":{
+                "CommentsCorrections": "Contains the citation information for an associated publication's citation, including the PubMed identifier (PMID), reference string, and type of relationship between the publications."
+            }, 
+            "DateCompleted":{
+                "Day": "Indicates the date NLM finished processing the citation for MEDLINE. - Day", 
+                "Month": "Indicates the date NLM finished processing the citation for MEDLINE. - Month", 
+                "Year": "Indicates the date NLM finished processing the citation for MEDLINE. - Year"
+            }, 
+            "DateRevised":{
+                "Day": "For article citation, it provides the date the citation was last updated. For book citations, it provides the date that a contribution to a book was last updated. A contribution is a part of a book authored by a person other than the book's author(s).- Day", 
+                "Month": "For article citation, it provides the date the citation was last updated. For book citations, it provides the date that a contribution to a book was last updated. A contribution is a part of a book authored by a person other than the book's author(s).- Month", 
+                "Year": "For article citation, it provides the date the citation was last updated. For book citations, it provides the date that a contribution to a book was last updated. A contribution is a part of a book authored by a person other than the book's author(s).- Year"
+            }, 
+            "GeneralNote": "Contains supplemental or descriptive information added to the citation. The @Owner attribute will indicate the party that created the note.", 
+            "KeywordList": {
+                "Keyword": "Contains a keyword associated with the publication. When the KeywordList @Owner = 'NOTNLM', then Keyword @MajorTopicYN will always be 'N'.", 
+                "Owner": "Specifies the party responsible for creating the citation. https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/att-Owner.html"
+            }, 
+            "MedlineJournalInfo": {
+                "Country": "States the country wherein the funding agency is located.", 
+                "ISSNLinking": "Indicates the linking ISSN of the journal in which the article was published.", 
+                "MedlineTA": "States the title abbreviation for the journal in which the artcile article appeared. These title abbreviations are designated by NLM. See <Title> for the full journal title, or <ISOAbbreviation> for the standard ISO abbreviation.", 
+                "NImUniqueID": "Specifies the accession number, a unique identifier for the journal, as assigned to the journal's catalog record by NLM."
+            }, 
+            "MeshHeadingList": {
+                "MeshHeading": "Specifies a Medical Subject Heading (MeSH) assigned to the citation by NLM Indexing. Each MeSH heading entry includes one descriptor (<DescriptorName>) and zero, one, or more qualifiers (<QualifierName>)."
+            }, 
+            "NumberOfReferences": "Indicates the number of bibliographic references listed in citations for the following publication types: review, consensus development conference, and meta-analysis. This data is not currently input; NLM ceased adding the number of references to citations in 2010.", 
+            "OtherAbstract":{
+                "AbstractText": "Contains the text of the abstract or summary associated with the publication. In structured abstracts, each subsection of the abstract will have a separate <AbstractText> section with a @Label indicating the section heading. In unstructured abstracts, all of the abstract or summary text appears in a single <AbstractText> field.", 
+                "Language": "Specifies the language of the abstract included in the <OtherAbstract> element.", 
+                "Type": "The @Type attribute provides additional information on the source or sort of item described. https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/att-Type.html", 
+                "CopyrightInformation": "Includes any copyright statement information associated with the publication's abstract or summary."
+            }, 
+            "OtherID": "Contains any additional identifiers associated with the record. Some are provided by the collaborating partner who created or contributed to the record. Others, specifically identifiers for PubMed Central or NIH Manuscript records, are provided by NLM. The source of the identifier is stated in the @Source attribute. https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/att-Source.html", 
+            "Owner":"Specifies the party responsible fo creating the citation.", 
+            "PMID": {
+                "Version": "Indicates the version number of the citation's PMID."
+            }, 
+            "PersonalNameSubjectList": {
+                "PersonalNameSubject": "Identifies an individual whose life or work is the subject of the publication."
+            }, 
+            "Status": "Indicates the NLM processing status of the citation. Possible values are: '-' Publisher: the citation is ahead of print. The publisher will submit a replacement citation once the article is published in an issue. '-' In-Data-Review: the citation is in process for MEDLINE. NLM Data Review staff are reviewing the citation to add value-added data, like grant and databank numbers. '-' In-Process: the citation is in process for MEDLINE. NLM Indexing staff are reviewing the citation to add Medical Subject Headings (MeSH). '-' MEDLINE: the citation has completed MEDLINE processing. Medical Subject Headings (MeSH) have been added to the citation. '-' PubMed-not-MEDLINE: the citation will not be processed for MEDLINE. '-' OLDMEDLINE: the citation was created by NLM from historical print indexes, Cumulated Index Medicus (CIM) and Current List of Medical Literature (CLML).", 
+            "SpaceFlightMission" : "Identifies the space flight mission name and/or number when results of research conducted in space are covered in a publication. This data resides on citations created by NASA, one of NLM's collaborating MEDLINE data producers. This data is no longer added to citations."
+        },
+        "PubmedData": {
+            "ArticleIDList": {
+                "ArticleID":"Specifies the value of an article identifier, either an identifier associated with the orignal publication (e.g. DOI) or with the citation's processing at NLM (e.g. PMID or pubmed id)."
+            }, 
+            "History": {
+                "PubMedDate": {
+                    "element": {
+                        "Day": "Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Day",
+                        "Hour": "Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Hour", 
+                        "Minute": "Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Minute", 
+                        "Month":"Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Month", 
+                        "PubStatus": "Describes the type of date contained by <PubMedPubDate>. Possible values: https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/att-PubStatus.html",
+                        "Year": "Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Year" 
+                    }
+                }
+            }, 
+            "PublicationStatus": "Indicates the status of the publication, i.e. whether it is print published (ppublish), electronically published (epublish), or published ahead of print, as determined by the primary publication date.",
+            "ReferenceList" :{
+                "Reference":"Reference."
+            }
+        }
+}, 
+{"transfer": "ftp",
+  "source": "ftp://ftp.ncbi.nih.gov/pubmed/updatefiles/",
+  "target": "s3://viz.fredhutch.org.public.data/pubmed/updatefiles/updatefiles",
+  "update": "daily",
+  "desc": "NLM produces a baseline set of MEDLINE/PubMed citation records in XML format for download on an annual basis. The annual baseline is released in December of each year. The complete baseline consists of files pubmed19n0001 through pubmed18n0972. These files are the updates to be added to the baseline.",
+  "fields": {
+      "MedlineCitation": {
+          "Article": {
+              "Abstract": {
+                  "AbstractText": "The abstract or summary associated with the publication. May be truncated. "
+              }, 
+              "ArticleDate": "The date an electronic version of the article was published. Contains Year, Month, Day",
+              "ArticleTitle": "The title of the publication. If the publication is a book, then attributes will identify what aspects of the book the title applies to, i.e. a part or section, as well as the id of the entire book to which the identified part or section belongs.", 
+              "AuthorList": {
+                  "Author": "Identifies a contibutor associated with the publication. The contributor may be an author or an editor, depending on the type indicated in the corresponding <AuthorList> element, or an individual or a group, depending on the type of name provided. Contains LastName, ForeName, Initials, Suffix, CollectiveName, Identifier, AffiliationInfo. More info: https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/el-Author.html ", 
+                  "CompleteYN": "Indicates whether the list of values is intentionally incomplete, reflecting periods of time when NLM policy was to enter fewer than all items qualified. 'Y' indicates that the list of values is complete. 'N' indicates that the list of values is incomplete."
+              }, 
+              "DataBankList": {
+                  "CompleteYN": "Indicates whether the list of values is intentionally incomplete, reflecting periods of time when NLM policy was to enter fewer than all items qualified. 'Y' indicates that the list of values is complete. 'N' indicates that the list of values is incomplete."}, 
+                  "DataBank": {
+                      "AccessionNumberList": {
+                          "AccessionNumber":"Specifies the value of an accession number for a databank. The databank is identified in the element, <DataBankName>"
+                      }, 
+                      "DataBankName":"Indicates the name of the databank associated with the publication."
+                  },  
+              "ELocationID": "Contains electronic location information for the publication. It will always be present for publications that do not have standard page numbers.", 
+              "GrantList" : {
+                  "CompleteYN" : "Indicates whether the list of values is intentionally incomplete, reflecting periods of time when NLM policy was to enter fewer than all items qualified. 'Y' indicates that the list of values is complete. 'N' indicates that the list of values is incomplete.", 
+                  "Grant": "Contains information for a grant mentioned in the cited publication."                    }
+              }, 
+              "Journal": {
+                  "ISOAbbreviation": "Contains the NLM version of the journal title ISO Abbreviation.", 
+                  "ISSN": {
+                      "IssnType": "Identifies the type of ISSN, either electronic or print, contained by the <ISSN> element. A separate element, <ISSNLinking>, contains the linking ISSN."
+                  },
+                  "JournalIssue": {
+                      "CitedMedium": "Identifies the version of the article, either online or print, that was used by NLM to index the article during MEDLINE processing.", 
+                      "Issue": "Identifies the issue, supplement, or part in which the article was published.", 
+                      "PubDate": {
+                          "Day": "Publication date associated with the publication - Day.", 
+                          "MedlineDate": "Contains the entire date string for a <PubDate> that does not fit the available date patterns: YYYY, YYYY + MM, YYYY + MM + DD, YYYY + SEASON.", 
+                          "Month": "Publication date associated with the publication - Month", 
+                          "Season": "Publication date associated with the publication - Season", 
+                          "Year": "Publication date associated with the publication - Year"
+                      }, 
+                      "Volume": "Identifies the volume of the publication. This element is not currently used."
+                  }, 
+                  "Title": "Provides the full journal title, as recorded in the NLM cataloging data following the NLM serial title standardization." 
+              }, 
+              "Language": "Indicates the language in which the publication was published.", 
+              "Pagination": {
+                  "MedlinePgn": "Specifies the page numbers for the published journal article. The page numbers are inclusive, indicating the first through last page on which the article appeared."   
+              }, 
+              "PubModel": "Specifies the type of medium/media in which the article is published, based on the types of publication dates, i.e. print publication date and electronic publication date, provided by the publisher.", 
+              "PublicationTypeList": {
+                  "PublicationType": "States the publication type values that best describe the publication, using one of the values from NLM's controlled list. More info: https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/el-PublicationType.html"
+              }, 
+              "VernacularTitle": "Includes non-English titles for the publication." 
+            },
+          "ChemicalList": {
+              "Chemical": "Includes a chemical substance mentioned in the publication. The name of the substance and registry number will be provided. More info: https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/el-Chemical.html "
+          }, 
+          "CitationSubset": "States the subset(s) for which the MEDLINE record was created. Most citations are from journals indexed for MEDLINE as part of 'Index Medicus', indicated by the citation subset value 'IM'. But some MEDLINE citations are created as part of specialized topic or historical collections. A current list of non-IM journals and their CitationSubset values is available here.", 
+          "CoiStatement":"The Conflict of Interest statement for the publication.",
+          "CommentsCorrectionsList":{
+              "CommentsCorrections": "Contains the citation information for an associated publication's citation, including the PubMed identifier (PMID), reference string, and type of relationship between the publications."
+          }, 
+          "DateCompleted":{
+              "Day": "Indicates the date NLM finished processing the citation for MEDLINE. - Day", 
+              "Month": "Indicates the date NLM finished processing the citation for MEDLINE. - Month", 
+              "Year": "Indicates the date NLM finished processing the citation for MEDLINE. - Year"
+          }, 
+          "DateRevised":{
+              "Day": "For article citation, it provides the date the citation was last updated. For book citations, it provides the date that a contribution to a book was last updated. A contribution is a part of a book authored by a person other than the book's author(s).- Day", 
+              "Month": "For article citation, it provides the date the citation was last updated. For book citations, it provides the date that a contribution to a book was last updated. A contribution is a part of a book authored by a person other than the book's author(s).- Month", 
+              "Year": "For article citation, it provides the date the citation was last updated. For book citations, it provides the date that a contribution to a book was last updated. A contribution is a part of a book authored by a person other than the book's author(s).- Year"
+          }, 
+          "GeneralNote": "Contains supplemental or descriptive information added to the citation. The @Owner attribute will indicate the party that created the note.", 
+          "KeywordList": {
+              "Keyword": "Contains a keyword associated with the publication. When the KeywordList @Owner = 'NOTNLM', then Keyword @MajorTopicYN will always be 'N'.", 
+              "Owner": "Specifies the party responsible for creating the citation. https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/att-Owner.html"
+          }, 
+          "MedlineJournalInfo": {
+              "Country": "States the country wherein the funding agency is located.", 
+              "ISSNLinking": "Indicates the linking ISSN of the journal in which the article was published.", 
+              "MedlineTA": "States the title abbreviation for the journal in which the artcile article appeared. These title abbreviations are designated by NLM. See <Title> for the full journal title, or <ISOAbbreviation> for the standard ISO abbreviation.", 
+              "NImUniqueID": "Specifies the accession number, a unique identifier for the journal, as assigned to the journal's catalog record by NLM."
+          }, 
+          "MeshHeadingList": {
+              "MeshHeading": "Specifies a Medical Subject Heading (MeSH) assigned to the citation by NLM Indexing. Each MeSH heading entry includes one descriptor (<DescriptorName>) and zero, one, or more qualifiers (<QualifierName>)."
+          }, 
+          "NumberOfReferences": "Indicates the number of bibliographic references listed in citations for the following publication types: review, consensus development conference, and meta-analysis. This data is not currently input; NLM ceased adding the number of references to citations in 2010.", 
+          "OtherAbstract":{
+              "AbstractText": "Contains the text of the abstract or summary associated with the publication. In structured abstracts, each subsection of the abstract will have a separate <AbstractText> section with a @Label indicating the section heading. In unstructured abstracts, all of the abstract or summary text appears in a single <AbstractText> field.", 
+              "Language": "Specifies the language of the abstract included in the <OtherAbstract> element.", 
+              "Type": "The @Type attribute provides additional information on the source or sort of item described. https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/att-Type.html", 
+              "CopyrightInformation": "Includes any copyright statement information associated with the publication's abstract or summary."
+          }, 
+          "OtherID": "Contains any additional identifiers associated with the record. Some are provided by the collaborating partner who created or contributed to the record. Others, specifically identifiers for PubMed Central or NIH Manuscript records, are provided by NLM. The source of the identifier is stated in the @Source attribute. https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/att-Source.html", 
+          "Owner":"Specifies the party responsible fo creating the citation.", 
+          "PMID": {
+              "Version": "Indicates the version number of the citation's PMID."
+          }, 
+          "PersonalNameSubjectList": {
+              "PersonalNameSubject": "Identifies an individual whose life or work is the subject of the publication."
+          }, 
+          "Status": "Indicates the NLM processing status of the citation. Possible values are: '-' Publisher: the citation is ahead of print. The publisher will submit a replacement citation once the article is published in an issue. '-' In-Data-Review: the citation is in process for MEDLINE. NLM Data Review staff are reviewing the citation to add value-added data, like grant and databank numbers. '-' In-Process: the citation is in process for MEDLINE. NLM Indexing staff are reviewing the citation to add Medical Subject Headings (MeSH). '-' MEDLINE: the citation has completed MEDLINE processing. Medical Subject Headings (MeSH) have been added to the citation. '-' PubMed-not-MEDLINE: the citation will not be processed for MEDLINE. '-' OLDMEDLINE: the citation was created by NLM from historical print indexes, Cumulated Index Medicus (CIM) and Current List of Medical Literature (CLML).", 
+          "SpaceFlightMission" : "Identifies the space flight mission name and/or number when results of research conducted in space are covered in a publication. This data resides on citations created by NASA, one of NLM's collaborating MEDLINE data producers. This data is no longer added to citations."
+      },
+      "PubmedData": {
+          "ArticleIDList": {
+              "ArticleID":"Specifies the value of an article identifier, either an identifier associated with the orignal publication (e.g. DOI) or with the citation's processing at NLM (e.g. PMID or pubmed id)."
+          }, 
+          "History": {
+              "PubMedDate": {
+                  "element": {
+                      "Day": "Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Day",
+                      "Hour": "Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Hour", 
+                      "Minute": "Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Minute", 
+                      "Month":"Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Month", 
+                      "PubStatus": "Describes the type of date contained by <PubMedPubDate>. Possible values: https://dtd.nlm.nih.gov/ncbi/pubmed/doc/out/180101/att-PubStatus.html",
+                      "Year": "Additional dates associated with the publications. The type of date is designated by the @PubStatus attribute. - Year" 
+                  }
+              }
+          }, 
+          "PublicationStatus": "Indicates the status of the publication, i.e. whether it is print published (ppublish), electronically published (epublish), or published ahead of print, as determined by the primary publication date.",
+          "ReferenceList" :{
+              "Reference":"Reference."
+          }
+      }
+}
