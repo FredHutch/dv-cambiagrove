@@ -1,0 +1,2125 @@
+---
+  openapi: "3.0.1"
+  info: 
+    title: "Data Visualization Initative Annotation Service"
+    description: "This service was create to enable the rapid development of data visualizations at the Fred Hutchinson."
+    termsOfService: "http://swagger.io/terms/"
+    contact: 
+      email: "viz@fredhutch.oeg"
+    version: "1.0.0"
+  externalDocs: 
+    description: "Find out more about the Fred Hutch Data Visualization Initiative"
+    url: "http://viz.fredhutch.org/"
+  servers: 
+    - 
+      url: "http://viz.fredhutch.org/api"
+  paths: 
+    /annotation/alliance/disease: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "disease data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_disease"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_disease"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "alliance"
+        summary: "disease data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_disease"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_disease"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/disease/verbose: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "disease data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_disease"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_disease"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_eukaryote: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene eukaryote data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_eukaryote"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_eukaryote"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "alliance"
+        summary: "gene eukaryote data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_eukaryote"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_eukaryote"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_eukaryote/verbose: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene eukaryote data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_eukaryote"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_eukaryote"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_fly: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene fly data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_fly"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_fly"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "alliance"
+        summary: "gene fly data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_fly"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_fly"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_fly/verbose: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene fly data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_fly"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_fly"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_human: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene human data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_human"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_human"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "alliance"
+        summary: "gene human data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_human"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_human"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_human/verbose: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene human data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_human"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_human"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_mouse: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene mouse data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_mouse"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_mouse"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "alliance"
+        summary: "gene mouse data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_mouse"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_mouse"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_mouse/verbose: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene mouse data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_mouse"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_mouse"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_rat: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene rat data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_rat"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_rat"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "alliance"
+        summary: "gene rat data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_rat"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_rat"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_rat/verbose: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene rat data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_rat"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_rat"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_worm: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene worm data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_worm"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_worm"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "alliance"
+        summary: "gene worm data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_worm"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_worm"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_worm/verbose: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene worm data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_worm"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_worm"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_zebrafish: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene zebrafish data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_zebrafish"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_zebrafish"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "alliance"
+        summary: "gene zebrafish data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_zebrafish"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_zebrafish"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/gene_zebrafish/verbose: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "gene zebrafish data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_zebrafish"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_gene_zebrafish"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/molecular: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "molecular data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_molecular"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_molecular"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "alliance"
+        summary: "molecular data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_molecular"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_molecular"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/alliance/molecular/verbose: 
+      get: 
+        tags: 
+          - "alliance"
+        summary: "molecular data from alliance"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_molecular"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/alliance_molecular"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/hgnc/hgnc: 
+      get: 
+        tags: 
+          - "hgnc"
+        summary: "hgnc data from hgnc"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/hgnc_hgnc"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/hgnc_hgnc"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "hgnc"
+        summary: "hgnc data from hgnc"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/hgnc_hgnc"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/hgnc_hgnc"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/hgnc/hgnc/verbose: 
+      get: 
+        tags: 
+          - "hgnc"
+        summary: "hgnc data from hgnc"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/hgnc_hgnc"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/hgnc_hgnc"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/msigdb/msigdb: 
+      get: 
+        tags: 
+          - "msigdb"
+        summary: "msigdb data from msigdb"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/msigdb_msigdb"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/msigdb_msigdb"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "msigdb"
+        summary: "msigdb data from msigdb"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/msigdb_msigdb"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/msigdb_msigdb"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/msigdb/msigdb/verbose: 
+      get: 
+        tags: 
+          - "msigdb"
+        summary: "msigdb data from msigdb"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/msigdb_msigdb"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/msigdb_msigdb"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_allele_gene: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar allele gene data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_allele_gene"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_allele_gene"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar allele gene data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_allele_gene"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_allele_gene"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_allele_gene/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar allele gene data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_allele_gene"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_allele_gene"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_cross_references: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar cross references data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_cross_references"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_cross_references"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar cross references data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_cross_references"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_cross_references"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_cross_references/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar cross references data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_cross_references"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_cross_references"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_disease_names: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar disease names data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_disease_names"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_disease_names"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar disease names data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_disease_names"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_disease_names"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_disease_names/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar disease names data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_disease_names"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_disease_names"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_gene_condition_source_id: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar gene condition source id data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_condition_source_id"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_condition_source_id"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar gene condition source id data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_condition_source_id"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_condition_source_id"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_gene_condition_source_id/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar gene condition source id data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_condition_source_id"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_condition_source_id"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_gene_specific_summary: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar gene specific summary data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_specific_summary"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_specific_summary"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar gene specific summary data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_specific_summary"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_specific_summary"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_gene_specific_summary/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar gene specific summary data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_specific_summary"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_gene_specific_summary"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_organization_summary: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar organization summary data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_organization_summary"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_organization_summary"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar organization summary data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_organization_summary"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_organization_summary"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_organization_summary/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar organization summary data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_organization_summary"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_organization_summary"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_summary_of_conflicting_interpretations: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar summary of conflicting interpretations data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_summary_of_conflicting_interpretations"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_summary_of_conflicting_interpretations"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar summary of conflicting interpretations data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_summary_of_conflicting_interpretations"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_summary_of_conflicting_interpretations"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/clinvar_summary_of_conflicting_interpretations/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "clinvar summary of conflicting interpretations data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_summary_of_conflicting_interpretations"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_clinvar_summary_of_conflicting_interpretations"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_go: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene go data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_go"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_go"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "gene go data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_go"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_go"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_go/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene go data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_go"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_go"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_group: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene group data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_group"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_group"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "gene group data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_group"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_group"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_group/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene group data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_group"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_group"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_history: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene history data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_history"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_history"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "gene history data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_history"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_history"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_history/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene history data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_history"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_history"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_info: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene info data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_info"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_info"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "gene info data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_info"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_info"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_info/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene info data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_info"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_info"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_neighbors: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene neighbors data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_neighbors"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_neighbors"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "gene neighbors data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_neighbors"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_neighbors"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_neighbors/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene neighbors data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_neighbors"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_neighbors"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_orthologs: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene orthologs data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_orthologs"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_orthologs"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "gene orthologs data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_orthologs"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_orthologs"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_orthologs/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene orthologs data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_orthologs"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_orthologs"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_pubmed: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene pubmed data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_pubmed"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_pubmed"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "gene pubmed data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_pubmed"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_pubmed"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_pubmed/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene pubmed data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_pubmed"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_pubmed"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_refseq: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene refseq data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_refseq"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_refseq"
+          400: 
+            description: "Not Found"
+            content: {}
+      post: 
+        tags: 
+          - "ncbi"
+        summary: "gene refseq data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_refseq"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_refseq"
+          400: 
+            description: "Not Found"
+            content: {}
+    /annotation/ncbi/gene_refseq/verbose: 
+      get: 
+        tags: 
+          - "ncbi"
+        summary: "gene refseq data from ncbi"
+        responses: 
+          200: 
+            description: "successful operation"
+            content: 
+              application/xml: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_refseq"
+              application/json: 
+                schema: 
+                  $ref: "#/components/schemas/ncbi_gene_refseq"
+          400: 
+            description: "Not Found"
+            content: {}
+  components: 
+    schemas: 
+      alliance_disease: 
+        type: "object"
+        properties: 
+          gene_id: 
+            type: "string"
+          gene_symbol: 
+            type: "string"
+          species: 
+            type: "string"
+          genetic_entity_id: 
+            type: "string"
+          genetic_entity_symbol: 
+            type: "string"
+          genetic_entity_type: 
+            type: "string"
+          association_type: 
+            type: "string"
+          disease_id: 
+            type: "string"
+          disease_name: 
+            type: "string"
+          evidence_code: 
+            type: "string"
+          based_on: 
+            type: "string"
+          source: 
+            type: "string"
+          references: 
+            type: "string"
+      alliance_gene_eukaryote: 
+        type: "object"
+        properties: 
+          id: 
+            type: "string"
+          symbol: 
+            type: "string"
+          description: 
+            type: "string"
+      alliance_gene_fly: 
+        type: "object"
+        properties: 
+          id: 
+            type: "string"
+          symbol: 
+            type: "string"
+          description: 
+            type: "string"
+      alliance_gene_human: 
+        type: "object"
+        properties: 
+          id: 
+            type: "string"
+          symbol: 
+            type: "string"
+          description: 
+            type: "string"
+      alliance_gene_mouse: 
+        type: "object"
+        properties: 
+          id: 
+            type: "string"
+          symbol: 
+            type: "string"
+          description: 
+            type: "string"
+      alliance_gene_rat: 
+        type: "object"
+        properties: 
+          id: 
+            type: "string"
+          symbol: 
+            type: "string"
+          description: 
+            type: "string"
+      alliance_gene_worm: 
+        type: "object"
+        properties: 
+          id: 
+            type: "string"
+          symbol: 
+            type: "string"
+          description: 
+            type: "string"
+      alliance_gene_zebrafish: 
+        type: "object"
+        properties: 
+          id: 
+            type: "string"
+          symbol: 
+            type: "string"
+          description: 
+            type: "string"
+      alliance_molecular: 
+        type: "object"
+        properties: 
+          ids_interactor_a: 
+            type: "string"
+          ids_interactor_b: 
+            type: "string"
+          alt._ids_interactor_a: 
+            type: "string"
+          alt._ids_interactor_b: 
+            type: "string"
+          aliases_interactor_a: 
+            type: "string"
+          aliases_interactor_b: 
+            type: "string"
+          interaction_detection_methods: 
+            type: "string"
+          publication_1st_authors: 
+            type: "string"
+          publication_identifiers: 
+            type: "string"
+          taxid_interactor_a: 
+            type: "string"
+          taxid_interactor_b: 
+            type: "string"
+          interaction_types: 
+            type: "string"
+          source_databases: 
+            type: "string"
+          interaction_identifiers: 
+            type: "string"
+          confidence_values: 
+            type: "string"
+          expansion_methods: 
+            type: "string"
+          biological_roles_interactor_a: 
+            type: "string"
+          biological_roles_interactor_b: 
+            type: "string"
+          experimental_roles_interactor_a: 
+            type: "string"
+          experimental_roles_interactor_b: 
+            type: "string"
+          types_interactor_a: 
+            type: "string"
+          types_interactor_b: 
+            type: "string"
+          xrefs_interactor_a: 
+            type: "string"
+          xrefs_interactor_b: 
+            type: "string"
+          interaction_xrefs: 
+            type: "string"
+          annotations_interactor_a: 
+            type: "string"
+          annotations_interactor_b: 
+            type: "string"
+          interaction_annotations: 
+            type: "string"
+          host_organisms: 
+            type: "string"
+          interaction_parameters: 
+            type: "string"
+          creation_date: 
+            type: "string"
+          update_date: 
+            type: "string"
+          checksums_interactor_a: 
+            type: "string"
+          checksums_interactor_b: 
+            type: "string"
+          interaction_checksums: 
+            type: "string"
+          negative: 
+            type: "string"
+          features_interactor_a: 
+            type: "string"
+          features_interactor_b: 
+            type: "string"
+          stoichiometrys_interactor_a: 
+            type: "string"
+          stoichiometrys_interactor_b: 
+            type: "string"
+          identification_method_participant_a: 
+            type: "string"
+          identification_method_participant_b: 
+            type: "string"
+      hgnc_hgnc: 
+        type: "object"
+        properties: 
+          _version_: 
+            type: "integer"
+            format: "int64"
+          alias_name: 
+            type: "array"
+            items: 
+              type: "string"
+          alias_symbol: 
+            type: "array"
+            items: 
+              type: "string"
+          bioparadigms_slc: 
+            type: "string"
+          ccds_id: 
+            type: "array"
+            items: 
+              type: "string"
+          cd: 
+            type: "string"
+          cosmic: 
+            type: "string"
+          date_approved_reserved: 
+            type: "string"
+          date_modified: 
+            type: "string"
+          date_name_changed: 
+            type: "string"
+          date_symbol_changed: 
+            type: "string"
+          ena: 
+            type: "array"
+            items: 
+              type: "string"
+          ensembl_gene_id: 
+            type: "string"
+          entrez_id: 
+            type: "string"
+          enzyme_id: 
+            type: "array"
+            items: 
+              type: "string"
+          gene_group: 
+            type: "array"
+            items: 
+              type: "string"
+          gene_group_id: 
+            type: "array"
+            items: 
+              type: "integer"
+              format: "int64"
+          gtrnadb: 
+            type: "string"
+          hgnc_id: 
+            type: "string"
+          homeodb: 
+            type: "integer"
+            format: "int64"
+          horde_id: 
+            type: "string"
+          imgt: 
+            type: "string"
+          intermediate_filament_db: 
+            type: "string"
+          iuphar: 
+            type: "string"
+          kznf_gene_catalog: 
+            type: "integer"
+            format: "int64"
+          lncipedia: 
+            type: "string"
+          lncrnadb: 
+            type: "string"
+          location: 
+            type: "string"
+          location_sortable: 
+            type: "string"
+          locus_group: 
+            type: "string"
+          locus_type: 
+            type: "string"
+          lsdb: 
+            type: "array"
+            items: 
+              type: "string"
+          mamit-trnadb: 
+            type: "integer"
+            format: "int64"
+          merops: 
+            type: "string"
+          mgd_id: 
+            type: "array"
+            items: 
+              type: "string"
+          mirbase: 
+            type: "string"
+          name: 
+            type: "string"
+          omim_id: 
+            type: "array"
+            items: 
+              type: "string"
+          orphanet: 
+            type: "integer"
+            format: "int64"
+          prev_name: 
+            type: "array"
+            items: 
+              type: "string"
+          prev_symbol: 
+            type: "array"
+            items: 
+              type: "string"
+          pseudogene.org: 
+            type: "string"
+          pubmed_id: 
+            type: "array"
+            items: 
+              type: "integer"
+              format: "int64"
+          refseq_accession: 
+            type: "array"
+            items: 
+              type: "string"
+          rgd_id: 
+            type: "array"
+            items: 
+              type: "string"
+          rna_central_id: 
+            type: "array"
+            items: 
+              type: "string"
+          snornabase: 
+            type: "string"
+          status: 
+            type: "string"
+          symbol: 
+            type: "string"
+          ucsc_id: 
+            type: "string"
+          uniprot_ids: 
+            type: "array"
+            items: 
+              type: "string"
+          uuid: 
+            type: "string"
+          vega_id: 
+            type: "string"
+      msigdb_msigdb: 
+        type: "object"
+        properties: 
+          authors: 
+            type: "array"
+            items: 
+              type: "string"
+          category_code: 
+            type: "string"
+          chip: 
+            type: "string"
+          contributor: 
+            type: "string"
+          contributor_org: 
+            type: "string"
+          description_brief: 
+            type: "string"
+          description_full: 
+            type: "string"
+          exact_source: 
+            type: "string"
+          external_details_url: 
+            type: "string"
+          founder_names: 
+            type: "string"
+          geneset_listing_url: 
+            type: "string"
+          geoid: 
+            type: "string"
+          historical_names: 
+            type: "string"
+          members: 
+            type: "array"
+            items: 
+              type: "string"
+          members_ezid: 
+            type: "array"
+            items: 
+              type: "string"
+          members_mapping: 
+            type: "array"
+            items: 
+              type: "string"
+          members_symbolized: 
+            type: "array"
+            items: 
+              type: "string"
+          organism: 
+            type: "string"
+          pmid: 
+            type: "string"
+          refinement_datasets: 
+            type: "string"
+          standard_name: 
+            type: "string"
+          sub_category_code: 
+            type: "string"
+          systematic_name: 
+            type: "string"
+          tags: 
+            type: "array"
+            items: 
+              type: "string"
+          validation_datasets: 
+            type: "string"
+      ncbi_clinvar_allele_gene: 
+        type: "object"
+        properties: 
+          alleleid: 
+            type: "string"
+          geneid: 
+            type: "string"
+          symbol: 
+            type: "string"
+          name: 
+            type: "string"
+          genesperalleleid: 
+            type: "string"
+          category: 
+            type: "string"
+          source: 
+            type: "string"
+      ncbi_clinvar_cross_references: 
+        type: "object"
+        properties: 
+          alleleid: 
+            type: "string"
+          database: 
+            type: "string"
+          id: 
+            type: "string"
+          last_updated: 
+            type: "string"
+      ncbi_clinvar_disease_names: 
+        type: "object"
+        properties: 
+          diseasename: 
+            type: "string"
+          sourcename: 
+            type: "string"
+          conceptid: 
+            type: "string"
+          sourceid: 
+            type: "string"
+          diseasemim: 
+            type: "string"
+          lastmodified: 
+            type: "string"
+          category: 
+            type: "string"
+      ncbi_clinvar_gene_condition_source_id: 
+        type: "object"
+        properties: 
+          geneid: 
+            type: "string"
+          associatedgenes: 
+            type: "string"
+          relatedgenes: 
+            type: "string"
+          conceptid: 
+            type: "string"
+          diseasename: 
+            type: "string"
+          sourcename: 
+            type: "string"
+          sourceid: 
+            type: "string"
+          diseasemim: 
+            type: "string"
+          lastupdated: 
+            type: "string"
+      ncbi_clinvar_gene_specific_summary: 
+        type: "object"
+        properties: 
+          symbol: 
+            type: "string"
+          geneid: 
+            type: "string"
+          total_submissions: 
+            type: "string"
+          total_alleles: 
+            type: "string"
+          submissions_reporting_this_gene: 
+            type: "string"
+          alleles_reported_pathogenic_likely_pathogenic: 
+            type: "string"
+          gene_mim_number: 
+            type: "string"
+          number_uncertain: 
+            type: "string"
+          number_with_conflicts: 
+            type: "string"
+      ncbi_clinvar_organization_summary: 
+        type: "object"
+        properties: 
+          organization: 
+            type: "string"
+          organization_id: 
+            type: "string"
+          institution_type: 
+            type: "string"
+          street_address: 
+            type: "string"
+          country: 
+            type: "string"
+          number_of_clinvar_submissions: 
+            type: "string"
+          date_last_submitted: 
+            type: "string"
+          maximum_review_status: 
+            type: "string"
+          collection_methods: 
+            type: "string"
+          novel_and_updates: 
+            type: "string"
+          clinical_significance_categories_submitted: 
+            type: "string"
+          number_of_submissions_from_clinical_testing: 
+            type: "string"
+          number_of_submissions_from_research: 
+            type: "string"
+          number_of_submissions_from_literature_only: 
+            type: "string"
+          number_of_submissions_from_curation: 
+            type: "string"
+          number_of_submissions_from_phenotyping: 
+            type: "string"
+      ncbi_clinvar_summary_of_conflicting_interpretations: 
+        type: "object"
+        properties: 
+          gene_symbol: 
+            type: "string"
+          ncbi_variation_id: 
+            type: "string"
+          clinvar_preferred: 
+            type: "string"
+          submitter1: 
+            type: "string"
+          submitter1_scv: 
+            type: "string"
+          submitter1_clinsig: 
+            type: "string"
+          submitter1_reviewstatus: 
+            type: "string"
+          submitter1_sub_condition: 
+            type: "string"
+          submitter1_description: 
+            type: "string"
+          submitter2: 
+            type: "string"
+          submitter2_scv: 
+            type: "string"
+          submitter2_clinsig: 
+            type: "string"
+          submitter2_lasteval: 
+            type: "string"
+          submitter2_reviewstatus: 
+            type: "string"
+          submitter2_sub_condition: 
+            type: "string"
+          submitter2_description: 
+            type: "string"
+          rank_diff: 
+            type: "string"
+          conflict_reported: 
+            type: "string"
+          variant_type: 
+            type: "string"
+          submitter1_method: 
+            type: "string"
+          submitter2_method: 
+            type: "string"
+      ncbi_gene_go: 
+        type: "object"
+        properties: 
+          tax_id: 
+            type: "string"
+          geneid: 
+            type: "string"
+          go_id: 
+            type: "string"
+          evidence: 
+            type: "string"
+          qualifier: 
+            type: "string"
+          go_term: 
+            type: "string"
+          pubmed: 
+            type: "string"
+          category: 
+            type: "string"
+      ncbi_gene_group: 
+        type: "object"
+        properties: 
+          tax_id: 
+            type: "string"
+          geneid: 
+            type: "string"
+          relationship: 
+            type: "string"
+          other_tax_id: 
+            type: "string"
+          other_geneid: 
+            type: "string"
+      ncbi_gene_history: 
+        type: "object"
+        properties: 
+          tax_id: 
+            type: "string"
+          geneid: 
+            type: "string"
+          discontinued_geneid: 
+            type: "string"
+          discontinued_symbol: 
+            type: "string"
+          discontinue_date: 
+            type: "string"
+      ncbi_gene_info: 
+        type: "object"
+        properties: 
+          tax_id: 
+            type: "string"
+          geneid: 
+            type: "string"
+          symbol: 
+            type: "string"
+          locustag: 
+            type: "string"
+          synonyms: 
+            type: "string"
+          dbxrefs: 
+            type: "string"
+          chromosome: 
+            type: "string"
+          map_location: 
+            type: "string"
+          description: 
+            type: "string"
+          type_of_gene: 
+            type: "string"
+          symbol_from_nomenclature_authority: 
+            type: "string"
+          full_name_from_nomenclature_authority: 
+            type: "string"
+          nomenclature_status: 
+            type: "string"
+          other_designations: 
+            type: "string"
+          modification_date: 
+            type: "string"
+          feature_type: 
+            type: "string"
+      ncbi_gene_neighbors: 
+        type: "object"
+        properties: 
+          tax_id: 
+            type: "string"
+          geneid: 
+            type: "string"
+          genomic_accession.version: 
+            type: "string"
+          genomic_gi: 
+            type: "string"
+          start_position: 
+            type: "string"
+          end_position: 
+            type: "string"
+          orientation: 
+            type: "string"
+          chromosome: 
+            type: "string"
+          geneids_on_left: 
+            type: "string"
+          distance_to_left: 
+            type: "string"
+          geneids_on_right: 
+            type: "string"
+          distance_to_right: 
+            type: "string"
+          overlapping_geneids: 
+            type: "string"
+          assembly: 
+            type: "string"
+      ncbi_gene_orthologs: 
+        type: "object"
+        properties: 
+          tax_id: 
+            type: "string"
+          geneid: 
+            type: "string"
+          relationship: 
+            type: "string"
+          other_tax_id: 
+            type: "string"
+          other_geneid: 
+            type: "string"
+      ncbi_gene_pubmed: 
+        type: "object"
+        properties: 
+          tax_id: 
+            type: "string"
+          geneid: 
+            type: "string"
+          pubmed_id: 
+            type: "string"
+      ncbi_gene_refseq: 
+        type: "object"
+        properties: 
+          tax_id: 
+            type: "string"
+          geneid: 
+            type: "string"
+          status: 
+            type: "string"
+          rna_nucleotide_accession.version: 
+            type: "string"
+          rna_nucleotide_gi: 
+            type: "string"
+          protein_accession.version: 
+            type: "string"
+          protein_gi: 
+            type: "string"
+          genomic_nucleotide_accession.version: 
+            type: "string"
+          genomic_nucleotide_gi: 
+            type: "string"
+          start_position_on_the_genomic_accession: 
+            type: "string"
+          end_position_on_the_genomic_accession: 
+            type: "string"
+          orientation: 
+            type: "string"
+          assembly: 
+            type: "string"
+          mature_peptide_accession.version: 
+            type: "string"
+          mature_peptide_gi: 
+            type: "string"
+          symbol: 
+            type: "string"
