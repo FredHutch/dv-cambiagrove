@@ -190,7 +190,7 @@ testRun <- function(){
   for (pipeline in config$pipeline){
     for (datasource in config$datasources) {
       if (datasource$name == pipeline$datasource) {
-        cds <- stepDatasource(datasource$config)
+        cds <- stepDatasource(datasource$config, datasource$name)
       }
     }
     for (preprocess in config$preprocess) { 
@@ -228,12 +228,15 @@ testRun <- function(){
 }
 
 # Functions To Process Steps
-stepDatasource <- function(stepConfig) {
+stepDatasource <- function(stepConfig, stepName) {
   print("DATASOURCE")
   expression_matrix <- readRDS(url(stepConfig$expression_matrix))
   cell_metadata <- readRDS(url(stepConfig$column_metadata))
   gene_annotation <- readRDS(url(stepConfig$row_metadata))
-  return(new_cell_data_set(expression_matrix, cell_metadata = cell_metadata, gene_metadata = gene_annotation))
+  cds <- new_cell_data_set(expression_matrix, cell_metadata = cell_metadata, gene_metadata = gene_annotation)
+  saveMatrix(rowData(cds), paste("datasource-",stepName,"-row_data"))
+  saveMatrix(colData(cds), paste("datasource-",stepName,"-col_data"))
+  return(cds)
 
 }
 stepPreprocess <- function(cds, stepConfig, stepName){
@@ -242,7 +245,7 @@ stepPreprocess <- function(cds, stepConfig, stepName){
   cds <- do.call(preprocess_cds, stepConfig)
   saveMatrix(reducedDim(cds, type=stepConfig$method), paste("preprocess-",stepName, "-dims", sep=""))
   saveMatrix(cds@preprocess_aux$gene_loadings, paste("preprocess-",stepName, "-loadings", sep=""))
-  saveList(cds@preprocess_aux$prop_var_expl, paste("preprocess-", stepName, "-varexpl", sep=""))
+  saveList(cds@preprocess_aux$prop_var_expl, paste("preprocess-", stepName, "-variance_explained", sep=""))
   return(cds)
 }
 
