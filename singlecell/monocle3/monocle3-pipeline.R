@@ -4,11 +4,26 @@
 # - Clusters - reduction_method
 # - markers - cores
 
+library(igraph)
 library(monocle3)
 library(jsonlite)
 
+get_earliest_principal_node <- function(cds, time_bin="130-170"){
+  cell_ids <- which(colData(cds)[, "embryo.time.bin"] == time_bin)
+
+  closest_vertex <-
+    cds@principal_graph_aux[["UMAP"]]$pr_graph_cell_proj_closest_vertex
+  closest_vertex <- as.matrix(closest_vertex[colnames(cds), ])
+  root_pr_nodes <-
+    igraph::V(principal_graph(cds)[["UMAP"]])$name[as.numeric(names
+      (which.max(table(closest_vertex[cell_ids,]))))]
+
+  root_pr_nodes
+}
+
 # Functions To Save Artifacts
 saveGraph <- function(g,filename){
+  filename <- tolower(paste(filename, '.graph.json', sep=""))
   print(c("SAVE GRAPH: ", filename))
   graph <- list()
   graph$edges <- as_data_frame(g, what = "edges")
@@ -27,11 +42,13 @@ saveGraph <- function(g,filename){
 }
 
 saveMatrix <- function(m, filename){
+  filename <- tolower(paste(filename, '.matrix.csv', sep=""))
   print(c("SAVE MATRIX: ", filename))
   write.csv2(m, filename)
 }
 
 saveList <- function(l, filename){
+  filename <- tolower(paste(filename, '.list.csv', sep=""))
   print(c("SAVE LIST: ", filename))
   write.csv2(l, filename)
 }
@@ -41,7 +58,7 @@ testLoadConfig <- function() {
   # Load Config
   json <- '{
     "datasources": [{
-      "library": "MONOCLE3",
+      "docker": "mzager/monocle3",
       "name": "CAO-L2",
       "config": {
         "type": "RDS",
@@ -50,7 +67,7 @@ testLoadConfig <- function() {
         "row_metadata": "http://staff.washington.edu/hpliner/data/cao_l2_rowData.rds"
       }
     },{
-      "library": "MONOCLE3",
+      "docker": "mzager/monocle3",
       "name": "PACKER-EMBRYO",
       "config": {
         "type": "RDS",
@@ -60,7 +77,7 @@ testLoadConfig <- function() {
       }
     }],
     "preprocess": [{
-      "library": "MONOCLE3",
+      "docker": "mzager/monocle3",
       "name": "PCA-100",
       "config": {
         "method": "PCA",
@@ -72,7 +89,7 @@ testLoadConfig <- function() {
         "scaling": true
       }
     },{
-      "library": "MONOCLE3",
+      "docker": "mzager/monocle3",
       "name": "PCA-200",
       "config": {
         "method": "PCA",
@@ -85,7 +102,7 @@ testLoadConfig <- function() {
       }
     }],
     "reductions": [{
-      "library": "MONOCLE3",
+      "docker": "mzager/monocle3",
       "name": "UMAP-2D",
       "config": {
         "max_components": 2,
@@ -98,7 +115,7 @@ testLoadConfig <- function() {
         "umap.nn_method": "annoy"
       }
     },{
-      "library": "MONOCLE3",
+      "docker": "mzager/monocle3",
       "name": "UMAP-3D",
       "config": {
         "max_components": 3,
@@ -112,7 +129,7 @@ testLoadConfig <- function() {
       }
     }],
     "clusters": [{
-      "library": "MONOCLE3",
+      "docker": "mzager/monocle3",
       "name": "UMAP",
       "config": {
         "reduction_method": "UMAP",
@@ -125,7 +142,7 @@ testLoadConfig <- function() {
       }
     }],
     "markers": [{
-      "library": "MONOCLE3",
+      "docker": "mzager/monocle3",
       "name": "MARKERS",
       "config": {
         "group_cells_by": "partition",
@@ -136,21 +153,24 @@ testLoadConfig <- function() {
       }
     }],
     "graphs": [{
-      "library": "MONOCLE3",
+      "docker": "mzager/monocle3",
       "name": "GRAPH",
       "config": {
         "use_partition": true,
         "close_loop": true,
         "learn_graph_control": null
       }
-    }], 
-    "deployments": [{
-      "library": "AWS",
-      "name": "WEBSITE",
-      "config": {
-        "bucket": "s3://viz.fredhutch.org/datasets/test"
-      }
     }],
+    "trajectories":[{
+      "docker": "mzager/monocle3",
+      "name": "TRAJECTORY",
+      "config":{
+        "time_bin": "130-170",
+        "reduction_method": "UMAP", 
+        "root_pr_nodes": null,
+        "root_cells": null
+      }
+    }], 
     "pipeline": [{
         "datasource": "PACKER-EMBRYO",
         "preprocess": "PCA-100",
@@ -158,7 +178,7 @@ testLoadConfig <- function() {
         "cluster": "UMAP",
         "marker": "MARKERS",
         "graph" : "GRAPH",
-        "deployment": "WEBSITE"
+        "trajectory": "TRAJECTORY"
     }]
   }'
   return(jsonlite::parse_json(json))
@@ -166,6 +186,7 @@ testLoadConfig <- function() {
 
 testRun <- function(){
   config <- testLoadConfig()
+  cds <- NULL
   for (pipeline in config$pipeline){
     for (datasource in config$datasources) {
       if (datasource$name == pipeline$datasource) {
@@ -197,7 +218,13 @@ testRun <- function(){
         cds <- stepGraph(cds, graph$config, graph$name)
       }
     }
+    for (trajectory in config$trajectories) { 
+      if (trajectory$name == pipeline$trajectory){
+        cds <- stepTrajectory(cds, trajectory$config, trajectory$name)
+      }
+    }
   }
+  return(cds)
 }
 
 # Functions To Process Steps
@@ -213,9 +240,9 @@ stepPreprocess <- function(cds, stepConfig, stepName){
   print("PREPROCESS")
   stepConfig$cds <- cds
   cds <- do.call(preprocess_cds, stepConfig)
-  saveMatrix(reducedDim(cds, type=stepConfig$method), paste("pp_",stepName, "_scores.csv", sep=""))
-  saveMatrix(cds@preprocess_aux$gene_loadings, paste("pp_",stepName, "_loadings.csv", sep=""))
-  saveList(cds@preprocess_aux$prop_var_expl, paste("pp_", stepName, "_varexpl.csv", sep=""))
+  saveMatrix(reducedDim(cds, type=stepConfig$method), paste("preprocess-",stepName, "-dims", sep=""))
+  saveMatrix(cds@preprocess_aux$gene_loadings, paste("preprocess-",stepName, "-loadings", sep=""))
+  saveList(cds@preprocess_aux$prop_var_expl, paste("preprocess-", stepName, "-varexpl", sep=""))
   return(cds)
 }
 
@@ -223,7 +250,7 @@ stepReduce <- function(cds, stepConfig, stepName){
   print("REDUCE")
   stepConfig$cds <- cds
   cds <- do.call(reduce_dimension, stepConfig)
-  saveMatrix(reducedDim(cds, type=stepConfig$reduction_method), paste("dr_",stepName, "_scores.csv", sep=""))
+  saveMatrix(reducedDim(cds, type=stepConfig$reduction_method), paste("reducedim-",stepName, "-dims", sep=""))
   return(cds)
 }
 
@@ -231,9 +258,9 @@ stepCluster <- function(cds, stepConfig, stepName){
   print("CLUSTER")
   stepConfig$cds <- cds
   cds <- do.call(cluster_cells, stepConfig)
-  saveMatrix(cds@clusters@listData[[stepConfig$reduction_method]][["partitions"]], paste("cl_", stepName, "_partitians.csv", sep=""))
-  saveMatrix(cds@clusters@listData[[stepConfig$reduction_method]][["clusters"]], paste("cl_", stepName, "_clusters.csv", sep=""))
-  saveGraph(cds@clusters@listData[[stepConfig$reduction_method]][["louvain_res"]][["g"]], paste("cl_", stepName, "_graph.json", sep=""))
+  saveMatrix(cds@clusters@listData[[stepConfig$reduction_method]][["partitions"]], paste("cluster-", stepName, "-partitions", sep=""))
+  saveMatrix(cds@clusters@listData[[stepConfig$reduction_method]][["clusters"]], paste("cluster-", stepName, "-clusters", sep=""))
+  saveGraph(cds@clusters@listData[[stepConfig$reduction_method]][["louvain_res"]][["g"]], paste("cluster-", stepName, "-louvain", sep=""))
   return(cds)
 }
 
@@ -241,17 +268,31 @@ stepMarker <- function(cds, stepConfig, stepName){
   print("MARKER")
   stepConfig$cds <- cds
   markers <- do.call(top_markers, stepConfig)
-  saveMatrix(markers, paste("mk_", stepName, "_markers.csv", sep=""))
+  saveMatrix(markers, paste("marker-", stepName, sep=""))
   return(cds)
 }
 
 stepGraph <- function(cds, stepConfig, stepName){
   print("GRAPH")
-  stepGraph <- cds
+  stepConfig$cds <- cds
   cds <- do.call(learn_graph, stepConfig)
-  saveGraph(cds@principal_graph@listData[["UMAP"]], paste("gr_", stepName, "_principle.json", sep=""))
+  saveGraph(cds@principal_graph@listData[["UMAP"]], paste("graph-", stepName, "-principle", sep=""))
+  return(cds)
+}
+
+stepTrajectory <- function(cds, stepConfig, stepName){
+  print("TRAJECTORY")
+  if (!is.null(stepConfig$time_bin)) {
+    stepConfig$root_pr_nodes <- get_earliest_principal_node(cds, stepConfig$time_bin)
+  }
+  stepConfig$time_bin <- NULL
+  stepConfig$cds <- cds
+  cds <- do.call(order_cells, stepConfig)
+  saveGraph(cds@principal_graph_aux[['UMAP']]$pr_graph_cell_proj_tree, paste("trajectory-", stepName, "-pr_graph_cell_proj_tree", sep=""))
+  saveMatrix(cds@principal_graph_aux[['UMAP']]$dp_mst, paste("trajectory-", stepName, "-dp_mst"))
   return(cds)
 }
 
 # Kick It Off
-testRun()
+setwd('/Users/zager/Desktop/delme')
+cds <- testRun()
