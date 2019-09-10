@@ -243,8 +243,11 @@ stepPreprocess <- function(cds, stepConfig, stepName){
   print("PREPROCESS")
   stepConfig$cds <- cds
   cds <- do.call(preprocess_cds, stepConfig)
+  # Plot PCA Scores
   saveMatrix(reducedDim(cds, type=stepConfig$method), paste("preprocess-",stepName, "-dims", sep=""))
+  # Plot PCA Loadings
   saveMatrix(cds@preprocess_aux$gene_loadings, paste("preprocess-",stepName, "-loadings", sep=""))
+  # Plot Variance Explained
   saveList(cds@preprocess_aux$prop_var_expl, paste("preprocess-", stepName, "-variance_explained", sep=""))
   return(cds)
 }
@@ -253,6 +256,7 @@ stepReduce <- function(cds, stepConfig, stepName){
   print("REDUCE")
   stepConfig$cds <- cds
   cds <- do.call(reduce_dimension, stepConfig)
+  # Plot Dimension Reduction
   saveMatrix(reducedDim(cds, type=stepConfig$reduction_method), paste("reducedim-",stepName, "-dims", sep=""))
   return(cds)
 }
@@ -261,8 +265,11 @@ stepCluster <- function(cds, stepConfig, stepName){
   print("CLUSTER")
   stepConfig$cds <- cds
   cds <- do.call(cluster_cells, stepConfig)
+  # Color Cells
   saveMatrix(cds@clusters@listData[[stepConfig$reduction_method]][["partitions"]], paste("cluster-", stepName, "-partitions", sep=""))
+  # Color Cells
   saveMatrix(cds@clusters@listData[[stepConfig$reduction_method]][["clusters"]], paste("cluster-", stepName, "-clusters", sep=""))
+  # Draw Trajectory
   saveGraph(cds@clusters@listData[[stepConfig$reduction_method]][["louvain_res"]][["g"]], paste("cluster-", stepName, "-louvain", sep=""))
   return(cds)
 }
@@ -271,6 +278,7 @@ stepMarker <- function(cds, stepConfig, stepName){
   print("MARKER")
   stepConfig$cds <- cds
   markers <- do.call(top_markers, stepConfig)
+  # Data Grid of Markers / Color Cells
   saveMatrix(markers, paste("marker-", stepName, sep=""))
   return(cds)
 }
@@ -279,6 +287,7 @@ stepGraph <- function(cds, stepConfig, stepName){
   print("GRAPH")
   stepConfig$cds <- cds
   cds <- do.call(learn_graph, stepConfig)
+  # Draw Trajectory
   saveGraph(cds@principal_graph@listData[["UMAP"]], paste("graph-", stepName, "-principle", sep=""))
   return(cds)
 }
@@ -291,7 +300,9 @@ stepTrajectory <- function(cds, stepConfig, stepName){
   stepConfig$time_bin <- NULL
   stepConfig$cds <- cds
   cds <- do.call(order_cells, stepConfig)
+  # Draw Trajectory
   saveGraph(cds@principal_graph_aux[['UMAP']]$pr_graph_cell_proj_tree, paste("trajectory-", stepName, "-pr_graph_cell_proj_tree", sep=""))
+  # Not sure - There are other props here to investigate
   saveMatrix(cds@principal_graph_aux[['UMAP']]$dp_mst, paste("trajectory-", stepName, "-dp_mst"))
   return(cds)
 }
