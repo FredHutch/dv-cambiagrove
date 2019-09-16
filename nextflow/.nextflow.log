@@ -1,0 +1,54 @@
+Sep-10 19:42:38.353 [main] DEBUG nextflow.cli.Launcher - $> nextflow run tutorial.nf
+Sep-10 19:42:38.460 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 19.01.0
+Sep-10 19:42:38.469 [main] INFO  nextflow.cli.CmdRun - Launching `tutorial.nf` [jolly_picasso] - revision: 6bb92f2957
+Sep-10 19:42:38.536 [main] DEBUG nextflow.Session - Session uuid: a7e121a4-83d2-4b4c-8951-cf7d7a0e81c7
+Sep-10 19:42:38.537 [main] DEBUG nextflow.Session - Run name: jolly_picasso
+Sep-10 19:42:38.538 [main] DEBUG nextflow.Session - Executor pool size: 12
+Sep-10 19:42:38.568 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 19.01.0 build 5050
+  Modified: 22-01-2019 11:19 UTC (03:19 PDT)
+  System: Mac OS X 10.14.6
+  Runtime: Groovy 2.5.5 on Java HotSpot(TM) 64-Bit Server VM 1.8.0_202-b08
+  Encoding: UTF-8 (UTF-8)
+  Process: 39451@Michaels-MacBook-Pro-7.local [192.168.1.20]
+  CPUs: 12 - Mem: 32 GB (2.8 GB) - Swap: 7 GB (1.2 GB)
+Sep-10 19:42:38.583 [main] DEBUG nextflow.Session - Work-dir: /Users/zager/Documents/Projects/dv/dv-cambiagrove/nextflow/work [Mac OS X]
+Sep-10 19:42:38.584 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/zager/Documents/Projects/dv/dv-cambiagrove/nextflow/bin
+Sep-10 19:42:38.748 [main] DEBUG nextflow.Session - Session start invoked
+Sep-10 19:42:38.754 [main] DEBUG nextflow.processor.TaskDispatcher - Dispatcher > start
+Sep-10 19:42:38.755 [main] DEBUG nextflow.script.ScriptRunner - > Script parsing
+Sep-10 19:42:39.053 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-10 19:42:39.123 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-10 19:42:39.124 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-10 19:42:39.129 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-10 19:42:39.131 [main] INFO  nextflow.executor.Executor - [warm up] executor > local
+Sep-10 19:42:39.133 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=12; memory=32 GB; capacity=12; pollInterval=100ms; dumpInterval=5m
+Sep-10 19:42:39.137 [main] DEBUG nextflow.processor.TaskDispatcher - Starting monitor: LocalPollingMonitor
+Sep-10 19:42:39.138 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Sep-10 19:42:39.139 [main] DEBUG nextflow.executor.Executor - Invoke register for executor: local
+Sep-10 19:42:39.264 [main] DEBUG nextflow.Session - >>> barrier register (process: splitLetters)
+Sep-10 19:42:39.267 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > splitLetters -- maxForks: 12
+Sep-10 19:42:39.300 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-10 19:42:39.300 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-10 19:42:39.301 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-10 19:42:39.301 [main] DEBUG nextflow.Session - >>> barrier register (process: convertToUpper)
+Sep-10 19:42:39.302 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > convertToUpper -- maxForks: 12
+Sep-10 19:42:39.312 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Sep-10 19:42:39.312 [main] DEBUG nextflow.Session - Session await
+Sep-10 19:42:39.387 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-10 19:42:39.391 [Task submitter] INFO  nextflow.Session - [37/bcb95d] Submitted process > splitLetters
+Sep-10 19:42:39.441 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: splitLetters; status: COMPLETED; exit: 0; error: -; workDir: /Users/zager/Documents/Projects/dv/dv-cambiagrove/nextflow/work/37/bcb95d3bcda50826886bf304ddb43e]
+Sep-10 19:42:39.460 [Actor Thread 2] DEBUG nextflow.Session - <<< barrier arrive (process: splitLetters)
+Sep-10 19:42:39.476 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-10 19:42:39.476 [Task submitter] INFO  nextflow.Session - [fc/0245a3] Submitted process > convertToUpper (1)
+Sep-10 19:42:39.481 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-10 19:42:39.481 [Task submitter] INFO  nextflow.Session - [1b/433699] Submitted process > convertToUpper (2)
+Sep-10 19:42:39.525 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 2; name: convertToUpper (1); status: COMPLETED; exit: 0; error: -; workDir: /Users/zager/Documents/Projects/dv/dv-cambiagrove/nextflow/work/fc/0245a3a1086f062089d0b0a3b0b4ee]
+Sep-10 19:42:39.529 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 3; name: convertToUpper (2); status: COMPLETED; exit: 0; error: -; workDir: /Users/zager/Documents/Projects/dv/dv-cambiagrove/nextflow/work/1b/433699cba9f3d8d0de235da167ced1]
+Sep-10 19:42:39.530 [Actor Thread 2] DEBUG nextflow.Session - <<< barrier arrive (process: convertToUpper)
+Sep-10 19:42:39.530 [main] DEBUG nextflow.Session - Session await > all process finished
+Sep-10 19:42:39.531 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local)
+Sep-10 19:42:39.531 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-10 19:42:39.534 [main] DEBUG nextflow.trace.StatsObserver - Workflow completed > WorkflowStats[succeedCount=3; failedCount=0; ignoredCount=0; cachedCount=0; succeedDuration=4ms; failedDuration=0ms; cachedDuration=0ms]
+Sep-10 19:42:39.540 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Sep-10 19:42:39.550 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye

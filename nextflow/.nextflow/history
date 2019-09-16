@@ -1,0 +1,6 @@
+2019-09-10 13:49:45	1.7s	sick_almeida	OK	aa284738a917af9f78c32cdc278fcdab	cc776358-0c74-404d-9716-c5202d0803fe	nextflow run tutorial.nf
+2019-09-10 13:51:53	1.5s	agitated_wozniak	OK	6bb92f295751183ac906143a7df51c0c	cc776358-0c74-404d-9716-c5202d0803fe	nextflow run tutorial.nf -resume
+2019-09-10 13:53:20	1.6s	jovial_heyrovsky	OK	6bb92f295751183ac906143a7df51c0c	cc776358-0c74-404d-9716-c5202d0803fe	nextflow run tutorial.nf -resume
+2019-09-10 13:53:32	1.9s	cranky_knuth	OK	6bb92f295751183ac906143a7df51c0c	7d18443e-1685-4c7b-bd6e-4c2c0b21158d	nextflow run tutorial.nf --str 'Bonjour le monde'
+2019-09-10 19:42:05	2.1s	tender_mahavira	OK	6bb92f295751183ac906143a7df51c0c	cef453ee-32cc-46a0-adca-f40693d50c19	nextflow run tutorial.nf
+2019-09-10 19:42:38	1.5s	jolly_picasso	OK	6bb92f295751183ac906143a7df51c0c	a7e121a4-83d2-4b4c-8951-cf7d7a0e81c7	nextflow run tutorial.nf
