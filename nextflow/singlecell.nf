@@ -7,6 +7,7 @@ INPUT_CH = Channel.from([[
   UUID.randomUUID().toString().substring(0,7)
 ]])
 
+// Reacts To Input Channel - Outputs 
 INPUT_CH.into {
   TENX_INPUT_CH
   CDS_INPUT_CH
@@ -41,13 +42,31 @@ process TENX_LOAD_PR {
 }
 
 TENX_LOAD_CH.into {
-  SEURAT_INPUT_CH
-  ANNDATA_LOAD_CH
+  SEURAT_INPUT_CH 
+  SCANPY_INPUT_CH
 }
 
-process ANNDATA_LOAD_PR {
+// process SCANPY_LOAD_PR {
 
-}
+//   publishDir "$params.output.folder"
+//   container "quay.io/biocontainers/scanpy-scripts:0.0.3--py37_1"
+
+//   input:
+//     set file('matrix.mtx'), file('barcodes.tsv'), file('cells.tsv'), file('genes.tsv'), val(ppid) from SCANPY_INPUT_CH
+  
+
+//   output:
+//     set file("${ppid + '-' + pid}.h5ad"), file('ledger.txt'), val(pid) into SEURAT_LOAD_CH
+
+//   script:
+//     pid = UUID.randomUUID().toString().substring(0,7)
+
+//   """
+//     scanpy-read-10x.py -d \$PWD -o ${ppid + '-' + pid}.h5ad -F anndata
+//     echo "$ppid-$pid scanpy create" >> ledger.txt
+//   """
+
+// }
 
 process SEURAT_LOAD_PR {
 
@@ -66,7 +85,32 @@ process SEURAT_LOAD_PR {
   """
   Rscript /usr/local/bin/seurat-read-10x.R -d \$PWD -o seurat-tmp.rds
   Rscript /usr/local/bin/seurat-create-seurat-object.R -i seurat-tmp.rds -o ${ppid + '-' + pid}.rds
-  echo "$ppid-$pid seurat create" >> ledger.txt
+  echo "${ppid + '-' + pid} seurat create" >> ledger.txt
+  """
+}
+
+
+process SEURAT_FILTERCELLS_PR {
+
+  errorStrategy 'ignore'  // Would be better to conditionally broacast if MONOCLE_PARTITION_CH Reduction Method = UMAP
+
+  publishDir "$params.output.folder"
+  container "quay.io/biocontainers/seurat-scripts:0.0.5--r34_1"
+
+  input:
+    set file("seurat.rds"), file("ledger.txt"), val(ppid) from SEURAT_LOAD_CH
+    each low_threshold from params.seurat.filter_cells.low_threshold
+    each high_threshold from params.seurat.filter_cells.high_threshold
+
+  output:
+    set file("${ppid + '-' + pid}.rds"), file('ledger.txt'), val(pid) into SEURAT_FILTERCELLS_CH
+
+  script:
+    pid = UUID.randomUUID().toString().substring(0,7) 
+
+  """
+  Rscript /usr/local/bin/seurat-filter-cells.R -i seurat.rds -o ${ppid + '-' + pid}.rds --low-thresholds=${low_threshold}  --high-thresholds=${high_threshold}
+  echo "${ppid + '-' + pid} seurat filtercells low_threshold=${low_threshold} high_threshold=${high_threshold}" >> ledger.txt
   """
 }
 
@@ -76,7 +120,7 @@ process SEURAT_NORMALIZE_PR {
   container "quay.io/biocontainers/seurat-scripts:0.0.5--r34_1"
   
   input:
-    set file("seurat.rds"), file("ledger.txt"), val(ppid) from SEURAT_LOAD_CH
+    set file("seurat.rds"), file("ledger.txt"), val(ppid) from SEURAT_FILTERCELLS_CH
     each assay_type from params.seurat.normalize.assay_type
     each normalization_method from params.seurat.normalize.normalization_method
     each scale_factor from params.seurat.normalize.scale_factor
@@ -88,8 +132,8 @@ process SEURAT_NORMALIZE_PR {
     pid = UUID.randomUUID().toString().substring(0,7) 
 
   """
-  Rscript /usr/local/bin/seurat-normalise-data.R -i seurat.rds -a ${assay_type} -n ${normalization_method} -s ${scale_factor} -o ${ppid + '-' + pid}.rds
-  echo "$ppid-$pid seurat normalize" assay-type=${assay_type} normalization_method=${normalization_method} scale_factor=${scale_factor} >> ledger.txt
+  Rscript /usr/local/bin/seurat-normalise-data.R -i seurat.rds -o ${ppid + '-' + pid}.rds -a ${assay_type} -n ${normalization_method} -s ${scale_factor} 
+  echo "${ppid + '-' + pid} seurat normalize assay-type=${assay_type} normalization_method=${normalization_method} scale_factor=${scale_factor}" >> ledger.txt
   """
 }
 
@@ -115,11 +159,81 @@ process SEURAT_VARIABLEGENES_PR {
 
   """
   Rscript /usr/local/bin/seurat-find-variable-genes.R -i seurat.rds -m ${mean_function} -d ${dispersion_function} -l ${fvg_x_low_cutoff} -j ${fvg_x_high_cutoff} -y ${fvg_y_low_cutoff} -z ${fvg_y_high_cutoff} -o ${ppid + '-' + pid}.rds -t ${ppid + '-' + pid}.txt
-  echo "$ppid-$pid seurat variableGenes" mean-function=${mean_function} dispersion-function=${dispersion_function} fvg-x-low-cutoff=${fvg_x_low_cutoff} fvg-x-high-cutoff=${fvg_x_high_cutoff} fvg-y-low-cutoff=${fvg_y_low_cutoff} fvg-y-high-cutoff=${fvg_y_high_cutoff} >> ledger.txt
+  echo "$ppid-$pid seurat variableGenes mean-function=${mean_function} dispersion-function=${dispersion_function} fvg-x-low-cutoff=${fvg_x_low_cutoff} fvg-x-high-cutoff=${fvg_x_high_cutoff} fvg-y-low-cutoff=${fvg_y_low_cutoff} fvg-y-high-cutoff=${fvg_y_high_cutoff}" >> ledger.txt
   """
 }
 
-process SEURAT_
+process SEURAT_SCALEDATA_PR {
+
+  publishDir "$params.output.folder"
+  container "quay.io/biocontainers/seurat-scripts:0.0.5--r34_1"
+  
+  input:
+    set file("seurat.rds"), file("ledger.txt"), val(ppid) from SEURAT_VARIABLEGENES_CH
+    each model_use  from params.seurat.scale_data.model_use
+    each do_scale from params.seurat.scale_data.do_scale
+    each do_center from params.seurat.scale_data.do_center 
+    each scale_max from params.seurat.scale_data.scale_max
+    each block_size from params.seurat.scale_data.block_size
+    each min_cells_to_block from params.seurat.scale_data.min_cells_to_block
+    each assay_type from params.seurat.scale_data.assay_type
+    each check_for_norm from params.seurat.scale_data.check_for_norm
+
+  output:
+    set file("${ppid + '-' + pid}.rds"), file('ledger.txt'), val(pid) into SEURAT_SCALEDATA_CH
+
+  script:
+    pid = UUID.randomUUID().toString().substring(0,7) 
+
+  """
+  Rscript /usr/local/bin/seurat-scale-data.R -i seurat.rds -o ${ppid + '-' + pid}.rds -m ${model_use} -s ${do_scale} -c ${do_center} -x ${scale_max} -b ${block_size} -d ${min_cells_to_block} -a ${assay_type} -n ${check_for_norm}
+  echo "$ppid-$pid seurat scaleData m ${model_use} do_scale=${do_scale} do_center=${do_center} scale_max=${scale_max} block_size=${block_size} min_cells_to_block=${min_cells_to_block} assay_type=${assay_type} check_for_norm=${check_for_norm}" >> ledger.txt
+  """
+}
+
+process SEURAT_PCA_PR {
+
+  publishDir "$params.output.folder"
+  container "quay.io/biocontainers/seurat-scripts:0.0.5--r34_1"
+  
+  input:
+    set file("seurat.rds"), file("ledger.txt"), val(ppid) from SEURAT_SCALEDATA_CH
+    each pcs_compute from params.seurat.pca.pcs_compute
+    each use_imputed from params.seurat.pca.use_imputed
+
+  output:
+    set file("${ppid + '-' + pid}.rds"), file('ledger.txt'), val(pid) into SEURAT_PCA_CH
+
+  script:
+    pid = UUID.randomUUID().toString().substring(0,7) 
+
+    """
+    Rscript /usr/local/bin/seurat-run-pca.R -i seurat.rds -o ${ppid + '-' + pid}.rds -p ${pcs_compute} -m ${use_imputed}
+    echo "$ppid-$pid seurat pca pcs_compute=${pcs_compute} use_imputed=${use_imputed}" >> ledger.txt
+    """
+}
+
+process SEURAT_TSNE_PR {
+
+  publishDir "$params.output.folder"
+  container "quay.io/biocontainers/seurat-scripts:0.0.5--r34_1"
+  
+  input:
+    set file("seurat.rds"), file("ledger.txt"), val(ppid) from SEURAT_PCA_CH
+    each reduction_use from params.seurat.tsne.reduction_use
+    each do_fast from params.seurat.tsne.do_fast
+
+  output:
+    set file("${ppid + '-' + pid}.rds"), file('ledger.txt'), val(pid) into SEURAT_TSNE_CH
+
+  script:
+    pid = UUID.randomUUID().toString().substring(0,7) 
+
+    """
+    Rscript /usr/local/bin/seurat-run-tsne.R -i seurat.rds -o ${ppid + '-' + pid}.rds -f ${do_fast} -r ${reduction_use}
+    echo "$ppid-$pid seurat tsne  do_fast=${do_fast} reduction_use=${reduction_use}" >> ledger.txt
+    """
+}
 
 process CDS_LOAD_PR {
 
@@ -132,7 +246,7 @@ process CDS_LOAD_PR {
   output:
     set file("${ppid + '-' + pid}.rds"), file('ledger.txt'), val(pid) into CDS_LOAD_CH
 
- script:
+  script:
     pid = UUID.randomUUID().toString().substring(0,7) 
 
   """

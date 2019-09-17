@@ -4,3 +4,46 @@
 2019-09-10 13:53:32	1.9s	cranky_knuth	OK	6bb92f295751183ac906143a7df51c0c	7d18443e-1685-4c7b-bd6e-4c2c0b21158d	nextflow run tutorial.nf --str 'Bonjour le monde'
 2019-09-10 19:42:05	2.1s	tender_mahavira	OK	6bb92f295751183ac906143a7df51c0c	cef453ee-32cc-46a0-adca-f40693d50c19	nextflow run tutorial.nf
 2019-09-10 19:42:38	1.5s	jolly_picasso	OK	6bb92f295751183ac906143a7df51c0c	a7e121a4-83d2-4b4c-8951-cf7d7a0e81c7	nextflow run tutorial.nf
+2019-09-16 13:00:23	-	tiny_faggin	-	81bb48a89c9c6f1f8cb1794148594350	3c6a7729-86b3-44c7-ad2b-a18c3d96af1e	nextflow run monocle.nf
+2019-09-16 13:00:38	-	grave_ride	-	597113ffb2481e06014db7a00bcf4b93	d99c39df-542b-4f54-a326-6f33853b910f	nextflow run monocle.nf
+2019-09-16 13:01:06	26.1s	elegant_heyrovsky	ERR	2c7b542bcdc1ffdd9a61cf457f66eb53	90d0a8ff-734a-4483-a9b4-eb950b47af99	nextflow run monocle.nf
+2019-09-16 13:21:20	19.5s	lonely_knuth	ERR	2c7b542bcdc1ffdd9a61cf457f66eb53	77d39b02-78e5-495b-93d3-8b25127ed7d1	nextflow run monocle.nf
+2019-09-16 13:22:21	6m 27s	distraught_dubinsky	OK	2c7b542bcdc1ffdd9a61cf457f66eb53	cf63f973-140b-45d8-bba5-e9335007d0bf	nextflow run monocle.nf
+2019-09-16 14:24:52	-	admiring_venter	-	ef29666572a82e25a6b4c6a60f2bc856	36bff850-026f-4251-9ed9-8cebaeb56cbb	nextflow run monocle.nf
+2019-09-16 14:25:14	-	modest_meucci	-	51c3ed6f4942d05c50cf817fd25bbaae	78768205-5fd9-4ee6-90b3-f3327015398f	nextflow run monocle.nf
+2019-09-16 14:25:34	2m 12s	gigantic_meucci	ERR	b86cd68f776aaf5bb5a6aa279f365a6d	9bfc80b3-b352-48d0-a70d-1cdc3468f867	nextflow run monocle.nf
+2019-09-16 16:45:14	1m 59s	desperate_sax	ERR	7f98a3c6a90cda8fe3fd7f4c2aeb7df8	cd5e8ea2-11ad-4604-9603-d2a3b19bbc20	nextflow run monocle.nf
+2019-09-16 17:03:22	-	soggy_khorana	-	47faa704912b157af955fa7e2e9671a3	9f4a65bb-fc0a-4da6-9de9-917fc994fe38	nextflow run monocle.nf
+2019-09-16 17:04:02	-	nostalgic_bhabha	-	47faa704912b157af955fa7e2e9671a3	06443b08-a801-40a1-9103-ba028cf3dd81	nextflow run monocle.nf
+2019-09-16 17:04:49	-	festering_kowalevski	-	1e94487babdea0439a2651cbc2b25c8a	a9949f3e-6f28-42e5-8dfe-687aeffcaca9	nextflow run monocle.nf
+2019-09-16 17:05:03	29.4s	magical_shaw	ERR	11e97f03335f29506f99aad2e6774c9f	1b31630c-c208-471c-94f7-a221aa985f4d	nextflow run monocle.nf
+2019-09-16 17:05:34	-	backstabbing_mendel	-	47faa704912b157af955fa7e2e9671a3	992e5a63-d841-41d0-a03e-234beafe7581	nextflow run monocle.nf
+2019-09-16 17:06:39	2m 1s	stoic_lamarck	ERR	b4de336e825d2360a077364c9bd08421	f5344d75-f0e2-4205-a28b-768cfbe7527b	nextflow run monocle.nf
+2019-09-16 17:12:39	2m 7s	fabulous_easley	ERR	f331388f0fad7a322d8d70537c17088c	40f54765-04ee-4dca-bf6c-5d4104325f15	nextflow run monocle.nf
+2019-09-16 17:18:26	-	scruffy_khorana	-	7e8a9369dca0feaf165dda8dd59cd33f	9acf37a5-19d4-4659-aed0-02128f9a754f	nextflow run monocle.nf
+2019-09-16 17:18:44	2m 2s	cheesy_hypatia	ERR	7e8a9369dca0feaf165dda8dd59cd33f	7ba9b7fe-f80d-485e-9521-35761435d98a	nextflow run monocle.nf
+2019-09-16 17:21:39	2m 6s	amazing_gutenberg	ERR	fd104739c14217b65128b58a1412771a	e821536f-00f6-4b84-b1cc-2284f1b015b0	nextflow run monocle.nf
+2019-09-16 17:26:10	36m 24s	crazy_gilbert	ERR	93901dd387c54fb3d73e52a042cb2499	2b2b4be3-c30c-4ca1-99ba-0e952007c03b	nextflow run monocle.nf
+2019-09-16 18:09:54	1m 58s	distraught_majorana	ERR	1b6fbeaeb7c3c0a6f53ee766e92f31e7	8b846323-c7f3-4fba-8aed-17cf5eca8e6f	nextflow run monocle.nf
+2019-09-16 18:19:54	2m 1s	reverent_lalande	ERR	76bfd1339c6fc3842261ba32e3d01c58	bd1118cf-eb82-4ed5-8036-4bc43bbe7f99	nextflow run monocle.nf
+2019-09-16 18:24:26	2m 2s	extravagant_swanson	ERR	52601f6aec8b0838e7fb2a7ddefdf17a	31bec067-0121-4be9-afa7-7640177050b4	nextflow run monocle.nf
+2019-09-16 18:28:31	3m 30s	drunk_borg	ERR	533fa275a37891f22f56eaa827d3f7bb	a905dadc-51d7-40f1-9434-fd5169e94420	nextflow run monocle.nf
+2019-09-16 18:42:21	47m 43s	jovial_sinoussi	ERR	7bce04ec1c1402dbedf46e906ffc204b	d1b4e4c8-726e-42f8-88b3-9f1866663228	nextflow run monocle.nf
+2019-09-17 07:23:27	-	cranky_thompson	-	7bce04ec1c1402dbedf46e906ffc204b	bf2251b1-37c6-4bfe-b592-c8e514f07344	nextflow run monocle.nf
+2019-09-17 07:25:42	-	infallible_rubens	-	7bce04ec1c1402dbedf46e906ffc204b	59fe7b21-d493-4401-af1b-9fc39138ae03	nextflow run monocle.nf
+2019-09-17 07:26:10	3m 49s	crazy_dubinsky	ERR	7bce04ec1c1402dbedf46e906ffc204b	4aea29a8-1e92-483f-a1fa-f7facba5368a	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:32:57	3m 15s	cheeky_meninsky	ERR	7bce04ec1c1402dbedf46e906ffc204b	dc1860a5-db0c-4bb6-8e15-50eb936bc923	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:35:23	5m 56s	pedantic_carlsson	ERR	7bce04ec1c1402dbedf46e906ffc204b	1dd35126-4987-4715-900d-1b670534355f	nextflow run monocle.nf
+2019-09-17 07:39:27	2m 45s	modest_newton	ERR	7bce04ec1c1402dbedf46e906ffc204b	060a2268-398d-4e47-a6b8-58ed1f5b566f	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:42:15	3m 32s	small_celsius	ERR	7bce04ec1c1402dbedf46e906ffc204b	6ae417aa-b4ed-494c-acb9-53b9cac14ea8	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:46:48	3m 23s	silly_davinci	ERR	7bce04ec1c1402dbedf46e906ffc204b	db5e2901-29da-4e0e-a866-468f50551694	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:50:44	1m 9s	crazy_leavitt	ERR	7bce04ec1c1402dbedf46e906ffc204b	1ebe9a7c-8265-497c-b47b-dfb36b6c39b4	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:52:42	1m 35s	fabulous_khorana	ERR	7bce04ec1c1402dbedf46e906ffc204b	f9814d80-4adf-4172-9ac0-555b7d1bda46	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:54:29	3s	sharp_saha	ERR	7bce04ec1c1402dbedf46e906ffc204b	49999ac1-71bb-4d0d-8ea4-88febe6c9796	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:54:41	3s	nauseous_bartik	ERR	7bce04ec1c1402dbedf46e906ffc204b	5a3c16aa-128f-4c31-a261-09c8b2a4aecb	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:55:10	3s	golden_wilson	ERR	7bce04ec1c1402dbedf46e906ffc204b	85b4095e-abe3-45aa-82ad-b8cdb5d04693	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:56:19	3s	romantic_jennings	ERR	7bce04ec1c1402dbedf46e906ffc204b	fd310a73-2f9f-415d-affa-cef035164cc1	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:57:13	3.2s	fervent_solvay	ERR	7bce04ec1c1402dbedf46e906ffc204b	d810a230-8464-4cf7-ba44-1a138b15cd6f	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+2019-09-17 07:58:07	7m 51s	agitated_curran	ERR	7bce04ec1c1402dbedf46e906ffc204b	dd75b58a-f8b6-40e6-90db-47b6e99811f4	nextflow run monocle.nf
+2019-09-17 08:02:01	11m	cheeky_goodall	OK	777590e75b8af1783466caf152031fbd	34bbb7fe-48e9-448e-918e-a4b67cc0ce21	nextflow run monocle.nf
+2019-09-17 08:20:27	3m 53s	extravagant_shirley	ERR	777590e75b8af1783466caf152031fbd	833df3a9-1d6f-43f8-97f8-8296fd921a29	nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'

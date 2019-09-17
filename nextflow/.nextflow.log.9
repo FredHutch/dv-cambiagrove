@@ -1,0 +1,197 @@
+Sep-17 07:54:28.922 [main] DEBUG nextflow.cli.Launcher - $> nextflow run monocle.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/test/work'
+Sep-17 07:54:29.033 [main] INFO  nextflow.cli.CmdRun - N E X T F L O W  ~  version 19.01.0
+Sep-17 07:54:29.046 [main] INFO  nextflow.cli.CmdRun - Launching `monocle.nf` [sharp_saha] - revision: 7bce04ec1c
+Sep-17 07:54:29.059 [main] DEBUG nextflow.config.ConfigBuilder - Found config local: /Users/zager/Documents/Projects/dv/dv-cambiagrove/nextflow/nextflow.config
+Sep-17 07:54:29.060 [main] DEBUG nextflow.config.ConfigBuilder - Parsing config file: /Users/zager/Documents/Projects/dv/dv-cambiagrove/nextflow/nextflow.config
+Sep-17 07:54:29.082 [main] DEBUG nextflow.config.ConfigBuilder - Applying config profile: `standard`
+Sep-17 07:54:29.591 [main] DEBUG nextflow.Session - Session uuid: 49999ac1-71bb-4d0d-8ea4-88febe6c9796
+Sep-17 07:54:29.592 [main] DEBUG nextflow.Session - Run name: sharp_saha
+Sep-17 07:54:29.592 [main] DEBUG nextflow.Session - Executor pool size: 12
+Sep-17 07:54:29.606 [main] DEBUG nextflow.cli.CmdRun - 
+  Version: 19.01.0 build 5050
+  Modified: 22-01-2019 11:19 UTC (03:19 PDT)
+  System: Mac OS X 10.14.6
+  Runtime: Groovy 2.5.5 on Java HotSpot(TM) 64-Bit Server VM 1.8.0_202-b08
+  Encoding: UTF-8 (UTF-8)
+  Process: 29387@Michaels-MacBook-Pro-7.local [192.168.1.19]
+  CPUs: 12 - Mem: 32 GB (8.3 GB) - Swap: 19 GB (1.7 GB)
+Sep-17 07:54:29.625 [main] DEBUG nextflow.file.FileHelper - Creating a file system instance for provider: S3FileSystemProvider
+Sep-17 07:54:29.629 [main] DEBUG nextflow.Global - Using AWS credentials defined by environment variables AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY
+Sep-17 07:54:29.630 [main] DEBUG nextflow.file.FileHelper - AWS S3 config details: {secret_key=4IDAKd.., region=us-west-2, access_key=AKIAYF..}
+Sep-17 07:54:30.288 [main] DEBUG nextflow.Session - Work-dir: s3://vis.fredhutch.singlecell.pipeline/test/work [Mac OS X]
+Sep-17 07:54:30.288 [main] DEBUG nextflow.Session - Script base path does not exist or is not a directory: /Users/zager/Documents/Projects/dv/dv-cambiagrove/nextflow/bin
+Sep-17 07:54:30.369 [main] DEBUG nextflow.Session - Session start invoked
+Sep-17 07:54:30.371 [main] DEBUG nextflow.processor.TaskDispatcher - Dispatcher > start
+Sep-17 07:54:30.371 [main] DEBUG nextflow.script.ScriptRunner - > Script parsing
+Sep-17 07:54:30.656 [main] DEBUG nextflow.script.ScriptRunner - > Launching execution
+Sep-17 07:54:30.819 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:30.819 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:30.824 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:30.826 [main] INFO  nextflow.executor.Executor - [warm up] executor > local
+Sep-17 07:54:30.829 [main] DEBUG n.processor.LocalPollingMonitor - Creating local task monitor for executor 'local' > cpus=12; memory=32 GB; capacity=12; pollInterval=100ms; dumpInterval=5m
+Sep-17 07:54:30.833 [main] DEBUG nextflow.processor.TaskDispatcher - Starting monitor: LocalPollingMonitor
+Sep-17 07:54:30.834 [main] DEBUG n.processor.TaskPollingMonitor - >>> barrier register (monitor: local)
+Sep-17 07:54:30.836 [main] DEBUG nextflow.executor.Executor - Invoke register for executor: local
+Sep-17 07:54:30.859 [main] DEBUG nextflow.Session - >>> barrier register (process: TENX_LOAD_PR)
+Sep-17 07:54:30.861 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > TENX_LOAD_PR -- maxForks: 12
+Sep-17 07:54:30.882 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:30.882 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:30.882 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:30.883 [main] DEBUG nextflow.Session - >>> barrier register (process: SEURAT_LOAD_PR)
+Sep-17 07:54:30.883 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > SEURAT_LOAD_PR -- maxForks: 12
+Sep-17 07:54:30.889 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:30.889 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:30.889 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:30.890 [main] DEBUG nextflow.Session - >>> barrier register (process: SEURAT_FILTERCELLS_PR)
+Sep-17 07:54:30.893 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2]
+Sep-17 07:54:30.899 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > SEURAT_FILTERCELLS_PR -- maxForks: 12
+Sep-17 07:54:30.904 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:30.904 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:30.904 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:30.904 [main] DEBUG nextflow.Session - >>> barrier register (process: SEURAT_NORMALIZE_PR)
+Sep-17 07:54:30.905 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2, 3]
+Sep-17 07:54:30.919 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > SEURAT_NORMALIZE_PR -- maxForks: 12
+Sep-17 07:54:30.925 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:30.925 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:30.925 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:31.055 [main] DEBUG nextflow.Session - >>> barrier register (process: SEURAT_VARIABLEGENES_PR)
+Sep-17 07:54:31.056 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2, 3, 4, 5, 6]
+Sep-17 07:54:31.056 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > SEURAT_VARIABLEGENES_PR -- maxForks: 12
+Sep-17 07:54:31.062 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:31.062 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:31.062 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:31.063 [main] DEBUG nextflow.Session - >>> barrier register (process: SEURAT_SCALEDATA_PR)
+Sep-17 07:54:31.064 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2, 3, 4, 5, 6, 7, 8]
+Sep-17 07:54:31.064 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > SEURAT_SCALEDATA_PR -- maxForks: 12
+Sep-17 07:54:31.068 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:31.068 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:31.068 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:31.068 [main] DEBUG nextflow.Session - >>> barrier register (process: SEURAT_PCA_PR)
+Sep-17 07:54:31.068 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2]
+Sep-17 07:54:31.068 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > SEURAT_PCA_PR -- maxForks: 12
+Sep-17 07:54:31.073 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:31.073 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:31.073 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:31.073 [main] DEBUG nextflow.Session - >>> barrier register (process: SEURAT_TSNE_PR)
+Sep-17 07:54:31.074 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2]
+Sep-17 07:54:31.074 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > SEURAT_TSNE_PR -- maxForks: 12
+Sep-17 07:54:31.077 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:31.077 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:31.077 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:31.078 [main] DEBUG nextflow.Session - >>> barrier register (process: CDS_LOAD_PR)
+Sep-17 07:54:31.078 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > CDS_LOAD_PR -- maxForks: 12
+Sep-17 07:54:31.080 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:31.081 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:31.081 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:31.081 [main] DEBUG nextflow.Session - >>> barrier register (process: MONOCLE3_PREPROCESS_PR)
+Sep-17 07:54:31.082 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2, 3]
+Sep-17 07:54:31.082 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > MONOCLE3_PREPROCESS_PR -- maxForks: 12
+Sep-17 07:54:31.085 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:31.086 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:31.086 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:31.086 [main] DEBUG nextflow.Session - >>> barrier register (process: MONOCLE3_REDUCEDIM_PR)
+Sep-17 07:54:31.086 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2]
+Sep-17 07:54:31.086 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > MONOCLE3_REDUCEDIM_PR -- maxForks: 12
+Sep-17 07:54:31.090 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:31.090 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:31.090 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:31.090 [main] DEBUG nextflow.Session - >>> barrier register (process: MONOCLE3_PARTITION_PR)
+Sep-17 07:54:31.091 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2, 3]
+Sep-17 07:54:31.091 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > MONOCLE3_PARTITION_PR -- maxForks: 12
+Sep-17 07:54:31.094 [main] DEBUG nextflow.processor.ProcessFactory - << taskConfig executor: null
+Sep-17 07:54:31.094 [main] DEBUG nextflow.processor.ProcessFactory - >> processorType: 'local'
+Sep-17 07:54:31.094 [main] DEBUG nextflow.executor.Executor - Initializing executor: local
+Sep-17 07:54:31.094 [main] DEBUG nextflow.Session - >>> barrier register (process: MONOCLE3_LEARNGRAPH_PR)
+Sep-17 07:54:31.095 [main] DEBUG nextflow.processor.TaskProcessor - Creating *combiner* operator for each param(s) at index(es): [1, 2, 3]
+Sep-17 07:54:31.095 [main] DEBUG nextflow.processor.TaskProcessor - Creating operator > MONOCLE3_LEARNGRAPH_PR -- maxForks: 12
+Sep-17 07:54:31.096 [main] DEBUG nextflow.script.ScriptRunner - > Await termination 
+Sep-17 07:54:31.096 [main] DEBUG nextflow.Session - Session await
+Sep-17 07:54:31.631 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-17 07:54:31.635 [Task submitter] INFO  nextflow.Session - [00/065cd0] Submitted process > TENX_LOAD_PR (1)
+Sep-17 07:54:31.641 [Task monitor] DEBUG n.processor.TaskPollingMonitor - Task completed > TaskHandler[id: 1; name: TENX_LOAD_PR (1); status: COMPLETED; exit: -; error: java.lang.UnsupportedOperationException; workDir: s3://vis.fredhutch.singlecell.pipeline/test/work/00/065cd0709d991b175e3f2dff95add6]
+Sep-17 07:54:31.692 [Task monitor] DEBUG nextflow.processor.TaskRun - Unable to dump output of process 'null' -- Cause: java.nio.file.NoSuchFileException: /var/folders/ll/c83r7z4134bfjfv1tp4dyl0h0000gn/T/temp-s3-3129177699940486961/.command.out
+Sep-17 07:54:31.721 [Task monitor] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /var/folders/ll/c83r7z4134bfjfv1tp4dyl0h0000gn/T/temp-s3-9003475377721164555/.command.err
+Sep-17 07:54:31.756 [Task monitor] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /var/folders/ll/c83r7z4134bfjfv1tp4dyl0h0000gn/T/temp-s3-3348741143948228656/.command.log
+Sep-17 07:54:31.757 [Task monitor] ERROR nextflow.processor.TaskProcessor - Error executing process > 'TENX_LOAD_PR (1)'
+
+Caused by:
+  java.lang.UnsupportedOperationException
+
+Command executed:
+
+  #!/usr/bin/env Rscript 
+  library(Matrix)
+  library(Seurat)
+  expression_matrix <- readRDS("exp.rds")
+  cell_metadata <- readRDS("col.rds")
+  gene_annotation <- readRDS("row.rds")
+  writeMM(expression_matrix, 'matrix.mtx')
+  write.table(row.names(cell_metadata), "barcodes.tsv", quote=FALSE, sep='	', row.names=F, col.names=F)
+  write.table(cell_metadata, "cells.tsv", quote=FALSE, sep='	', row.names=T, col.names=T)
+  write.table(gene_annotation, "genes.tsv", quote=FALSE, sep='	', row.names=T, col.names=F)
+
+Command exit status:
+  -
+
+Command output:
+  (empty)
+
+Work dir:
+  s3://vis.fredhutch.singlecell.pipeline/test/work/00/065cd0709d991b175e3f2dff95add6
+
+Tip: you can replicate the issue by changing to the process work dir and entering the command `bash .command.run`
+Sep-17 07:54:31.760 [Actor Thread 3] DEBUG nextflow.Session - <<< barrier arrive (process: TENX_LOAD_PR)
+Sep-17 07:54:31.760 [Actor Thread 9] DEBUG nextflow.Session - <<< barrier arrive (process: SEURAT_LOAD_PR)
+Sep-17 07:54:31.761 [Actor Thread 10] DEBUG nextflow.Session - <<< barrier arrive (process: SEURAT_FILTERCELLS_PR)
+Sep-17 07:54:31.761 [Actor Thread 10] DEBUG nextflow.Session - <<< barrier arrive (process: SEURAT_NORMALIZE_PR)
+Sep-17 07:54:31.761 [Actor Thread 10] DEBUG nextflow.Session - <<< barrier arrive (process: SEURAT_VARIABLEGENES_PR)
+Sep-17 07:54:31.762 [Actor Thread 10] DEBUG nextflow.Session - <<< barrier arrive (process: SEURAT_SCALEDATA_PR)
+Sep-17 07:54:31.762 [Actor Thread 10] DEBUG nextflow.Session - <<< barrier arrive (process: SEURAT_PCA_PR)
+Sep-17 07:54:31.762 [Actor Thread 10] DEBUG nextflow.Session - <<< barrier arrive (process: SEURAT_TSNE_PR)
+Sep-17 07:54:31.792 [Task monitor] DEBUG nextflow.Session - Session aborted -- Cause: Process `TENX_LOAD_PR (1)` failed
+Sep-17 07:54:31.810 [Task monitor] DEBUG nextflow.Session - The following nodes are still active:
+[process] MONOCLE3_PREPROCESS_PR
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: __$eachinparam<1>
+  port 2: (value) bound ; channel: __$eachinparam<2>
+  port 3: (value) bound ; channel: __$eachinparam<3>
+  port 4: (cntrl) -     ; channel: $
+
+[process] MONOCLE3_REDUCEDIM_PR
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: __$eachinparam<1>
+  port 2: (value) bound ; channel: __$eachinparam<2>
+  port 3: (cntrl) -     ; channel: $
+
+[process] MONOCLE3_PARTITION_PR
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: __$eachinparam<1>
+  port 2: (value) bound ; channel: __$eachinparam<2>
+  port 3: (value) bound ; channel: __$eachinparam<3>
+  port 4: (cntrl) -     ; channel: $
+
+[process] MONOCLE3_LEARNGRAPH_PR
+  status=ACTIVE
+  port 0: (queue) OPEN  ; channel: -
+  port 1: (value) bound ; channel: __$eachinparam<1>
+  port 2: (value) bound ; channel: __$eachinparam<2>
+  port 3: (value) bound ; channel: __$eachinparam<3>
+  port 4: (cntrl) -     ; channel: $
+
+Sep-17 07:54:31.836 [Task monitor] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /var/folders/ll/c83r7z4134bfjfv1tp4dyl0h0000gn/T/temp-s3-1041299077885101761/.command.err
+Sep-17 07:54:31.858 [Task submitter] DEBUG nextflow.executor.LocalTaskHandler - Launch cmd line: /bin/bash -ue .command.run
+Sep-17 07:54:31.858 [Task submitter] INFO  nextflow.Session - [d0/6ebf9d] Submitted process > CDS_LOAD_PR (1)
+Sep-17 07:54:31.891 [Task monitor] DEBUG nextflow.processor.TaskRun - Unable to dump output of process 'null' -- Cause: java.nio.file.NoSuchFileException: /var/folders/ll/c83r7z4134bfjfv1tp4dyl0h0000gn/T/temp-s3-4115491577071448346/.command.out
+Sep-17 07:54:31.893 [main] DEBUG nextflow.Session - Session await > all process finished
+Sep-17 07:54:31.893 [main] DEBUG nextflow.Session - Session await > all barriers passed
+Sep-17 07:54:31.893 [Task monitor] DEBUG n.processor.TaskPollingMonitor - <<< barrier arrives (monitor: local)
+Sep-17 07:54:31.964 [main] DEBUG nextflow.processor.TaskRun - Unable to dump error of process 'null' -- Cause: java.nio.file.NoSuchFileException: /var/folders/ll/c83r7z4134bfjfv1tp4dyl0h0000gn/T/temp-s3-1291407842523055760/.command.err
+Sep-17 07:54:31.999 [main] DEBUG nextflow.processor.TaskRun - Unable to dump output of process 'null' -- Cause: java.nio.file.NoSuchFileException: /var/folders/ll/c83r7z4134bfjfv1tp4dyl0h0000gn/T/temp-s3-2751427340420896343/.command.out
+Sep-17 07:54:32.001 [main] WARN  n.processor.TaskPollingMonitor - Killing pending tasks (1)
+Sep-17 07:54:32.005 [main] DEBUG nextflow.trace.StatsObserver - Workflow completed > WorkflowStats[succeedCount=0; failedCount=2; ignoredCount=0; cachedCount=0; succeedDuration=0ms; failedDuration=4ms; cachedDuration=0ms]
+Sep-17 07:54:32.010 [main] DEBUG nextflow.CacheDB - Closing CacheDB done
+Sep-17 07:54:32.012 [main] DEBUG nextflow.Session - AWS S3 uploader shutdown
+Sep-17 07:54:32.029 [main] DEBUG nextflow.script.ScriptRunner - > Execution complete -- Goodbye
