@@ -1,5 +1,4 @@
 const fs = require('fs');
-const _ = require('lodash');
 const lineByLine = require('n-readlines');
 const dataFolder = 'out/analysis/monocle3/';
 const createScale = (domainMin, domainMax, rangeMin, rangeMax) => {
