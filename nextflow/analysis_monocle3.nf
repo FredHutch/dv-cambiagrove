@@ -7,7 +7,7 @@ INPUT_CH = Channel.from([[
 
 process MONOCLE3_PREPROCESS_PR {
 
-  publishDir "$params.output.folder/analysis/monocle3"
+  // publishDir "$params.output.folder/analysis/monocle3"
   container "quay.io/biocontainers/monocle3-cli:0.0.3--py37r36hc9558a2_1"
 
   input:
@@ -31,7 +31,7 @@ process MONOCLE3_PREPROCESS_PR {
 
 process MONOCLE3_REDUCEDIM_PR {
 
-  publishDir "$params.output.folder/analysis/monocle3"
+  // publishDir "$params.output.folder/analysis/monocle3"
   container 'quay.io/biocontainers/monocle3-cli:0.0.3--py37r36hc9558a2_1'
 
   input:
@@ -40,10 +40,11 @@ process MONOCLE3_REDUCEDIM_PR {
     each steps from params.monocle3.reduce_dim.steps
 
   output:
-    set file("${ppid + '-'+ pid}.rds"), file("${ppid +'-'+ pid}.txt"), val(pid) into MONOCLE3_REDUCEDIM_CH
+    set file("${ppid + '-'+ pid}.rds"), file("${ppid +'-'+ pid}.txt"), val(pid), val(method) into MONOCLE3_REDUCEDIM_CH
 
   script:
     pid = UUID.randomUUID().toString().substring(0,7)
+    method = steps.split("-")[1]
 
   """
   preprocess=\$(echo ${steps} | cut -f1 -d-)
@@ -54,17 +55,46 @@ process MONOCLE3_REDUCEDIM_PR {
   """
 }
 
+process MONOCLE3_CLUSTER_PR {
+  //publishDir "$params.output.folder/analysis/monocle3"
+  container "quay.io/biocontainers/monocle3-cli:0.0.3--py37r36hc9558a2_1"
+
+  input:
+    set file("cds.rds"), file("ledger.txt"), val(ppid), val(method) from MONOCLE3_REDUCEDIM_CH
+    each resolution from params.monocle3.cluster.resolution
+    each k from params.monocle3.cluster.k
+    each louvain_iter from params.monocle3.cluster.louvain_iter
+    each partition_qval from params.monocle3.cluster.partition_qval
+    each weight from params.monocle3.cluster.weight
+  output:
+    set file("${ppid + '-'+ pid}.rds"), file("${ppid +'-'+ pid}.txt"), val(pid) into MONOCLE3_CLUSTER_CH
+
+  script:
+    pid = UUID.randomUUID().toString().substring(0,7)
+  
+  """
+  echo 'library(Matrix)' >> tmp.R
+  echo 'library(monocle3)' >> tmp.R
+  echo 'cds <- readRDS("cds.rds")' >> tmp.R
+  echo 'cds <- cluster_cells(cds, reduction_method="${method}", k=${k}, louvain_iter=${louvain_iter}, partition_qval=${partition_qval}, weight=${weight})' >> tmp.R
+  echo 'saveRDS(cds, "${ppid + '-'+ pid}.rds")' >> tmp.R
+  Rscript tmp.R
+  cat ledger.txt > ${ppid +'-'+ pid}.txt
+  echo "monocle3 cluster reduction_method="${method}" k=${k} louvain_iter=${louvain_iter} partition_qval=${partition_qval} weight=${weight}" >> ${ppid +'-'+ pid}.txt
+  """
+}
 process MONOCLE3_PARTITION_PR {
 
   publishDir "$params.output.folder/analysis/monocle3"
   container "quay.io/biocontainers/monocle3-cli:0.0.3--py37r36hc9558a2_1"
 
   input:
-    set file("cds.rds"), file("ledger.txt"), val(ppid) from MONOCLE3_REDUCEDIM_CH
+    set file("cds.rds"), file("ledger.txt"), val(ppid) from MONOCLE3_CLUSTER_CH
     each reduction_method from params.monocle3.partition.reduction_method
     each knn from params.monocle3.partition.knn
     each louvain_iter from params.monocle3.partition.louvain_iter
     each partition_qval from params.monocle3.partition.partition_qval
+
   output:
     set file("${ppid + '-'+ pid}.rds"), file("${ppid +'-'+ pid}.txt"), val(pid) into MONOCLE3_PARTITION_CH
 
@@ -104,6 +134,8 @@ process MONOCLE3_LEARNGRAPH_PR {
   """
 }
 
+  // rm *-${ppid}.rds
+  // rm *-${ppid}.txt
 /*
 process MONOCLE3_ORDERCELLS_PR {
 
