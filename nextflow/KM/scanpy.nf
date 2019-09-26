@@ -2,34 +2,37 @@
 
 
 INPUT_CH = Channel.from([[
+  file(params.input.exp),
+  file(params.input.col),
   file(params.input.row), 
-  file(params.input.col), 
-  file(params.input.exp), 
   UUID.randomUUID().toString().substring(0,7)
 ]])
 
-INPUT_CH.into {
-  ANNDATA_INPUT
-}
-
-process ANNDATA_LOAD {
+process ANNDATA_LOAD_PR {
 
   publishDir "$params.output.folder"
-  container "quay.io/biocontainers/seurat-scripts:0.0.5--r34_1"
+  container "quay.io/biocontainers/scanpy-scripts:0.2.4.post4--py_0"
 
   input:
-    set file('exp.rds'), file('col.rds'), file('row.rds'), val(ppid) from ANNDATA_INPUT
+    set file('matrix.mtx'), file('genes.tsv'), file('barcodes.tsv'), val(ppid) from INPUT_CH
 
   output:
-    set file('matrix.mtx'), file('barcodes.tsv'), file('cells.tsv'), file('genes.tsv'), val(pid) into ANNDATA_LOAD
+   file 'test2.txt'
 
   script:
     pid = UUID.randomUUID().toString().substring(0,7) 
 
   """
-  echo "HELLO" > test.txt
+  dir=\$('matrix.mtx' | head -n1 | tr -s ' ' | cut -d' ' -f5- | sed 's|/||')
+  scanpy-read-10x.py -d \${dir}/ -o matrix_raw.h5ad -F anndata
+
   """
+    
 }
+
+//ANNDATA_LOAD_CH.into{
+  //SCANPY_INPUT_CH
+//}
 
 // process read_10x {
     
