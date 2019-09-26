@@ -64,7 +64,7 @@ process MONOCLE3_EXTRACT_MTXATTR_PR {
 
   write.csv(colData(cds), row.names=TRUE, quote = FALSE, file = paste0("attr_col.csv"))
   write.csv(rowData(cds), row.names=TRUE, quote = FALSE, file = paste0("attr_row.csv"))
-  count <- as(counts(cds), "dgTMatrix")
+  count <- t(as(counts(cds), "dgTMatrix"))
   count_df <- data.frame(r = count@i, c = count@j, v = count@x)
   write.csv(count_df, row.names=FALSE, quote = FALSE, file = paste0("mtx_", count@Dim[[1]], '_by_',count@Dim[[2]],'_sparse.csv'))
   """
