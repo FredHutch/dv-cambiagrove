@@ -8,6 +8,7 @@ INPUT_DR_CH = Channel.create();
 INPUT_MTX_CH = Channel.create();
 INPUT_JSON_CH = Channel.create();
 INPUT_ATTR_CH = Channel.create();
+INPUT_VE_CH = Channel.create(); 
 
 process OPTIMIZE_FILES_PR {
 
@@ -31,7 +32,10 @@ process OPTIMIZE_FILES_PR {
           INPUT_MTX_CH << [folderpath, foldername, item.name, item]
         }
         if (item.name.equals('variance_explained.csv')) {
-          // INPUT_JSOM_CH << [folderpath, foldername, item.name, item]
+          INPUT_VE_CH << [folderpath, foldername, item.name, item]
+        }
+        if (prefix.equals("json")) {
+          INPUT_JSOM_CH << [folderpath, foldername, item.name, item]
         }
         if (prefix.equals("attr")) {
           INPUT_ATTR_CH << [folderpath, foldername, item.name, item]
@@ -39,22 +43,44 @@ process OPTIMIZE_FILES_PR {
     }
 
     """
+    echo "Proxy for saving and forking - Nothing to execute"
     """
 }
 process OPTIMIZE_MTX_PR {
-  publishDir "$params.output.folder/optimize/$foldername"
+  publishDir "$params.output.folder/optimize/$foldername/mtx"
   container "zager/nodeflow:1"
 
   input:
-    set folderpath, foldername, filename, file('dr.csv') from INPUT_MTX_CH
+    set folderpath, foldername, filename, file('mtx.csv') from INPUT_MTX_CH
 
-  ouput:
-    'info.txt'
+  output:
+    file 'obs_*'
 
   """
   #!node
   const fs = require('fs');
-  
+  const lineByLine = require('/usr/src/app/node_modules/n-readlines');
+  let obs = 0;
+  let liner = new lineByLine(`mtx.csv`);
+  liner.next(); // Column Names
+  const data = [];
+  while ((line = liner.next())) {
+    const values = line.toString().split(",").map(parseFloat)
+    if (obs !== values[0]) {
+
+      // Write File
+      const buffer = new ArrayBuffer( values.length * Float32Array.BYTES_PER_ELEMENT );
+      const dataView = new DataView(buffer);
+      values.foreach( (v, i) => { 
+        dataView.setFloat32(i * Float32Array.BYTES_PER_ELEMENT, v, true);
+      });
+      fs.writeFileSync("obs_"+obs.toString()+".bin", new Uint8Array(dataView.buffer) );
+      // Clear Array
+      data.length = 0;
+      obs = values[0];
+    }
+    data.push(values[1], values[2])
+  }
   """
   
 }

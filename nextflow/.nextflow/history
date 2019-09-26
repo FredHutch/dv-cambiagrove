@@ -1,0 +1,21 @@
+2019-09-26 06:45:15	2m 13s	focused_swanson	OK	8446c83eea31d618cfbb430b9d3cbbbe	dcbce54a-d3c1-4faf-9582-442f7813a3fc	nextflow run import_rds.nf
+2019-09-26 06:50:10	5m 21s	kickass_pasteur	OK	d6ff31a55f6f43cec5e918cff8495305	31c4bd68-73b6-48e3-b989-9364c6d61a88	nextflow run analysis_monocle3.nf
+2019-09-26 07:06:36	2m 2s	big_elion	OK	7748e13a926f3ef1e94be47d0ed79eef	7c4e2236-85a2-4367-a3f5-91e98a7d521e	nextflow run export_monocle3.nf
+2019-09-26 07:11:31	-	thirsty_almeida	-	d4df4f9a9d9f991d2f6f2842d507ba2e	588f3b74-4ca6-47a3-bdf8-e82f91ebebb9	nextflow run optimize_monocle3.nf
+2019-09-26 07:19:04	8m 10s	jovial_shockley	ERR	7235cc1990485599cb032c647d2307f6	60678f2d-7c3f-4634-b276-38ee806232bd	nextflow run optimize_monocle3.nf
+2019-09-26 07:27:17	1h 27m 52s	distraught_ampere	ERR	40decbaeecfae1b4b8ff41212d78d3c6	26fd851c-a31e-4880-abe4-283480dcacc6	nextflow run optimize_monocle3.nf
+2019-09-26 08:55:12	-	extravagant_lichterman	-	5cd424e7a47ee8831c4b83a80f2d0d78	bd9cac3b-b667-455f-aa9e-3eda72967d0b	nextflow run optimize_monocle3.nf
+2019-09-26 08:55:27	-	fervent_chandrasekhar	-	ecaee47bbcd7bf270940ad05b68a4ec6	6745363a-effc-4c94-87aa-0f8e53654cdc	nextflow run optimize_monocle3.nf
+2019-09-26 08:55:55	-	nice_sanger	-	ecaee47bbcd7bf270940ad05b68a4ec6	70e01401-b1cc-4cce-beb1-4fcfaf3ab972	nextflow run optimize_monocle3.nf
+2019-09-26 08:56:02	5.2s	romantic_hamilton	ERR	a68b8ddc92ffde2f7f98987789335783	c8eaa26c-011d-4e76-8750-346a848261ea	nextflow run optimize_monocle3.nf
+2019-09-26 08:56:35	4.2s	sharp_nobel	ERR	c5b36823aa72b38366da4eacfe0e69c5	b6eea4bc-138b-4532-aa56-8fe60b2d2d80	nextflow run optimize_monocle3.nf
+2019-09-26 08:57:07	9.3s	curious_lavoisier	ERR	14f07668213d72229d0a671d0378fa9d	b6af217e-1962-4ba1-a652-fadcae0fa0b5	nextflow run optimize_monocle3.nf
+2019-09-26 08:58:30	6.5s	berserk_williams	ERR	da2cdddedda78000bdd2fd16a6ee2d5b	d84ba11d-5f8b-4b88-a667-af1e65194092	nextflow run optimize_monocle3.nf
+2019-09-26 08:59:01	18.4s	furious_hopper	ERR	d94d5d163c5e05e112e80570cff7fda6	69f956f8-e72e-4c39-a5a4-6506cc0d229d	nextflow run optimize_monocle3.nf
+2019-09-26 10:33:05	786ms	reverent_colden	ERR	a7fc8d194d150fcaa05838f2f1c1226f	c2bca209-cb0c-4362-a278-1283f5d4a08c	nextflow run optimize_monocle3.nf
+2019-09-26 10:33:35	4.3s	clever_brattain	ERR	2c4a1b75046ae90e2db94281675d848a	4ab38961-c964-42e5-9eeb-19db482cdba4	nextflow run optimize_monocle3.nf
+2019-09-26 10:36:48	12.8s	adoring_leakey	ERR	78c935c0d2ef2091b743b493ec31e2ef	6b2b134e-ce77-45e3-ab6e-79b97d3ca360	nextflow run optimize_monocle3.nf
+2019-09-26 10:37:27	6m 17s	gloomy_aryabhata	ERR	2c5c6818b86f5674d9c09a91d35e9ea8	faf04f92-2273-439a-9c20-5a94a2a1a38e	nextflow run optimize_monocle3.nf
+2019-09-26 10:44:09	46.6s	happy_kimura	ERR	def47dc516def765f57e0c9bbb80f897	04118c4f-7c32-4827-b710-4f0d9e6db98e	nextflow run optimize_monocle3.nf
+2019-09-26 10:45:16	1h 51m 36s	suspicious_celsius	ERR	def47dc516def765f57e0c9bbb80f897	5c9b9ca0-66f0-41b7-8cdc-358319cf29d5	nextflow run optimize_monocle3.nf
+2019-09-26 12:36:55	1m 49s	elated_boyd	ERR	def47dc516def765f57e0c9bbb80f897	f9555381-d9c8-4746-bdba-3f6fcf5536d3	nextflow run optimize_monocle3.nf
