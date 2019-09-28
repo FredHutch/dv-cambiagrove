@@ -66,6 +66,7 @@ process MONOCLE3_CLUSTER_PR {
     each louvain_iter from params.monocle3.cluster.louvain_iter
     each partition_qval from params.monocle3.cluster.partition_qval
     each weight from params.monocle3.cluster.weight
+    
   output:
     set file("${ppid + '-'+ pid}.rds"), file("${ppid +'-'+ pid}.txt"), val(pid) into MONOCLE3_CLUSTER_CH
 
