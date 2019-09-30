@@ -1,0 +1,11 @@
+FROM rocker/r-base
+
+RUN apt-get update && \
+  apt-get install -y libcurl4-openssl-dev libssl-dev libssh2-1-dev libxml2-dev && \
+  R -e "install.packages(c('devtools', 'testthat', 'roxygen2', 'Seurat'))"
+
+COPY install.R ./
+RUN R -f install.R
+
+COPY pkgs.R ./
+RUN R -f pkgs.R
