@@ -1,8 +1,0 @@
-{
-    "dependencies": {
-        "aws-sdk": ">= 2.0.9",
-        "json2yaml": "^1.1.0",
-        "node-uuid": ">= 1.4.1",
-        "yamljs": "^0.3.0"
-    }
-}
