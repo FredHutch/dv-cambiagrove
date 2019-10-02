@@ -135,9 +135,8 @@ process MONOCLE3_LEARNGRAPH_PR {
   """
 }
 
-  // rm *-${ppid}.rds
-  // rm *-${ppid}.txt
 /*
+These methods will need to ve 
 process MONOCLE3_ORDERCELLS_PR {
 
   publishDir "$params.output.folder/analysis/monocle3"

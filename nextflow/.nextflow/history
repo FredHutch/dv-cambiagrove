@@ -1,0 +1,93 @@
+2019-09-30 11:25:03	2m 58s	thirsty_goldberg	OK	0e4b272215385bb5faf2ec47d71a0aa4	fd0a1d9c-7bfd-410e-99b3-835a6d3eed62	nextflow run import_rds.nf
+2019-09-30 11:30:08	-	elegant_varahamihira	-	5c3f3e5163be089601d8853633189a67	fb50379c-81ff-488c-bb17-5914fabfc555	nextflow run analysis_seurat.nf
+2019-09-30 11:31:14	4.8s	extravagant_bhabha	ERR	08facc1200669dc56200f51e6ba8f995	c8e06102-8dfd-4f59-90aa-ea2252b2df1e	nextflow run analysis_seurat.nf
+2019-09-30 11:31:26	2.4s	magical_wescoff	ERR	e09d45b64e549a136f8becf54a886c1e	c60ff31f-8487-40ad-bb4e-81b8d1dc144c	nextflow run analysis_seurat.nf
+2019-09-30 11:33:01	8.3s	nice_ptolemy	ERR	9889f066c715bb30032e49d47df281d7	31bd4a58-fd20-45ca-91b1-b299466ad2d6	nextflow run analysis_seurat.nf
+2019-09-30 11:33:20	-	trusting_watson	-	5c3f3e5163be089601d8853633189a67	48c648ed-88da-404c-ad18-93d9dd6f1989	nextflow run analysis_seurat.nf
+2019-09-30 11:33:32	5.5s	agitated_miescher	ERR	9889f066c715bb30032e49d47df281d7	75e61782-9289-4223-a687-165ed221b409	nextflow run analysis_seurat.nf
+2019-09-30 11:33:55	13.8s	cheesy_lalande	ERR	49207b842a53d354ae56a4cc94a0f582	caec9f5e-8cfa-40bc-8bb7-c1559a344b3a	nextflow run analysis_seurat.nf
+2019-09-30 11:34:23	3s	tiny_elion	ERR	605c7a1bcd9a229b40944e52a08673c8	0b25034d-0a36-4ff4-a3d6-e1c63e1fadb9	nextflow run analysis_seurat.nf
+2019-09-30 11:34:37	3s	grave_woese	ERR	59e2d389f5e28e9ef5cfce3ccd7ef166	154f4833-2adb-44dd-93f8-4fb917bbc104	nextflow run analysis_seurat.nf
+2019-09-30 11:34:56	-	fervent_sammet	-	20763be5f1c8c6d549e0c10f06d258b5	ce722e32-439c-44d1-9098-a5131c6f880f	nextflow run analysis_seurat.nf
+2019-09-30 11:35:06	52.4s	friendly_poitras	ERR	bb83220157ee8f555f4945088156cf92	b637facc-21ef-49ab-be49-1ede8ccea828	nextflow run analysis_seurat.nf
+2019-09-30 11:36:10	-	stoic_engelbart	-	5c3f3e5163be089601d8853633189a67	79bbd843-1a54-448e-b462-cbf9d7d6e4d3	nextflow run analysis_seurat.nf
+2019-09-30 11:36:31	-	dreamy_lamport	-	9d0ce00a693eae20347509082a16f5eb	0f307425-e71c-4410-b8a9-dd6d17352907	nextflow run analysis_seurat.nf
+2019-09-30 11:36:43	10m 48s	grave_leavitt	ERR	3c77cebf53b0614bff2aedb647d33616	9c04128b-2a8b-4bd6-9570-934d40b61c91	nextflow run analysis_seurat.nf
+2019-09-30 11:49:27	-	romantic_morse	-	3820f065b8cf50973e6da98549b1c65b	dfe98518-739a-4f5d-956f-37b4d920b8b0	nextflow run analysis_seurat.nf
+2019-09-30 11:50:05	-	scruffy_lamport	-	3820f065b8cf50973e6da98549b1c65b	f721cb1a-9d9b-4a6a-a9e1-d44b5d3f4bce	nextflow run analysis_seurat.nf '--work-dir=s3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 11:52:30	-	prickly_ramanujan	-	3820f065b8cf50973e6da98549b1c65b	aed092e9-370c-443d-bbe4-8fb628a38f3b	nextflow run analysis_seurat.nf '--work-dir=s3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 11:53:24	-	extravagant_agnesi	-	3820f065b8cf50973e6da98549b1c65b	0321ffd7-acd1-42c2-af9b-0a8b5ad687e3	nextflow run analysis_seurat.nf
+2019-09-30 11:53:45	-	desperate_wescoff	-	3820f065b8cf50973e6da98549b1c65b	81b0c587-3747-4600-8b5a-dd1c2f384b5e	nextflow run analysis_seurat.nf
+2019-09-30 11:53:57	-	big_engelbart	-	3820f065b8cf50973e6da98549b1c65b	a6dbee80-f4bf-46a8-bc89-f35b0ab26ca9	nextflow run analysis_seurat.nf
+2019-09-30 11:54:10	2.5s	shrivelled_hodgkin	ERR	3820f065b8cf50973e6da98549b1c65b	64af7c72-6cf6-482c-b90d-574c8923c430	nextflow run analysis_seurat.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 11:54:23	2.4s	zen_dijkstra	ERR	3820f065b8cf50973e6da98549b1c65b	86516e58-fe4b-41ee-975e-14a982133ffc	nextflow run analysis_seurat.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 11:54:46	-	scruffy_carlsson	-	3820f065b8cf50973e6da98549b1c65b	73983be6-2e4f-4f4d-bc4a-d72024a641f1	nextflow run analysis_seurat.nf '--work-dir=s3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:04:26	3.2s	reverent_mccarthy	ERR	3820f065b8cf50973e6da98549b1c65b	607b83b9-a87a-4583-b79a-269c1456c448	nextflow run analysis_seurat.nf -w 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:04:55	4m 3s	nostalgic_panini	ERR	3820f065b8cf50973e6da98549b1c65b	7ffdd062-97f5-4ce5-9802-cdaaf4b54c2a	nextflow run analysis_seurat.nf -w 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:28:43	56.2s	focused_lichterman	ERR	0e4b272215385bb5faf2ec47d71a0aa4	f78d09e9-62be-45b0-8664-4a0b636d7dd6	nextflow run import_rds.nf -w 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:29:49	3m 52s	scruffy_lichterman	ERR	0e4b272215385bb5faf2ec47d71a0aa4	caa5d42e-3b79-48f9-b3c2-d41ace487663	nextflow run import_rds.nf -w 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:34:20	31.9s	suspicious_stonebraker	ERR	0e4b272215385bb5faf2ec47d71a0aa4	494c9f02-f42d-4f0e-9292-1c4b96a1935b	nextflow run import_rds.nf -w 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:35:46	31.8s	angry_swirles	ERR	0e4b272215385bb5faf2ec47d71a0aa4	106bf6b6-5594-4880-bf14-555089c2a5c9	nextflow run import_rds.nf -w 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:36:46	32.4s	modest_hypatia	ERR	0e4b272215385bb5faf2ec47d71a0aa4	2f03af23-d95f-47b1-a0b7-05a8c8f84275	nextflow run import_rds.nf -w 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:38:42	52.1s	distraught_nobel	ERR	0e4b272215385bb5faf2ec47d71a0aa4	f06cb0fc-ffd5-494e-a529-e36a9a9f04c6	nextflow run import_rds.nf -w 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:40:30	2.3s	disturbed_dalembert	ERR	0e4b272215385bb5faf2ec47d71a0aa4	6631a768-f969-4921-8b70-b765168c1f94	nextflow run import_rds.nf -w 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 12:40:44	2m 48s	jolly_lorenz	OK	0e4b272215385bb5faf2ec47d71a0aa4	c2ec8871-668a-4db6-9164-fddcb3393efa	nextflow run import_rds.nf
+2019-09-30 12:44:55	1m 56s	berserk_ramanujan	ERR	0e4b272215385bb5faf2ec47d71a0aa4	2f556917-d7b0-4fbc-b31f-57ba1862c20e	nextflow run import_rds.nf
+2019-09-30 12:46:55	-	festering_fourier	-	0e4b272215385bb5faf2ec47d71a0aa4	ae53febf-11b5-4ea4-9779-42b1cc4221ff	nextflow run import_rds.nf
+2019-09-30 12:47:20	7m 52s	serene_laplace	ERR	0e4b272215385bb5faf2ec47d71a0aa4	d9355c8b-b7f1-430d-9ed3-230d2ba7e563	nextflow run import_rds.nf -work-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 14:04:42	3m 53s	awesome_bose	ERR	0e4b272215385bb5faf2ec47d71a0aa4	70e7c1a8-c3a1-40ce-bb5c-fd18e680a87e	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 14:33:48	1.2s	distracted_swartz	ERR	afec34dcd3e114da3f6c90b7684c087c	c6608db0-f1fb-4dde-9e89-6db1f7d829bb	nextflow run analysis_scanpy.nf
+2019-09-30 14:34:11	34s	irreverent_wing	ERR	e684d434c59573e03fb58d6251b89e41	a1c2716e-a3f4-4b3f-bb6c-1f0001e43de6	nextflow run analysis_scanpy.nf
+2019-09-30 14:41:55	8.6s	serene_almeida	ERR	d2e9af61c49b71925b6b6b46fc0f4160	1924b514-92a6-4a97-ade0-188400a85be3	nextflow run analysis_scanpy.nf
+2019-09-30 14:43:03	38.8s	cheeky_mercator	ERR	57f950957640fd69a2de71e3f1bd0ec8	28fcdce3-b198-4740-a56e-2b39640d1ace	nextflow run analysis_scanpy.nf
+2019-09-30 14:44:59	8s	tender_spence	ERR	16f513ba93c2578baddd946b6c2994b1	c33a2d6e-5cb1-47e2-82b8-670523d616a7	nextflow run analysis_scanpy.nf
+2019-09-30 14:45:30	6.8s	tiny_mahavira	OK	908257e8a4d3247ec0551bf1f4e570a7	e8e41636-370d-4f1e-abf5-c645064cb81f	nextflow run analysis_scanpy.nf
+2019-09-30 14:47:28	4.9s	gloomy_panini	ERR	4c470a7feb6e1e8702510fb4949a4090	502c3370-2a93-45cc-87d0-fe6450cf85f0	nextflow run analysis_scanpy.nf
+2019-09-30 14:51:36	5.4s	stoic_cuvier	ERR	fc462efcbb3df6eb3d90694dc9d7fa6e	082c437f-2f23-4836-be03-1c3b4638d613	nextflow run analysis_scanpy.nf
+2019-09-30 14:54:06	5.1s	thirsty_carlsson	ERR	19f8213692385205d9e507f705727f46	a473c9ec-0146-4a10-b87b-029c74030dee	nextflow run analysis_scanpy.nf
+2019-09-30 14:59:06	20s	soggy_knuth	ERR	0e4b272215385bb5faf2ec47d71a0aa4	ff4dbda1-286f-4754-b41b-de85f6bf800e	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 14:59:37	3m 41s	disturbed_avogadro	ERR	0e4b272215385bb5faf2ec47d71a0aa4	a34d903f-65be-4a7c-9231-c309cd3d43eb	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 15:03:19	2m 42s	chaotic_pike	ERR	0e4b272215385bb5faf2ec47d71a0aa4	507f8bbe-b82c-4c00-81dd-a9c2eb716609	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 15:11:16	16m 2s	boring_pike	ERR	0e4b272215385bb5faf2ec47d71a0aa4	2aae7faf-e0e1-4695-a1c5-7380100c615f	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 15:13:11	5.3s	lonely_church	ERR	1a7594fa4559c945af715ed99d0ff981	0d64d0f3-0c95-4234-b685-be8fb26cc18f	nextflow run analysis_scanpy.nf
+2019-09-30 15:15:55	2.8s	astonishing_sanger	ERR	e6b66a07c666e0b0b780572ac1bffb0b	5230233a-a439-41bc-b96e-c3cd385db3cc	nextflow run analysis_scanpy.nf
+2019-09-30 15:23:11	17.9s	agitated_carson	ERR	0e4b272215385bb5faf2ec47d71a0aa4	dad13156-976e-4e67-a7bc-35e52f3d689c	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-09-30 15:23:46	4m 22s	insane_meitner	ERR	0e4b272215385bb5faf2ec47d71a0aa4	51b4ab5f-d35b-4f91-845f-c05257297cff	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-10-01 06:25:09	5m 13s	condescending_volhard	ERR	0e4b272215385bb5faf2ec47d71a0aa4	9503ab6b-dbc3-4281-b881-1e4a25a93d02	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-10-01 07:05:49	5m 52s	adoring_hoover	ERR	0e4b272215385bb5faf2ec47d71a0aa4	32babe0a-6800-4614-aff6-ed24987be1cd	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-10-01 07:15:45	5m 51s	disturbed_swanson	OK	0e4b272215385bb5faf2ec47d71a0aa4	d3cfb3cc-14b1-41f2-8957-fe29422d1597	nextflow run import_rds.nf -bucket-dir 's3://vis.fredhutch.singlecell.pipeline/work'
+2019-10-01 11:35:39	5.9s	angry_banach	ERR	e6b66a07c666e0b0b780572ac1bffb0b	3b723fc3-036d-4db6-83df-95830dd4f1f5	nextflow run analysis_scanpy.nf
+2019-10-01 11:36:42	9.3s	silly_murdock	ERR	e6b66a07c666e0b0b780572ac1bffb0b	ed0b4610-fe6c-45c4-94aa-9ca3da92069a	nextflow run analysis_scanpy.nf
+2019-10-01 11:37:10	5s	special_easley	ERR	2a641b4d46fb8a44931ab6ffa82f60da	e516c2ef-aad3-4b3a-a627-3bc2ec81590a	nextflow run analysis_scanpy.nf
+2019-10-01 11:37:32	4.2s	backstabbing_rubens	ERR	9a7d4c02e9a5cfb858aea0fd561c3605	d259e4e7-9747-41c8-ad0e-aa90063ecf3c	nextflow run analysis_scanpy.nf
+2019-10-01 11:39:01	4.5s	focused_caravaggio	ERR	646ff1f001876d21d4c22cb02a8b1e79	b4754570-c818-4d36-ac0b-dfecffed49dd	nextflow run analysis_scanpy.nf
+2019-10-01 11:51:13	5.7s	naughty_pare	ERR	e6b66a07c666e0b0b780572ac1bffb0b	4a74c4b1-1729-4e18-9044-e26f545b2d8e	nextflow run analysis_scanpy.nf
+2019-10-01 14:09:54	59s	scruffy_euclid	ERR	0e4b272215385bb5faf2ec47d71a0aa4	1c8b19b1-3190-40d7-8abf-8b984f4225b2	nextflow run main.nf
+2019-10-01 14:10:55	19.7s	nasty_stone	ERR	0e4b272215385bb5faf2ec47d71a0aa4	84068983-4fef-480e-95e1-3302cd5a3acc	nextflow run main.nf
+2019-10-01 14:11:43	1m 33s	sleepy_kowalevski	ERR	0e4b272215385bb5faf2ec47d71a0aa4	2ffc6a10-a1ba-4841-bfee-ee39da8311bb	nextflow run main.nf
+2019-10-01 14:14:56	2m 34s	peaceful_koch	ERR	0e4b272215385bb5faf2ec47d71a0aa4	1abe20f0-a9e6-4147-bb2f-25a169edd0e8	nextflow run main.nf
+2019-10-02 11:15:39	3.5s	zen_shockley	ERR	7c13fb139905f7086b0c51932dace0b3	6e8a443e-2f27-4da4-96a6-4f618b2c8cc1	nextflow run analysis_scanpy.nf
+2019-10-02 11:16:44	2.5s	festering_archimedes	ERR	f12269536ddc8b020f708491137e13ae	6c24d2ca-b7ff-4849-aa48-f9bead316a08	nextflow run analysis_scanpy.nf
+2019-10-02 11:17:13	2.4s	evil_roentgen	ERR	0ce93fe142bad02f820bf1461f285ae0	9cc07170-2495-422e-8b5e-8637a0536fd5	nextflow run analysis_scanpy.nf
+2019-10-02 11:17:32	2.7s	zen_baekeland	ERR	644526601bd3b30816e01a5236319dc2	d7e4b187-e70e-4534-b7a8-1cce3d6cc4f0	nextflow run analysis_scanpy.nf
+2019-10-02 11:17:50	2.8s	infallible_hopper	ERR	7582f9481605c02949199c42c1c43e47	c6cb512d-62f7-4c16-9206-ac0d23b5291b	nextflow run analysis_scanpy.nf
+2019-10-02 11:21:27	2.7s	gloomy_kirch	ERR	75f2b79be8cab32c26edeba339854356	636459af-6024-4d6d-8dd9-c9363f28b93b	nextflow run analysis_scanpy.nf
+2019-10-02 11:26:25	3.1s	dreamy_poincare	ERR	7582f9481605c02949199c42c1c43e47	71121b5a-2507-49f3-a001-7b9af8b53e41	nextflow run analysis_scanpy.nf
+2019-10-02 11:32:41	2.9s	peaceful_leakey	ERR	0ce93fe142bad02f820bf1461f285ae0	bfcdb260-e741-480b-a531-f7f1b3146ca4	nextflow run analysis_scanpy.nf
+2019-10-02 11:32:58	3.2s	astonishing_church	ERR	77d813584512f0fbdc060d4fa2e66e28	7681573d-d90a-49c0-96d2-97b9451478d0	nextflow run analysis_scanpy.nf
+2019-10-02 12:03:18	3.7s	suspicious_varahamihira	ERR	3820f065b8cf50973e6da98549b1c65b	e245134b-d895-4658-88e8-e2382147aa97	nextflow run analysis_seurat.nf
+2019-10-02 12:04:29	3.3s	scruffy_hypatia	ERR	3820f065b8cf50973e6da98549b1c65b	980981e4-b7f1-4890-b291-e70a7194153a	nextflow run analysis_seurat.nf
+2019-10-02 12:04:49	2.6s	voluminous_monod	ERR	3b3c67b72e3b33fe30659066ef2c4c24	0fb99836-5ee3-4cb2-83b1-5a86d655f28a	nextflow run analysis_scanpy.nf
+2019-10-02 12:05:40	33.7s	marvelous_majorana	ERR	3b3c67b72e3b33fe30659066ef2c4c24	af0ff1bc-96ee-4514-af92-6e7299bfd35f	nextflow run analysis_scanpy.nf
+2019-10-02 12:06:37	5.4s	determined_lamport	ERR	3b3c67b72e3b33fe30659066ef2c4c24	ced2c9cc-963d-4642-b57d-81ae3396cfe9	nextflow run analysis_scanpy.nf
+2019-10-02 12:15:02	9.3s	stoic_linnaeus	ERR	309c6ab108725e68ac57da5a3f7e1dbd	a383393b-9fa3-409f-91a5-b5bebe57e85f	nextflow run analysis_scanpy.nf
+2019-10-02 12:32:26	10.7s	romantic_wright	ERR	d77fa1c1350046d7e262c9cb8eac2ccf	208b0120-693c-49ea-85bf-aeea5100e9f7	nextflow run analysis_scanpy.nf
+2019-10-02 12:33:35	5.1s	loving_varahamihira	ERR	d77fa1c1350046d7e262c9cb8eac2ccf	ee7d469c-38de-46b3-88ef-bb1e09b82895	nextflow run analysis_scanpy.nf
+2019-10-02 12:34:00	12.2s	cheeky_mandelbrot	OK	a9131fa5ffec4d4af2a915eff53768b2	4b1b5521-6e4f-4b25-8ef1-12e3ec9a0c04	nextflow run analysis_scanpy.nf
+2019-10-02 12:37:34	5s	marvelous_brattain	ERR	747a88d02c6d02beb8524a837a69d5a4	edaf8db6-4434-4caf-9b23-99c922527953	nextflow run analysis_scanpy.nf
+2019-10-02 12:38:11	5.1s	compassionate_laplace	ERR	ae6b41aadcb3493b1f1476d5f10cab6a	6c019f75-6bea-4dcb-84f4-ac7a8dcc7b61	nextflow run analysis_scanpy.nf
+2019-10-02 12:38:47	4.7s	scruffy_sax	ERR	ae6b41aadcb3493b1f1476d5f10cab6a	8e64bd54-0646-4260-b9bb-c364bb72239a	nextflow run analysis_scanpy.nf
+2019-10-02 12:39:08	5.2s	adoring_curie	ERR	4584d71828129643cb79ecd46ce3ddf7	0485da1d-059e-47cf-bc00-907374491bd8	nextflow run analysis_scanpy.nf
+2019-10-02 12:50:55	39.8s	extravagant_wescoff	ERR	d0db48b2749f60ea2ad8965f1fffeb1c	657d17f1-a524-4bdd-8516-ae7aecfd8cc4	nextflow run analysis_scanpy.nf
+2019-10-02 12:52:12	21.3s	clever_dijkstra	OK	9f42aa714ccafd6c8fad118623e4970a	8b203a78-eb03-4b7c-9181-2d02a5031281	nextflow run analysis_scanpy.nf
+2019-10-02 12:52:40	24s	suspicious_torricelli	OK	9f42aa714ccafd6c8fad118623e4970a	d00fab04-74ca-46d8-9ff7-8a877a44a19f	nextflow run analysis_scanpy.nf

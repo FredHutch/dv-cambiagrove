@@ -59,6 +59,7 @@ process CDS3 {
 }
 
 process SCANPY_PR {
+
   publishDir "$params.output.folder/format/h5ad"
   container "quay.io/biocontainers/scanpy-scripts:0.0.3--py37_1"
 
@@ -75,14 +76,14 @@ process SCANPY_PR {
 
 process SEURAT_PR {
 
-  publishDir "$params.output.folder/format/seurat"
+  publishDir "$params.output.folder/format/seurat/v2"
   container "quay.io/biocontainers/seurat-scripts:0.0.5--r34_1"
 
   input:
     set file('matrix.mtx'), file('barcodes.tsv'), file('cells.tsv'), file('genes.tsv') from SEURAT_INPUT_CH
 
   output:
-    file "data.rds" into SEURAT_LOAD_CH into SEURAT_LOAD_CH
+    file "data.rds" into SEURAT_LOAD_CH 
 
   """
   Rscript /usr/local/bin/seurat-read-10x.R -d \$PWD -o seurat-tmp.rds
@@ -90,17 +91,42 @@ process SEURAT_PR {
   """
 }
 
-// SEURAT_LOAD_CH.into{
+process SEURAT_UPDATE_PR { 
+
+  publishDir "$params.output.folder/format/seurat/v3"
+  container "quay.io/biocontainers/seurat-scripts:0.0.5--r34_1"
+
+  input:
+    file("data.rds") from SEURAT_LOAD_CH
+
+  output:
+    file("data.rds") into SEURAT_UPDATE_CH
+
+  """
+  echo 'library(Seurat)' >> tmp.R
+  echo 'data <- readRDS("data.rds")' >> tmp.R
+  echo 'data <- UpdateSeuratObject(data)' >> tmp.R
+  echo 'saveRDS(data, "data.rds")' >> tmp.R
+  R -f tmp.R
+  """
+}
+
+// SEURAT_UPDATE_CH.into{
 //   SCE_INPUT_CH
 //   LOOM_INPUT_CH
 // }
+
 // process SCE_PR {
+   
 //   publishDir "$params.output.folder/format/sce"
 //   container "quay.io/biocontainers/r-seurat:3.0.2--r36h0357c0b_1"
+
 //   input:
-//     file('data.rds') from SCE_INPUT_CH
+//     file('data.rds') from SEURAT_UPDATE_CH
+
 //   output:
 //     file "data.rds" 
+
 //   """
 //   #!/usr/bin/env Rscript 
 //   library(Seurat)
@@ -109,13 +135,18 @@ process SEURAT_PR {
 //   saveRDS(sce, "data.rds")
 //   """
 // }
+
 // process LOOM_PR {
+
 //   publishDir "$params.output.folder/format/loom"
 //   container "quay.io/biocontainers/r-seurat:3.0.2--r36h0357c0b_1"
+
 //   input:
 //     file('data.rds') from LOOM_INPUT_CH
+
 //   output:
 //     file "data.rds" 
+
 //   """
 //   #!/usr/bin/env Rscript 
 //   library(Seurat)

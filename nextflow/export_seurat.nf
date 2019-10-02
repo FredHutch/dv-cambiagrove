@@ -139,5 +139,4 @@ process SEURAT_EXTRACT_TRAJECTORY_PR {
   }
   write.csv(edge_df, row.names=FALSE, quote = FALSE, file = paste0("trajectory.csv"))
   """
-  
 }

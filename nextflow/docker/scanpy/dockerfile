@@ -1,0 +1,8 @@
+FROM python:3
+WORKDIR /usr/src/app
+RUN apt-get update
+RUN apt-get install -y build-essential python-dev libxml2 libxml2-dev zlib1g-dev
+RUN pip3 install cmake
+RUN pip3 install scanpy-scripts
+ENV PATH /usr/src/app:$PATH
+ENTRYPOINT [ "/bin/bash" ]
